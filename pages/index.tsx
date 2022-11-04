@@ -1,11 +1,23 @@
 import type { NextPage } from 'next'
+import BucketItem from '../components/BucketItem'
 import Layout from '../components/Layout'
-import styles from '../styles/Home.module.css'
+import data from '../utils/data'
 
-const Home: NextPage = () => {
+const Home = () => {
     return (
-        <Layout>
-            Hello
+        <Layout title='Home Page' >
+
+            <div className='grid grid-cols-4 gap-4 md:grid-cols-3 lg:grid-cols-4'>
+                {
+                    data.buckets.map((bucket) => (
+                        <BucketItem
+                            bucket={bucket}
+                            key={bucket.slug}
+                        // onSubmit={onSubmitHandler}
+                        />
+                    ))
+                }
+            </div>
         </Layout>
     )
 }

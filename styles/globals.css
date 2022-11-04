@@ -19,6 +19,18 @@ a {
   box-sizing: border-box;
 }
 
+/* Selector Specificity: (0, 0, 1) */
+button {
+    @apply text-sm mb-1 bg-yellow-400 px-4 py-2 rounded outline-blue-500 shadow-sm active:shadow-inner transition-all;
+}
+
+.btn-primary {
+    @apply bg-amber-300 hover:bg-amber-400 active:bg-amber-500;
+}
+.btn-default {
+    @apply bg-gray-200 hover:bg-gray-300 active:bg-gray-400;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -28,3 +40,8 @@ a {
     background: black;
   }
 }
+
+.card {
+    @apply shadow-inner block mb-5 border-gray-200 rounded-lg;
+}
+
