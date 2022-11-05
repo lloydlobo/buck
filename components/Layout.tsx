@@ -42,13 +42,13 @@ export default function Layout({ title, children }: {
                             </div>
                         </Link>
                         <div className='navlinks flex gap-2 items-center'>
-                            <button
-                                className='btn-primary rounded-full'
-                                onClick={() => toggle()}
-                            // theme === themes.light
-                            >
-                                {!dark ? "Dark" : "Light"}
-                            </button>
+                            {/* <button */}
+                            {/*     className='btn-primary rounded-full' */}
+                            {/*     onClick={() => toggle()} */}
+                            {/* // theme === themes.light */}
+                            {/* > */}
+                            {/*     {!dark ? "Dark" : "Light"} */}
+                            {/* </button> */}
                             <ThemeToggle />
                             <Link href={'/login'}>
                                 Login
