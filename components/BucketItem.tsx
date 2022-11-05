@@ -5,7 +5,7 @@ import BucketOption from './bucket/BucketOption'
 
 export default function BucketItem({ bucket }: { bucket: any }) {
     return (
-        <div className='card'>
+        <div className=''>
             <Link href={`/bucket/${bucket.slug}`}>
                 {/* <a> */}
                 {/* <img */}

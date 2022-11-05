@@ -27,16 +27,14 @@ export default function Layout({ title, children }: {
             <ToastContainer position="bottom-center" limit={1} />
 
             <div
-                className='flex min-h-screen flex-col justify-between'
+                className='wrapper min-h-screen'
                 style={{
                     backgroundColor: theme.backgroundColor,
                     color: theme.color,
                 }}
             >
-                <header
-                    className='shadow-md'
-                >
-                    <nav className='flex h-12 px-4 container mx-auto justify-between items-center'>
+                <header className='shadow-md border-b'>
+                    <nav className='flex h-12 px-4 mx-auto justify-between items-center'>
                         <Link href={'/'}>
                             <div className='logo text-xl'>
                                 bucket
@@ -44,9 +42,8 @@ export default function Layout({ title, children }: {
                         </Link>
                         <div className='navlinks flex gap-2 items-center'>
                             <button
-                                className='btn-primary rounded-full'
-                                onClick={() => toggle()}
-                            // theme === themes.light
+                                className='btn-default rounded-full'
+                                onClick={() => toggle()} // theme === themes.light
                             >
                                 {!dark ? "Dark" : "Light"}
                             </button>
@@ -62,8 +59,9 @@ export default function Layout({ title, children }: {
                     </nav>
                 </header>
 
-                <aside className=''>
+                <aside className='min-h-screen border-r'>
                     <Navbar />
+                    <div className='card'>Settings</div>
                 </aside>
 
                 <main className='container m-auto mt-4 px-4'>

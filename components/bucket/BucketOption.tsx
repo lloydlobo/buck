@@ -31,19 +31,19 @@ export default function BucketOption() {
                     <>
                         <Popover.Button
                             className={`${open ? '' : 'text-opacity-90'
-                                } group inline-flex items-center rounded-md 
-                                  btn-default pl-4 px-2 py-2 gap-1 
+                                } group inline-flex items-center rounded-full
+                                  btn-default px-4 py-2 gap-1 
                                   hover:text-opacity-100 focus:outline-none focus-visible:ring-2 
-                                  focus-visible:ring-white focus-visible:ring-opacity-75`}
+                                  focus-visible:ring-white focus-visible:ring-opacity-75`
+                            }
                         >
                             <span className=''>Action</span>
                             <div className=''>
-                                {/* <ChevronDownIcon */}
-                                {/*     className={`${open ? '' : 'text-opacity-70' */}
-                                {/*         } ml-0 h-5 w-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-opacity-80`} */}
-                                {/*     aria-hidden="true" */}
-                                {/* /> */}
-                                v
+                                <ChevronDownIcon
+                                    className={`${open ? '' : 'text-opacity-70'
+                                        } ml-0 h-3 w-3 shadow-inner transition duration-150 ease-in-out group-hover:text-opacity-80`}
+                                    aria-hidden="true"
+                                />
                             </div>
                         </Popover.Button>
                         <Transition

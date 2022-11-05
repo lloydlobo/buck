@@ -1,9 +1,17 @@
 import React from 'react'
-import NavPopover from './NavPopover'
 
 export const Navbar = () => {
     return (
-        <div>
+        <div className='p-4'>
+            <div>
+                Accounts
+            </div>
+            <div className='active text-amber-600'>
+                Buckets
+            </div>
+            <div>
+                Budget
+            </div>
         </div>
     )
 }
