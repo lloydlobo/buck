@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+// import type { NextPage } from 'next'
 import BucketItem from '../components/BucketItem'
 import Layout from '../components/Layout'
 import data from '../utils/data'
@@ -6,8 +6,7 @@ import data from '../utils/data'
 const Home = () => {
     return (
         <Layout title='Home Page' >
-
-            <div className='grid grid-cols-4 gap-4 md:grid-cols-3 lg:grid-cols-4'>
+            <div className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4'>
                 {
                     data.buckets.map((bucket) => (
                         <BucketItem
