@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify'
 
 import { ThemeToggle } from './ui/ThemeToggler'
 import { ThemeContext } from '../utils/theme-context'
+import { Navbar } from './navbar/Navbar'
 
 
 export default function Layout({ title, children }: {
@@ -42,13 +43,13 @@ export default function Layout({ title, children }: {
                             </div>
                         </Link>
                         <div className='navlinks flex gap-2 items-center'>
-                            {/* <button */}
-                            {/*     className='btn-primary rounded-full' */}
-                            {/*     onClick={() => toggle()} */}
-                            {/* // theme === themes.light */}
-                            {/* > */}
-                            {/*     {!dark ? "Dark" : "Light"} */}
-                            {/* </button> */}
+                            <button
+                                className='btn-primary rounded-full'
+                                onClick={() => toggle()}
+                            // theme === themes.light
+                            >
+                                {!dark ? "Dark" : "Light"}
+                            </button>
                             <ThemeToggle />
                             <Link href={'/login'}>
                                 Login
@@ -60,6 +61,10 @@ export default function Layout({ title, children }: {
                         </div>
                     </nav>
                 </header>
+
+                <aside className=''>
+                    <Navbar />
+                </aside>
 
                 <main className='container m-auto mt-4 px-4'>
                     {children}
