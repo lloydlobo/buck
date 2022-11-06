@@ -13,6 +13,7 @@ module.exports = {
     plugins: [
         require('daisyui'),
         require('@tailwindcss/aspect-ratio'),
+        require("@tailwindcss/typography"),
     ],
     daisyui: {
         themes: ["business", "corporate"], // https://daisyui.com/docs/themes/

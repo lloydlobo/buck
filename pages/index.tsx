@@ -28,7 +28,7 @@ const Home = () => {
                                 key={items}
                                 className={({ selected }) =>
                                     classNames(
-                                        'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-secondary',
+                                        'w-full rounded-lg py-2.5 prose-sm font-medium leading-5 text-secondary',
                                         'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
                                         selected
                                             ? 'bg-secondary text-neutral shadow'

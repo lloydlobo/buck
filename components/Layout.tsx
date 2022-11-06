@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify'
 import { ThemeToggle } from './ui/ThemeToggler'
 import { ThemeContext } from '../utils/theme-context'
 import { Navbar } from './navbar/Navbar'
+import Drawer from './navbar/Drawer'
 
 
 export default function Layout({ title, children }: {
@@ -35,11 +36,19 @@ export default function Layout({ title, children }: {
             >
                 <header className='shadow-md border-b border-base-300'>
                     <nav className='flex h-12 px-4 mx-auto justify-between items-center'>
-                        <Link href={'/'}>
-                            <div className='logo text-xl'>
-                                bucket
-                            </div>
-                        </Link>
+                        <div className='flex items-center gap-2'>
+                            <label
+                                htmlFor="my-drawer-2"
+                                className="drawer-button text-xs lg:hidden hover:text-neutral-content cursor-pointer focus-within::text-neutral-content"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                            </label>
+                            <Link href={'/'}>
+                                <div className='logo text-xl'>
+                                    bucket
+                                </div>
+                            </Link>
+                        </div>
                         <div className='navlinks flex gap-2 items-center'>
                             {/* <button data-set-theme="" data-act-class="ACTIVECLASS"></button> */}
                             {/* <button data-set-theme="dark" data-act-class="ACTIVECLASS">dark</button> */}
@@ -63,17 +72,21 @@ export default function Layout({ title, children }: {
                     </nav>
                 </header>
 
-                <aside className='min-h-screen border-r bg-base-200 border-base-100'>
-                    <div className='px-2'>
-                        <div className='border-base-100 border-b'>
-                            <Navbar />
+                {/* <aside className='min-h-screen border-r bg-base-200 border-base-100'> */}
+                {/*     <div className='px-2'> */}
+                {/*         <div className='border-base-100 border-b'> */}
+                {/*             <Navbar /> */}
+                {/*         </div> */}
+                {/*     </div> */}
+                {/* </aside> */}
+
+
+                <main className='container'>
+                    <Drawer>
+                        <div className='p-4'>
+                            {children}
                         </div>
-                    </div>
-                </aside>
-
-
-                <main className='container m-auto mt-4 px-4'>
-                    {children}
+                    </Drawer>
                 </main>
 
                 <footer className='container mx-auto shadow-inner'>
