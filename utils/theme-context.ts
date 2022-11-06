@@ -8,8 +8,8 @@ const themes = {
         colorScheme: 'dark',
     },
     light: {
-        backgroundColor: '#ffabc8',
-        // backgroundColor: '',
+        // backgroundColor: '#ffabc8',
+        backgroundColor: '',
         color: '',
         colorScheme: 'light',
     }

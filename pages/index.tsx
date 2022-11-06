@@ -51,8 +51,6 @@ const Home = () => {
                                     'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
                                 )}
                             >
-                                {/* buckets */}
-                                {/* < div className='grid grid-cols-1 gap-x-4 md:grid-cols-3 lg:grid-cols-4' > */}
                                 < div className='grid grid-cols-1 gap-x-4 ' >
                                     {
                                         data.buckets.map((bucket) => (
@@ -67,12 +65,11 @@ const Home = () => {
                                         ))
                                     }
                                 </div>
+                                <CardFooter />
                             </Tab.Panel>
                         ))}
 
-                        <CardFooter />
                     </Tab.Panels>
-
 
                 </Tab.Group>
             </div>

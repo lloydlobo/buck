@@ -85,7 +85,7 @@ export default function QuickView() {
                                         onClick={() => setOpen(false)}
                                     >
                                         <span className="sr-only">Close</span>
-                                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                                        {/* <XMarkIcon className="h-6 w-6" aria-hidden="true" /> */}
                                     </button>
 
                                     <div className="grid w-full grid-cols-1 items-start gap-y-8 gap-x-6 sm:grid-cols-12 lg:gap-x-8">
