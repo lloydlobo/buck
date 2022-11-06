@@ -3,13 +3,14 @@ import { createContext } from "react"
 // https://vimalselvam.com/post/toggle-theme-using-react-hooks/
 const themes = {
     dark: {
-        backgroundColor: 'black',
-        color: 'white',
+        backgroundColor: '',
+        color: '',
         colorScheme: 'dark',
     },
     light: {
-        backgroundColor: 'white',
-        color: 'black',
+        backgroundColor: '#ffabc8',
+        // backgroundColor: '',
+        color: '',
         colorScheme: 'light',
     }
 }

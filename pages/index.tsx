@@ -2,6 +2,7 @@
 import { Tab } from '@headlessui/react'
 import BucketItem from '../components/BucketItem'
 import Layout from '../components/Layout'
+import CardFooter from '../components/ui/CardFooter'
 import data from '../utils/data'
 
 const Home = () => {
@@ -17,20 +18,21 @@ const Home = () => {
 
     return (
         <Layout title='Home Page' >
+
             <div className="max-w-screen">
                 {/* https://headlessui.com/react/tabs */}
                 <Tab.Group>
-                    <Tab.List className="flex space-x-1 rounded-xl bg-emerald-900/20 p-1">
+                    <Tab.List className="flex space-x-1 rounded-xl bg-neutral">
                         {Object.keys(category).map((items) => (
                             <Tab
                                 key={items}
                                 className={({ selected }) =>
                                     classNames(
-                                        'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-emerald-700',
+                                        'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-secondary',
                                         'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
                                         selected
-                                            ? 'bg-white shadow'
-                                            : 'text-white hover:bg-white/[0.12] hover:text-amber-600'
+                                            ? 'bg-secondary text-neutral shadow'
+                                            : 'text-neutral-content hover:bg-base-200 active:bg-white/[0.12] hover:text-neutral-content'
                                     )
                                 }
                             >
@@ -68,7 +70,10 @@ const Home = () => {
                             </Tab.Panel>
                         ))}
 
+                        <CardFooter />
                     </Tab.Panels>
+
+
                 </Tab.Group>
             </div>
         </Layout >

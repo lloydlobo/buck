@@ -2,6 +2,8 @@
 import Link from 'next/link'
 import React from 'react'
 import BucketOption from './bucket/BucketOption'
+import OptionDivider from './bucket/OptionDivider'
+import QuickView from './bucket/QuickView'
 
 export default function BucketItem({ bucket }: { bucket: any }) {
     return (
@@ -34,13 +36,17 @@ export default function BucketItem({ bucket }: { bucket: any }) {
                 <div className=''>
 
                     <div className='flex gap-2'>
-                        <BucketOption />
-                        <button className='btn-primary' type='button'>
+                        <OptionDivider />
+                        {/* <BucketOption /> */}
+                        <button className='btn btn-primary' type='button'>
                             Update
                         </button>
+                        <QuickView />
                     </div>
                 </div>
             </div>
-        </div>
+
+
+        </div >
     )
 }

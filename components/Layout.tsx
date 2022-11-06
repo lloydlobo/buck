@@ -33,7 +33,7 @@ export default function Layout({ title, children }: {
                     color: theme.color,
                 }}
             >
-                <header className='shadow-md border-b'>
+                <header className='shadow-md border-b border-base-300'>
                     <nav className='flex h-12 px-4 mx-auto justify-between items-center'>
                         <Link href={'/'}>
                             <div className='logo text-xl'>
@@ -41,13 +41,17 @@ export default function Layout({ title, children }: {
                             </div>
                         </Link>
                         <div className='navlinks flex gap-2 items-center'>
-                            <button
-                                className='btn-default rounded-full'
-                                onClick={() => toggle()} // theme === themes.light
-                            >
-                                {!dark ? "Dark" : "Light"}
-                            </button>
-                            <ThemeToggle />
+                            {/* <button data-set-theme="" data-act-class="ACTIVECLASS"></button> */}
+                            {/* <button data-set-theme="dark" data-act-class="ACTIVECLASS">dark</button> */}
+                            {/* <button data-set-theme="pink" data-act-class="ACTIVECLASS">pink</button> */}
+                            {/* <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">Toggle</button> */}
+                            {/* <button */}
+                            {/*     className='btn-default rounded-full' */}
+                            {/*     onClick={() => toggle()} // theme === themes.light */}
+                            {/* > */}
+                            {/*     {!dark ? "Dark" : "Light"} */}
+                            {/* </button> */}
+                            {/* <ThemeToggle /> */}
                             <Link href={'/login'}>
                                 Login
                             </Link>
@@ -59,10 +63,14 @@ export default function Layout({ title, children }: {
                     </nav>
                 </header>
 
-                <aside className='min-h-screen border-r'>
-                    <Navbar />
-                    <div className='card'>Settings</div>
+                <aside className='min-h-screen border-r bg-base-200 border-base-100'>
+                    <div className='px-2'>
+                        <div className='border-base-100 border-b'>
+                            <Navbar />
+                        </div>
+                    </div>
                 </aside>
+
 
                 <main className='container m-auto mt-4 px-4'>
                     {children}

@@ -1,17 +1,26 @@
+import Link from 'next/link'
 import React from 'react'
+
 
 export const Navbar = () => {
     return (
         <div className='p-4'>
             <div>
-                Accounts
+                <Link href='/accounts'>
+                    Accounts
+                </Link>
             </div>
-            <div className='active text-amber-600'>
-                Buckets
+            <div className='active'>
+                <Link href='/accounts'>
+                    Buckets
+                </Link>
             </div>
             <div>
-                Budget
+                <Link href='/accounts'>
+                    Budget
+                </Link>
             </div>
         </div>
     )
 }
+

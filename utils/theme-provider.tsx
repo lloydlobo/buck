@@ -1,5 +1,7 @@
 import { ReactNode, useEffect, useState } from "react"
 import { ThemeContext, themes } from "./theme-context"
+import { themeChange } from 'theme-change'
+
 
 // https://vimalselvam.com/post/toggle-theme-using-react-hooks/
 function ThemeProvider({ children }: {
@@ -10,6 +12,8 @@ function ThemeProvider({ children }: {
 
     // On mount, read the preferred theme from the persisence.
     useEffect(() => {
+        // 👆 false parameter is required for react project
+        themeChange(false)
         const isDark: boolean = localStorage.getItem('dark') === 'true'
         setDark(isDark)
     }, [dark])

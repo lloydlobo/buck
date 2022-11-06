@@ -2,17 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+
+  /* or any other variables/style */
+:root {
+  --my-color: #000;
+}
+[data-theme='dark'] {
+  --my-color: #000;
+}
+[data-theme='pink'] {
+  --my-color: #ffabc8;
+}
+
 * {
     box-sizing: border-box;
-    color-scheme: dark;
-    /* @apply bg-black text-white; */
 }
 
 html,
 body {
+    color-scheme: dark;
     padding: 0;
     margin: 0;
-    display:grid;
+    /* @apply border-primary border; */
+    /* background-color: var(--my-color); */
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -49,30 +61,30 @@ a {
     text-decoration: none;
 }
 
+/* https://daisyui.com/docs/colors/ */
 
 /* Selector Specificity: (0, 0, 1) */
 button {
-    @apply text-xs rounded-full shadow outline-blue-500 active:shadow-inner transition-all;
+    /* @apply text-xs rounded-full shadow outline-blue-500 active:shadow-inner transition-all; */
+    @apply rounded-full;
+    border-radius: 9999px !important;
 }
 
 .card {
-    @apply shadow-md block mb-4 border-gray-300 rounded-lg;
+    @apply shadow-md block mb-4 border border-base-100 rounded-lg;
 }
 
-.btn-primary {
-    @apply px-3 py-1.5 min-w-[56px] text-emerald-600 border-emerald-600 border hover:bg-amber-400 active:bg-amber-500;
+.btn {
+    /* @apply rounded-full; */
 }
 
-.btn-default {
-    @apply px-3 py-1.5 border text-gray-400 hover:bg-gray-300 active:bg-gray-400;
-}
 
 @media (prefers-color-scheme: dark) {
     html {
         color-scheme: dark;
     }
     body {
-        color: white;
-        background: black;
+        /* color: white; */
+        /* background: black; */
     }
 }

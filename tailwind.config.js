@@ -1,4 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+// require('@tailwindcss/aspect-ratio')
+
+/** @type {import('tailwindcss').Config } */
 module.exports = {
     content: [
         "./app/**/*.{js,ts,jsx,tsx}",
@@ -8,7 +10,14 @@ module.exports = {
     theme: {
         extend: {},
     },
-    plugins: [],
+    plugins: [
+        require('daisyui'),
+        require('@tailwindcss/aspect-ratio'),
+    ],
+    daisyui: {
+        themes: ["business", "corporate"], // https://daisyui.com/docs/themes/
+    },
     // https://tailwindcss.com/docs/dark-mode
-    darkMode: 'class',
+    darkMode: 'class', //https://github.com/saadeghi/theme-change
+
 }
