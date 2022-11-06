@@ -42,10 +42,8 @@ export default function Layout({ title, children }: {
                         </nav>
                     </header>
 
-                    <main className=''>
-                        <div className='px-8 py-8'>
-                            {children}
-                        </div>
+                    <main className='container'>
+                        {children}
                     </main>
 
                     <footer className='container mx-auto grid items-center'>

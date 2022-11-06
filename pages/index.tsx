@@ -1,5 +1,7 @@
 // import type { NextPage } from 'next'
 import { Tab } from '@headlessui/react'
+import BucketsTable from '../components/bucket/BucketsTable'
+import Stats from '../components/bucket/stats/Stats'
 import BucketItem from '../components/BucketItem'
 import Layout from '../components/Layout'
 import CardFooter from '../components/ui/CardFooter'
@@ -18,9 +20,23 @@ const Home = () => {
 
     return (
         <Layout title='Home Page' >
+            <>
+                <div className="max-w-screen">
+                    <div className='flex border-transparent border border-base-200 mb-4 mt-0'>
+                        <Stats />
+                    </div>
+                    {/* https://headlessui.com/react/tabs */}
+                    <BucketsTable />
+                </div>
+            </>
+        </Layout >
+    )
+}
 
-            <div className="max-w-screen">
-                {/* https://headlessui.com/react/tabs */}
+
+export default Home
+
+/*
                 <Tab.Group>
                     <Tab.List className="flex space-x-1 rounded-xl bg-neutral">
                         {Object.keys(category).map((items) => (
@@ -41,7 +57,6 @@ const Home = () => {
                         ))
                         }
                     </Tab.List>
-
                     <Tab.Panels className="mt-2">
                         {Object.values(category).map((posts, idx) => (
                             <Tab.Panel
@@ -68,14 +83,7 @@ const Home = () => {
                                 <CardFooter />
                             </Tab.Panel>
                         ))}
-
                     </Tab.Panels>
-
                 </Tab.Group>
-            </div>
-        </Layout >
-    )
-}
 
-
-export default Home
+*/
