@@ -21,12 +21,9 @@ const Home = () => {
     return (
         <Layout title='Home Page' >
             <>
-                <div className="max-w-screen">
-                    <div className='flex border-transparent border border-base-200 mb-4 mt-0'>
-                        <Stats />
-                    </div>
-                    {/* https://headlessui.com/react/tabs */}
-                    <BucketsTable />
+                <div className="max-w-screen grid items-center w-full">
+                    <div className='flex mb-4 mt-0'><Stats /></div>
+                    <div className='mb-2'><BucketsTable /></div>
                 </div>
             </>
         </Layout >

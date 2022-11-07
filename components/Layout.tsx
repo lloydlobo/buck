@@ -38,19 +38,21 @@ export default function Layout({ title, children }: {
                 // }}
                 >
                     {/* <header className='sticky top-0 z-30 w-full bg-base-100 shadow-md h-16 justify-center bg-opacity-70 border-b border-base-300 transition-all duration-100 backdrop-blur text-base-content'> */}
-                    <header className='z-30 w-full bg-base-100 shadow-md h-16 justify-center bg-opacity-70 border-b border-base-300 transition-all duration-100 backdrop-blur text-base-content'>
+                    <header className=' z-30 w-full bg-base-100 shadow-md h-16 justify-center 
+                        bg-opacity-70 border-b border-base-300 transition-all 
+                        duration-100 backdrop-blur text-base-content'>
                         <nav className='w-full bg-opacity-90'>
                             <Navbar />
                         </nav>
                     </header>
 
-                    <main className='min-h-screen container'>
+                    <main className='min-h-screen'>
                         {children}
                     </main>
 
-                    <aside>
-                        <SidebarRight />
-                    </aside>
+                    {/* <aside> */}
+                    {/*     <SidebarRight /> */}
+                    {/* </aside> */}
 
                     <Footer />
                 </div>

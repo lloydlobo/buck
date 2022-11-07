@@ -3,12 +3,12 @@ import React from 'react'
 export default function SearchInput() {
     return (
         <>
-            <div className="form-control ">
+            <div className="form-control px-2 py-2 mt-4">
                 <label className="input-group input-group-sm ">
                     <input
                         type="text"
                         placeholder="Search..."
-                        className="input rounded-none  input-sm "
+                        className="input rounded-none input-sm "
                     />
                     <button className="btn btn-sm mr-4 btn-ghost absolute right-0 border-transparent hover:bg-info">
                         <svg
@@ -21,7 +21,7 @@ export default function SearchInput() {
                         </svg>
                     </button>
                     {/* Can use before after to choose a bigger overlay to hide ctrl K on hover. */}
-                    <div className="hidden absolute hover:opacity-0 right-16 top-4 gap-1 px-1 opacity-50 lg:flex">
+                    <div className="hidden absolute hover:opacity-0 right-16 top-7 gap-1 p-0 m-0 opacity-50 lg:flex">
                         <kbd className="kbd kbd-xs text-[8px]">ctrl</kbd>
                         <kbd className="kbd kbd-xs text-[8px]">K</kbd>
                     </div>

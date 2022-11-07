@@ -14,9 +14,9 @@ export default function Drawer({ children }: { children: ReactNode | ReactNode[]
 
                 {children}
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side w-60 text-sm">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                <ul className="menu bg-base-200 text-base-content">
                     {/* <!-- Sidebar content here --> */}
 
                     <label htmlFor="my-drawer-2" className="hidden absolute left-3 top-2 btn btn-circle btn-ghost swap swap-rotate md:hidden ">

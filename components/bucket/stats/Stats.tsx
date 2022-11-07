@@ -35,7 +35,7 @@ export default function Stats() {
                 </div>
             </div>
 
-            <div className="stats bg-primary text-primary-content">
+            <div className="stats bg-base-300 text-primary-content">
 
                 <div className="stat">
                     <div className="stat-title">Account balance</div>

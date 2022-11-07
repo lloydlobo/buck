@@ -7,8 +7,8 @@ import data from '../../utils/data'
 export default function BucketsTable() {
 
     return (
-        < div className="overflow-x-auto w-full" >
-            <div className="btn-group gap-2 btn-group-vertical lg:btn-group-horizontal mb-2 items-center">
+        < div className="overflow-x-auto px-6 w-full" >
+            <div className="btn-group gap-2 lg:btn-group-horizontal mb-2 items-center">
                 <button className="btn btn-active">Make it rain &nbsp;{money()}</button>
                 <button className="btn">New bucket</button>
                 <button className="btn">New group</button>
@@ -124,10 +124,10 @@ const info = (dataTip: string) => (
 
 const monthlySelect = () => (
     <select className="select select-ghost w-full max-w-xs">
-        <option disabled selected>Pick the best JS framework</option>
-        <option>Svelte</option>
-        <option>Vue</option>
-        <option>React</option>
+        {/* <option disabled>Pick the best JS framework</option> */}
+        <option selected>Monthly</option>
+        <option>One Time</option>
+        <option>15 days</option>
     </select>
 )
 
