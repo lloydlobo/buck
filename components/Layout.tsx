@@ -8,6 +8,8 @@ import { ThemeToggle } from './ui/ThemeToggler'
 import { ThemeContext } from '../utils/theme-context'
 import { Navbar } from './navbar/Navbar'
 import Drawer from './navbar/Drawer'
+import { Footer } from './ui/Footer'
+import SidebarRight from './navbar/SidebarRight'
 
 
 export default function Layout({ title, children }: {
@@ -42,16 +44,15 @@ export default function Layout({ title, children }: {
                         </nav>
                     </header>
 
-                    <main className='container'>
+                    <main className='min-h-screen container'>
                         {children}
                     </main>
 
-                    <footer className='container mx-auto grid items-center'>
-                        <div className='flex text-sm h-10 px-4 mx-auto justify-between items-center'>
-                            Copyright &copy; {date} Bucket
-                        </div>
-                    </footer>
+                    <aside>
+                        <SidebarRight />
+                    </aside>
 
+                    <Footer />
                 </div>
             </Drawer>
         </>

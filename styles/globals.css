@@ -50,7 +50,7 @@ footer {
     display: grid;
     grid-template-areas: 
         "header header header" 
-        "main main main"
+        "main main aside"
         "footer footer footer";
     grid-template-rows: auto 1fr auto;
     grid-template-columns: min(25vw, 12rem) 1fr auto;

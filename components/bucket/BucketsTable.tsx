@@ -1,4 +1,5 @@
 import React from 'react'
+import { RadialProgress } from './stats/RadialProgress'
 
 export default function BucketsTable() {
     return (
@@ -44,7 +45,9 @@ export default function BucketsTable() {
                             <br />
                             <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
                         </td>
-                        <td>Purple</td>
+                        <td>Purple
+                            <RadialProgress value={67} />
+                        </td>
                         <th>
                             <button className="btn btn-ghost btn-xs">details</button>
                         </th>
