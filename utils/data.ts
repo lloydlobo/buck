@@ -29,7 +29,7 @@ const data = {
             image: '',
             budgeted: 2000,
             available: 1000,
-            description: '',
+            description: 'Rent money',
         },
         {
             name: 'Food',
@@ -38,7 +38,7 @@ const data = {
             image: '',
             available: 4000,
             budgeted: 4000,
-            description: '',
+            description: 'Monthly food',
         },
     ]
 

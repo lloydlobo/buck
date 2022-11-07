@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { ReactNode } from 'react'
 import SearchInput from '../SearchInput'
 
@@ -27,8 +28,12 @@ export default function Drawer({ children }: { children: ReactNode | ReactNode[]
                         <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" /></svg>
                     </label>
                     <li className='' ><SearchInput /></li>
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
+                    <li><Link href='#'>Accounts</Link></li>
+                    <li><Link href='#'>Transactions</Link></li>
+                    <li><Link href='#'>Buckets</Link></li>
+                    <li><Link href='#'>Analysis</Link></li>
+                    <li><Link href='#'>Connections</Link></li>
+                    <li><Link href='#'>Import</Link></li>
                 </ul>
 
             </div>
