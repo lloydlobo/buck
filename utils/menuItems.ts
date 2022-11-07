@@ -10,12 +10,6 @@
 // } from "../components/Icons";
 
 const MenuItems = [
-    // {
-    //     label: 'Home',
-    //     url: "/",
-    //     // icon: <HomeIcon />,
-    //     active: true,
-    // },
     {
         label: 'Accounts',
         url: "/accounts",
@@ -30,9 +24,9 @@ const MenuItems = [
     },
     {
         label: 'Buckets',
-        url: "/",
+        url: "/buckets",
         // icon: <ContactIcon />,
-        active: true,
+        active: false,
     },
     {
         label: 'Analysis',

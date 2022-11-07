@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { ReactNode, useContext } from 'react'
-
 import { ToastContainer } from 'react-toastify'
-
 import { ThemeToggle } from './ui/ThemeToggler'
 import { ThemeContext } from '../utils/theme-context'
 import { Navbar } from './navbar/Navbar'
@@ -29,13 +27,9 @@ export default function Layout({ title, children }: {
 
             <Drawer>
                 <ToastContainer position="bottom-center" limit={1} />
-
                 <div
                     className='wrapper h-screen'
-                // style={{
-                //     backgroundColor: theme.backgroundColor,
-                //     color: theme.color,
-                // }}
+                // style={{ backgroundColor: theme.backgroundColor, color: theme.color, }}
                 >
                     {/* <header className='sticky top-0 z-30 w-full bg-base-100 shadow-md h-16 justify-center bg-opacity-70 border-b border-base-300 transition-all duration-100 backdrop-blur text-base-content'> */}
                     <header className=' z-30 w-full bg-base-100 shadow-md h-16 justify-center 
@@ -49,10 +43,6 @@ export default function Layout({ title, children }: {
                     <main className='min-h-screen'>
                         {children}
                     </main>
-
-                    {/* <aside> */}
-                    {/*     <SidebarRight /> */}
-                    {/* </aside> */}
 
                     <Footer />
                 </div>
@@ -78,26 +68,20 @@ function localTheme() {
     } else {
         document.documentElement.classList.remove('dark')
     }
-
     // Whenever the user explicitly chooses light mode
     localStorage.theme = 'light'
-
     // Whenever the user explicitly chooses dark mode
     localStorage.theme = 'dark'
-
     // Whenever the user explicitly chooses to respect the OS preference
     localStorage.removeItem('theme')
 }
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
 function matchMedia() {
     let mql = window.matchMedia('(max-width: 600px)');
-
     // <span class="mq-value"></span>
     const targetElement = document.querySelector(".mq-value") as HTMLSpanElement | null
     if (!targetElement) {
         return
     }
-
     targetElement.innerText = (mql.matches as unknown) as string;
-
 }

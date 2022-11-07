@@ -37,8 +37,8 @@ export default function BucketsTable() {
                         <th>Balance</th>
                         <th>Repeat</th>
                         <th>Transact</th>
-                        <th>Rain</th>
-                        <th>Details</th>
+                        <th></th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
 
@@ -80,10 +80,12 @@ export default function BucketsTable() {
                                 </div>
                             </td>
                             <td>
-                                {settings()}
                             </td>
                             <td>
-                                {statistics()}
+                                <div className='flex gap-2'>
+                                    {settings()}
+                                    {statistics()}
+                                </div>
                             </td>
                         </tr>
                     ))}
@@ -99,8 +101,8 @@ export default function BucketsTable() {
                             {/* <XCircleIcon className="h-5 w-5"></XCircleIcon> */}
                         </th>
                         <th>Transact</th>
-                        <th>Rain</th>
-                        <th>Details</th>
+                        <th></th>
+                        <th>Actions</th>
                     </tr>
                 </tfoot>
             </table>
