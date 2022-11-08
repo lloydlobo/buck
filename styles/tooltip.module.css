@@ -1,0 +1,40 @@
+/* https://codesandbox.io/s/github/holtzy/react-graph-gallery/tree/main/viz/ScatterplotClimateCrisis?from-embed */
+
+/* TODO: Add x, y position in interactiveData moseover parameters for tooltip[ to move with cursor] */
+.tooltip {
+    width: 356px;
+    @apply shadow-inner opacity-60 bg-base-100 border border-neutral transition-all duration-1000;
+    /* box-shadow: 3px 3px 3px rgb(0 0 0 / 10%); */
+    font-size: 11px;
+    max-width: 200px;
+    padding: 10px;
+    /* position: absolute; */ 
+    margin-left: 35px;
+    transform: translateY(-50%);
+    transform: translateX(-30%);
+}
+
+.title {
+    font-size: 1.25rem;
+}
+
+.topHalfContainer {
+    border-left: solid 4px;
+    padding-left: 8px;
+    padding-top: 0px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.separator {
+    @apply bg-neutral-content;
+    width: 100%;
+    height: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

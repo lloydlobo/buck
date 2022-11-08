@@ -10,7 +10,8 @@ export const Tooltip = ({ interactionData }: TooltipProps) => {
         return null;
     }
 
-    const { xPos, yPos, name, color, x, y, size } = interactionData;
+    // const { xPos, yPos, name, color, x, y, size } = interactionData;
+    const { xPos, yPos, group, subGroup, size } = interactionData;
 
     return (
         <div
@@ -20,16 +21,18 @@ export const Tooltip = ({ interactionData }: TooltipProps) => {
                 top: yPos,
             }}
         >
-            <b className={styles.title}>{name}</b>
+            <b className={styles.title}>{group}</b>
 
-            <div className={styles.topHalfContainer} style={{ borderColor: color }}>
+            <div className={styles.topHalfContainer} style={{ borderColor: 'currentcolor' }}>
                 <div className={styles.row}>
-                    <span>Vulnerability index</span>
-                    <b>{Math.round(x * 100) / 100}</b>
+                    <b className={styles.row}></b>
+                    {/* <span>Vulnerability index</span> */}
+                    {/* <b>{Math.round(x * 100) / 100}</b> */}
+                    <b>{subGroup}</b>
                 </div>
                 <div className={styles.row}>
-                    <span>Readiness index</span>
-                    <b>{Math.round(y * 100) / 100}</b>
+                    {/* <span>Size</span> */}
+                    {/* <b>{Math.round(y * 100) / 100}</b> */}
                 </div>
             </div>
 
@@ -37,9 +40,9 @@ export const Tooltip = ({ interactionData }: TooltipProps) => {
 
             <div className={styles.row}>
                 <span>
-                    CO2 emission
+                    Size
+                    (sq.m)
                     <br />
-                    (tons per capita)
                 </span>
                 <b>{Math.round(size * 100) / 100}</b>
             </div>

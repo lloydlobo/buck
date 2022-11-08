@@ -1,10 +1,15 @@
+
+
+
 import React, { useState } from 'react'
 import * as d3 from 'd3'
 import { AxisLeft } from './AxisLeft'
 import { AxisBottom } from './AxisBottom'
 import styles from "../../styles/scatterplot.module.css";
+import { InteractionData } from '../../types';
+import { Tooltip } from './Tooltip';
 
-const MARGIN = { top: 60, right: 60, bottom: 60, left: 60 }
+const MARGIN = { top: 45, right: 45, bottom: 45, left: 45 }
 
 // Component skeleton.
 type ScatterplotProps = {
@@ -13,6 +18,7 @@ type ScatterplotProps = {
     data: {
         x: number; y: number; size: number; group: string, subGroup: string,
     }[];
+
 }
 
 /**
@@ -23,14 +29,10 @@ type ScatterplotProps = {
 * Compute all the <circle> 
 */
 // https://www.react-graph-gallery.com/scatter-plot
-export default function D3Scatterplot({ width, height, data }: ScatterplotProps) {
-    // This code creates an instance of a RefObject that can take a ref of type HTMLDivElement;
-    // https://www.pluralsight.com/guides/using-react-refs-typescript
-    // const divRef = useRef<HTMLDivElement>(null);
-
+export default function D3ScatterplotWithTooltip({ width, height, data }: ScatterplotProps) {
     // State
-    // const [interactionData, setInteractionData] = useState<InteractionData>();
-    const [hoveredGroup, setHoveredGroup] = useState<string | null>(null);
+    const [interactionData, setInteractionData] = useState<InteractionData>();
+    // const [hoveredGroup, setHoveredGroup] = useState<string | null>(null);
 
     // Layout. The div size is set by the given props.
     // The bounds (=area inside the axis) is calculated by substracting the margins
@@ -45,7 +47,8 @@ export default function D3Scatterplot({ width, height, data }: ScatterplotProps)
         .domain([-3000, 50000]) // Data goes from 0 to 10.
         .range([0, boundsWidth]) // Axis goes from 0 to 200.
 
-    // const sizeScale = d3.scaleSqrt().domain([0, 32]).range([3, 40]);
+    const sizeScale = d3.scaleSqrt().domain([0, 32]).range([3, 40]);
+
     const allGroups = data.map((d) => String(d.group));
     const colorScale = d3
         .scaleOrdinal()
@@ -54,18 +57,21 @@ export default function D3Scatterplot({ width, height, data }: ScatterplotProps)
 
     // Build the shapes.
     const allShapes = data.map((d, i) => {
-        const className = hoveredGroup && d.group !== hoveredGroup
+        // const className = hoveredGroup && d.group !== hoveredGroup
+        //     ? (styles.scatterplotCircle + " " + styles.dimmed)
+        //     : (styles.scatterplotCircle)
+        const className = interactionData && d.group !== interactionData.group
             ? (styles.scatterplotCircle + " " + styles.dimmed)
             : (styles.scatterplotCircle)
 
-        // const size = sizeScale(d.size);
-        // const xPos = xScale(d.x) - size / 2;
-        // const yPos = yScale(d.y) - size / 2;
+        const size = sizeScale(d.size);
+        const xPos = xScale(d.x) - size / 2;
+        const yPos = yScale(d.y) - size / 2;
 
         return (
             <circle
                 key={i}
-                r={5} // Radius.
+                r={8} // Radius.
                 cx={xScale(d.x)}
                 cy={yScale(d.y)}
                 opacity={1}
@@ -74,9 +80,18 @@ export default function D3Scatterplot({ width, height, data }: ScatterplotProps)
                 fill={colorScale(d.group)}
                 fillOpacity={0.2}
                 strokeWidth={1}
-                onMouseOver={() => setHoveredGroup(d.group)} // callback to update the state.
-                onMouseLeave={() => setHoveredGroup(null)} // and to set it back to null.
-            // onMouseMove={() => setInteractionData({ xPos, yPos, ...d, }) } // callback to update the state.
+                // onMouseOver={() => setHoveredGroup(d.group)} // callback to update the state.
+                // onMouseLeave={() => setHoveredGroup(null)} // and to set it back to null.
+                // onMouseMove={() => setInteractionData({ xPos, yPos, ...d, })} // callback to update the state.
+
+                onMouseEnter={() => // Each time the circle is hovered hover...
+                    setInteractionData({ // ... update the interactionData state with the circle information
+                        xPos: xPos,
+                        yPos: yPos,
+                        ...d
+                    })
+                }
+                onMouseLeave={() => setInteractionData(undefined)} // and to set it back to null.
             // onMouseLeave={() => setInteractionData(undefined)} // and to set it back to undefined.
             />
         )
@@ -108,8 +123,24 @@ export default function D3Scatterplot({ width, height, data }: ScatterplotProps)
                         />
                     </g>
                     {allShapes}
+
                 </g>
             </svg>
+            {/* Tooltip */}
+            <div
+                style={{
+                    width: boundsWidth, // the width of the chart area excluding axes = width - left margin
+                    height: boundsHeight,
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    pointerEvents: "none",
+                    marginLeft: MARGIN.left,
+                    marginTop: MARGIN.top,
+                }}
+            >
+                <Tooltip interactionData={interactionData} />
+            </div>
         </div >
     )
 }
