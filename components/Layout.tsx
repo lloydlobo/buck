@@ -8,6 +8,7 @@ import { Navbar } from './navbar/Navbar'
 import Drawer from './navbar/Drawer'
 import { Footer } from './ui/Footer'
 import SidebarRight from './navbar/SidebarRight'
+import NavbarTailwind from './navbar/NavbarTailwind'
 
 
 export default function Layout({ title, children }: {

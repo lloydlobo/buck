@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function ButtonGroupBuckets() {
     return (
-        <div className="mb-2 mt-2 px-4 flex gap-4  place-self-center place-items-center items-center flex-wrap">
+        <div className="mb-4 px-4 flex gap-4 items-center flex-wrap">
             <div className="btn-group sm:flex-row sm:flex">
                 <button className="btn btn-sm text-xs btn-active">Make it rain &nbsp;{money()}</button>
                 <button className="btn btn-sm text-xs">New bucket</button>

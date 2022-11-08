@@ -3,6 +3,7 @@ import AccountsTable from '../components/AccountsTable'
 import Stats from '../components/bucket/stats/Stats'
 import StatsCarousel from '../components/bucket/stats/StatsCarousel'
 import Layout from '../components/Layout'
+import { PageHeading } from '../components/PageHeading'
 import ButtonGroupBuckets from '../components/ui/ButtonGroupBuckets'
 
 export default function accounts() {
@@ -12,9 +13,13 @@ export default function accounts() {
 
             <div className='flex sm:hidden'><StatsCarousel /></div>
 
-            <ButtonGroupBuckets />
+            <PageHeading />
+
+            {/* <ButtonGroupBuckets /> */}
 
             <AccountsTable />
         </Layout>
     )
 }
+
+

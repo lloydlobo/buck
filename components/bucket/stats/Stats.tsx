@@ -4,7 +4,7 @@ import React from 'react'
 export default function Stats() {
     return (
         <>
-            <div className="stats prose-base sm:grid-cols-2 md:grid-cols-6 xl:grid-cols-8 ">
+            <div className="stats sm:prose-xs bg-base-200 md:prose-base grid-cols-2 sm:grid-cols-6 mb-4 overflow-hidden shadow-inner border border-base-200">
                 <div className="stat">
                     <div className="stat-figure text-secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -38,7 +38,7 @@ export default function Stats() {
                 </div>
 
 
-                <div className="stat bg-base-200">
+                <div className="stat ">
                     <div className="stat-title">Account balance</div>
                     <div className="stat-value text-base">$89,400</div>
                     <div className="stat-actions">
@@ -46,12 +46,25 @@ export default function Stats() {
                     </div>
                 </div>
 
-                <div className="stat bg-base-300 col-span-2 l:col-span-7 xl:col-span-8">
-                    <div className="stat-title">Current balance</div>
-                    <div className="stat-value text-base">$89,400</div>
-                    <div className="stat-actions">
-                        <button className="btn btn-sm">Withdrawal</button>
-                        <button className="btn btn-sm">deposit</button>
+                <div className="stat bg-base-300 col-span-2">
+                    <div className="grid grid-flow-col-dense">
+                        <div className="">
+                            <div className="stat-title">Current balance</div>
+                            <div className="stat-value text-base">$89,400</div>
+                            <div className="stat-actions btn-group-vertical">
+                                <button className="btn btn-sm">Withdrawal</button>
+                                <button className="btn btn-active btn-sm">deposit</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className="stat-title">Income</div>
+                            <div className="stat-value text-base">0</div>
+                            <div className='flex items-center gap-2'>
+                                <div className="stat-desc text-sm">Rain/<span className='text-secondary'>mo</span></div>
+                                <div className="stat-desc text-secondary">{info('Rain per month')}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -60,3 +73,11 @@ export default function Stats() {
     )
 }
 
+
+const info = (dataTip: string) => (
+    <div className="tooltip tooltip-right" data-tip={dataTip}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clipRule="evenodd" />
+        </svg>
+    </div>
+)

@@ -17,7 +17,7 @@ export default function Buckets() {
 
     return (
         <Layout title='Buckets' >
-            <div className="grid grid-flow-row items-start">
+            <div className="grid grid-flow-row">
                 <div className='flex mb-2 mt-0'><Stats /></div>
                 <ButtonGroupBuckets />
 
