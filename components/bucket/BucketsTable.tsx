@@ -2,27 +2,12 @@ import React from 'react'
 import { RadialProgress } from './stats/RadialProgress'
 import { XCircleIcon } from '@heroicons/react/outline'
 import data from '../../utils/data'
+import Link from 'next/link'
 
 
 export default function BucketsTable() {
-
     return (
         < div className="overflow-x-auto px-6 w-full" >
-            <div className="btn-group gap-2 lg:btn-group-horizontal mb-2 items-center">
-                <button className="btn btn-active">Make it rain &nbsp;{money()}</button>
-                <button className="btn">New bucket</button>
-                <button className="btn">New group</button>
-                <div className="">
-                    <div className="stat">
-                        <div className="stat-value">0</div>
-                        <div className='flex items-center gap-2'>
-                            <div className="stat-title">Rain/<span className='text-secondary'>mo</span></div>
-                            <div className="stat-desc text-secondary">{info('Rain per month')}</div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
 
             <table className="table table-compact w-full">
                 {/* -- head --  */}
@@ -55,7 +40,14 @@ export default function BucketsTable() {
                             <th>
                                 <div className="flex items-center space-x-3">
                                     <div>
-                                        <div className="font-bold">{bucket.name}</div>
+                                        <div className="font-bold">
+                                            <Link
+                                                href={`buckets/${bucket.slug}`}
+                                                className='link link-hover'
+                                            >
+                                                {bucket.name}
+                                            </Link>
+                                        </div>
                                         <div className="text-sm opacity-50">{bucket.description}</div>
                                     </div>
                                 </div>
