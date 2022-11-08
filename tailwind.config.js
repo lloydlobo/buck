@@ -35,7 +35,7 @@ module.exports = {
         require("@tailwindcss/typography"),
     ],
     daisyui: {
-        themes: ["forest", "business", "corporate"], // https://daisyui.com/docs/themes/
+        themes: ["business", "corporate"], // https://daisyui.com/docs/themes/
     },
 
 }

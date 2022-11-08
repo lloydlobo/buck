@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 import React from 'react'
-import BucketOption from './bucket/BucketOption'
 import OptionDivider from './bucket/OptionDivider'
 import QuickView from './bucket/QuickView'
 
