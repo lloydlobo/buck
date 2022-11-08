@@ -1,10 +1,10 @@
 import React from 'react'
 
 // <div className="stats bg-base-300 text-primary-content">
-export default function Stats() {
+export default function StatsCarousel() {
     return (
         <>
-            <div className="stats prose-base sm:grid-cols-2 md:grid-cols-6 xl:grid-cols-8 ">
+            <div className="stats prose-sm grid-flow-row-dense w-full grid-cols-2 sm:grid-rows-1 sm:stats-horizontal shadow">
                 <div className="stat">
                     <div className="stat-figure text-secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -46,7 +46,7 @@ export default function Stats() {
                     </div>
                 </div>
 
-                <div className="stat bg-base-300 col-span-2 l:col-span-7 xl:col-span-8">
+                <div className="stat bg-base-300 col-span-2">
                     <div className="stat-title">Current balance</div>
                     <div className="stat-value text-base">$89,400</div>
                     <div className="stat-actions">
