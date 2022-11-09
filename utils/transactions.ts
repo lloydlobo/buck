@@ -4,7 +4,7 @@ const transactions = [
     {
         id: 1,
         uid: '',
-        date: '',
+        date: '01/11/22',
         account: 'savings',
         memo: 'saving for rent',
         amount: 100,
@@ -15,8 +15,8 @@ const transactions = [
     {
         id: 2,
         uid: '',
-        date: '',
-        account: 'savings',
+        date: '15/10/22',
+        account: 'checking',
         memo: 'food expenses',
         amount: 151,
         category: 'food',

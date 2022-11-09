@@ -6,22 +6,13 @@ import { transition } from 'd3';
 
 
 export default function BucketsTable() {
-    let isActive = false;
     const [disabled, setDisabled] = useState(false)
+    const handleClickEditTransaction = () => { setDisabled(!disabled) }
 
-    const handleClickEditTransaction = () => {
-        setDisabled(!disabled)
-    }
-
-    const handleEditable = () => {
-        isActive ? isActive = false : isActive = true
-        console.log(isActive)
-
-    }
+    const handleClickClearTransaction = () => { }
 
     return (
         < div className="overflow-x-auto px-6 w-full" >
-
             <table className="table table-compact w-full">
                 {/* -- head --  */}
                 <thead>
@@ -41,15 +32,14 @@ export default function BucketsTable() {
                 </thead>
 
                 <tbody>
-
                     {/* -- input rows --  */}
                     <tr>
+                        {/* Radio check */}
                         <th>
                             <label>
                                 <input type="checkbox" className="checkbox" />
                             </label>
                         </th>
-
                         {/* Posted */}
                         <th>
                             <input
@@ -58,18 +48,13 @@ export default function BucketsTable() {
                                 className="input input-md w-24 sm:w-32  input-bordered "
                             />
                         </th>
-
                         {/* Account */}
                         <th>
                             <div className="form-control">
                                 <div className="input-group relative">
                                     <select className="select w-full select-bordered bg-none">
                                         <option disabled selected></option>
-                                        {data.accounts.map((account) => {
-                                            return (
-                                                <option>{account.type}</option>
-                                            )
-                                        })}
+                                        {data.accounts.map((account) => <option>{account.type}</option>)}
                                     </select>
                                     <span className="absolute pointer-events-none bg-transparent text-info inset-y-0 right-0 ml-3 flex items-center pr-2">
                                         <svg
@@ -86,7 +71,6 @@ export default function BucketsTable() {
                                 </div>
                             </div>
                         </th>
-
                         {/* Memo */}
                         <th>
                             <input
@@ -95,50 +79,30 @@ export default function BucketsTable() {
                                 className="input input-bordered w-full max-w-xs"
                             />
                         </th>
-
                         {/* Amount */}
                         <th>
                             <div className='flex gap-1 items-center'>
                                 <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth={1.5}
-                                        stroke="currentColor"
-                                        className="w-4 h-4"
-                                    >
+                                    <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
                                     </svg>
                                 </span>
                                 <input
+                                    className="input text-right rounded-full input-sm input-bordered w-[16ch]"
                                     type="text"
                                     placeholder="0.00"
-                                    className="input rounded-full input-sm input-bordered w-full max-w-xs"
                                 />
                             </div>
-
                         </th>
-
                         {/* Category */}
                         <th>
                             <div className="input-group relative">
                                 <select className="select w-full select-bordered bg-none">
                                     <option disabled selected></option>
-                                    {transactions.map((transaction) => {
-                                        return (
-                                            <option>{transaction.category}</option>
-                                        )
-                                    })}
+                                    {transactions.map((transaction) => <option>{transaction.category}</option>)}
                                 </select>
                                 <span className="pointer-events-none bg-transparent absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth={1.5}
-                                        stroke="currentColor"
-                                        className="w-6 h-6"
-                                    >
+                                    <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
                                     </svg>
                                 </span>
@@ -151,176 +115,157 @@ export default function BucketsTable() {
                                 <div className='flex gap'>
                                     {/* no-symbol */}
                                     <button className='btn btn-square btn-ghost'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
                                         </svg>
                                     </button>
                                     {/* check */}
                                     <button className='btn btn-square btn-ghost'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                                         </svg>
                                     </button>
                                 </div>
                             </div>
                         </th>
-
                     </tr>
-
+                    {/* {data.buckets.map((bucket) => ( */}
 
                     {/* -- ROWS --  */}
-                    {data.buckets.map((bucket) => (
-                        <tr>
-                            {/* Checkbox */}
-                            <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
-                            </th>
-
-                            {/* Posted */}
-                            <th>
-                                <input
-                                    type="text"
-                                    placeholder="31/12/22"
-                                    className="input input-md w-24 sm:w-32  input-bordered "
-                                />
-                            </th>
-
-                            {/* Account */}
-                            <th>
-                                <div className="form-control">
+                    {
+                        transactions.map((transaction) => (
+                            <tr>
+                                {/* Checkbox */}
+                                <th>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </th>
+                                {/* Posted */}
+                                <th>
+                                    <input
+                                        type="text"
+                                        placeholder=""
+                                        className="input input-md w-24 sm:w-32  input-bordered "
+                                        value={transaction.date}
+                                    />
+                                </th>
+                                {/* Account */}
+                                <th>
+                                    <div className="form-control">
+                                        <div className="input-group relative">
+                                            <select className="select w-full select-bordered bg-none">
+                                                <option disabled selected></option>
+                                                {/* NOTE: Can use map().filter()... */}
+                                                {data.accounts.map((account) => {
+                                                    if (account.type !== transaction.account) return <option>{account.type}</option>
+                                                    else return <option selected>{transaction.account}</option>
+                                                })}
+                                            </select>
+                                            <span className="pointer-events-none bg-transparent absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                                                <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </th>
+                                {/* Memo */}
+                                <th>
+                                    <input
+                                        className="input input-bordered w-full max-w-xs"
+                                        type="text"
+                                        placeholder=""
+                                        value={transaction.memo}
+                                    />
+                                </th>
+                                {/* Amount */}
+                                <th>
+                                    <div className='flex gap-1 items-center'>
+                                        <span>
+                                            <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
+                                            </svg>
+                                        </span>
+                                        <input
+                                            value={transaction.amount}
+                                            className="input text-right rounded-full input-sm input-bordered px-0 mx-0 w-[16ch]"
+                                            type={'number'}
+                                            placeholder="0.00"
+                                        />
+                                    </div>
+                                </th>
+                                {/* TODO: If edit check icon is clicked, style and show border & chevron */}
+                                {/* Category */}
+                                <th>
                                     <div className="input-group relative">
                                         <select className="select w-full select-bordered bg-none">
                                             <option disabled selected></option>
-                                            {data.accounts.map((account) => {
-                                                return (
-                                                    <option>{account.type}</option>
-                                                )
+                                            {/* NOTE: Can use map().filter()... */}
+                                            {transactions.map((t) => {
+                                                if (t.category !== transaction.category) {
+                                                    return <option>{t.category}</option>
+                                                }
+                                                return <option selected>{transaction.category}</option>
                                             })}
                                         </select>
-
                                         <span className="pointer-events-none bg-transparent absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth={1.5}
-                                                stroke="currentColor"
-                                                className="w-6 h-6"
-                                            >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
                                             </svg>
                                         </span>
-                                        {/* <button className="btn">Go</button> */}
                                     </div>
-                                </div>
-                            </th>
+                                </th>
 
-                            {/* Memo */}
-                            <th>
-                                <input
-                                    type="text"
-                                    placeholder=""
-                                    className="input input-bordered w-full max-w-xs"
-                                />
-                            </th>
-
-                            {/* Amount */}
-                            <th>
-                                <div className='flex gap-1 items-center'>
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth={1.5}
-                                            stroke="currentColor"
-                                            className="w-4 h-4"
+                                {/* Actions */}
+                                {/* TODO: Use useEffect to maintain active editable state for all buttons */}
+                                <th>
+                                    <div className='flex gap'>
+                                        {/* no-symbol */}
+                                        <button
+                                            onClick={handleClickClearTransaction}
+                                            className={`${disabled
+                                                ? 'opacity-100' : 'opacity-0'
+                                                } btn btn-square btn-ghost`
+                                            }
                                         >
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
-                                        </svg>
-                                    </span>
-                                    <input
-                                        type="text"
-                                        placeholder="0.00"
-                                        className="input rounded-full input-sm input-bordered w-full max-w-xs"
-                                    />
-                                </div>
+                                            <svg className={`w-6 h-6`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                                            </svg>
+                                        </button>
 
-                            </th>
+                                        {/* // done check mark. */}
+                                        {disabled ? (
+                                            <button
+                                                onClick={handleClickEditTransaction}
+                                                className='btn btn-square btn-ghost'
+                                                key={1}
 
-                            {/* TODO: If edit check icon is clicked, style and show border & chevron */}
-                            {/* Category */}
-                            <th>
-                                <div className="input-group relative">
-                                    <select className="select w-full select-bordered bg-none">
-                                        <option disabled selected></option>
-                                        {transactions.map((transaction) => {
-                                            return (
-                                                <option>{transaction.category}</option>
-                                            )
-                                        })}
-                                    </select>
-
-                                    {/* <button className="btn">Go</button> */}
-                                    <span className="pointer-events-none bg-transparent absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </th>
-
-                            {/* Acrions */}
-                            {/* TODO: Use useEffect to maintain active editable state for all buttons */}
-                            <th>
-                                <div className='flex gap'>
-                                    {/* no-symbol */}
-                                    <button
-                                        // onClick={handleEditable}
-                                        className={`${isActive
-                                            ? 'opacity-100' : 'opacity-0'
-                                            } btn btn-square btn-ghost`
+                                            // className={`${disabled ? 'block' : 'hidden'} btn btn-square btn-ghost`}>
+                                            // className='btn btn-square btn-ghost'
+                                            >
+                                                {/* className={`${disabled ? 'block' : 'hidden'} btn btn-square btn-ghost`}> */}
+                                                <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                                </svg>
+                                            </button>
+                                        ) :
+                                            <button
+                                                onClick={handleClickEditTransaction}
+                                                className='btn btn-square btn-ghost'
+                                                disabled={disabled}
+                                            >
+                                                <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                                </svg>
+                                            </button>
                                         }
-                                    >
-                                        <svg
-                                            className={`w-6 h-6`}
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
-                                        >
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-                                        </svg>
-                                    </button>
+                                    </div>
+                                </th>
 
-                                    {/* // done check mark. */}
-                                    {disabled ? (
-                                        <button
-                                            onClick={handleClickEditTransaction}
-                                            className='btn btn-square btn-ghost'
-                                            key={1}
-
-                                        // className={`${disabled ? 'block' : 'hidden'} btn btn-square btn-ghost`}>
-                                        // className='btn btn-square btn-ghost'
-                                        >
-                                            {/* className={`${disabled ? 'block' : 'hidden'} btn btn-square btn-ghost`}> */}
-                                            <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                            </svg>
-                                        </button>
-                                    ) :
-                                        <button
-                                            onClick={handleClickEditTransaction}
-                                            className='btn btn-square btn-ghost'
-                                            disabled={disabled}
-                                        >
-                                            <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                            </svg>
-                                        </button>
-                                    }
-                                </div>
-                            </th>
-
-                        </tr>
-                    ))}
+                            </tr>
+                        ))
+                    }
                 </tbody>
 
                 {/* <!-- foot --> */}
