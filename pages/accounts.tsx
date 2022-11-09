@@ -13,9 +13,9 @@ export default function accounts() {
 
             <div className='flex sm:hidden'><StatsCarousel /></div>
 
-            <PageHeading />
+            {/* <PageHeading /> */}
 
-            {/* <ButtonGroupBuckets /> */}
+            <ButtonGroupBuckets />
 
             <AccountsTable />
         </Layout>

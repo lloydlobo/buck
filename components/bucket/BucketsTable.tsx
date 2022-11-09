@@ -1,7 +1,7 @@
 import React from 'react'
 import { RadialProgress } from './stats/RadialProgress'
 import { XCircleIcon } from '@heroicons/react/outline'
-import data from '../../utils/data'
+import { data } from '../../utils/data'
 import Link from 'next/link'
 
 

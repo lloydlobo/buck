@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import data from '../utils/data'
+import { data } from '../utils/data'
 import { RadialProgress } from './bucket/stats/RadialProgress'
 
 export default function AccountsTable() {
