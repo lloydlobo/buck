@@ -8,10 +8,19 @@ export default function ButtonGroupBuckets() {
                 <button className="btn btn-sm text-xs">New bucket &nbsp;{heroiconsPlus()}</button>
                 <button className="btn btn-sm text-xs">New group &nbsp;{heroiconsFolderPlus()}</button>
             </div>
-            <div className="sm:hidden btn-group">
-                <button className="btn text-xs btn-active focus:tooltip hover:tooltip" data-tip={'Make it rain'}>{heroiconsMoney()}</button>
-                <button className="btn text-xs focus:tooltip hover:tooltip" data-tip={'New bucket'}>{heroiconsPlus()}</button>
-                <button className="btn text-xs focus:tooltip hover:tooltip" data-tip={'New Group'}>{heroiconsFolderPlus()}</button>
+            <div className="sm:hidden grid grid-flow-col-dense">
+                <button className="btn btn-ghost grid gap-2 place-items-center">
+                    {heroiconsMoney()}
+                    <span className='text-xs'>Make it rain</span>
+                </button>
+                <button className="btn btn-ghost grid gap-2 place-items-center">
+                    {heroiconsPlus()}
+                    <span className='text-xs'>New bucket</span>
+                </button>
+                <button className="btn btn-ghost grid gap-2 place-items-center">
+                    {heroiconsFolderPlus()}
+                    <span className='text-xs'>New group</span>
+                </button>
             </div>
             <div className="hidden sm:grid">
                 <div className="stat-value text-base">0</div>
@@ -21,10 +30,12 @@ export default function ButtonGroupBuckets() {
                 </div>
             </div>
             <button className="hidden sm:flex btn btn-sm sm:w-fit text-xs">
-                Make it so &nbsp;{heroiconsCircleStack()}
-            </button>
-            <button className="sm:hidden w-fit btn sm:w-fit text-xs" disabled data-tip={'Make it so'}>
+                Make it so &nbsp;
                 {heroiconsCircleStack()}
+            </button>
+            <button className="btn sm:hidden btn-ghost grid gap-2 place-items-center mb-0 text-xs">
+                {heroiconsCircleStack()}
+                <span className='mt-0'>Make it so</span>
             </button>
         </div>
     )
