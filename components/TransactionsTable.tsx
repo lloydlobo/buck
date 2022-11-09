@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
-import data from '../utils/data'
+import { transactions } from '../utils/transactions'
+import { data } from '../utils/data';
+import { transition } from 'd3';
 
 
 export default function BucketsTable() {
     let isActive = false;
+    const [disabled, setDisabled] = useState(false)
+
+    const handleClickEditTransaction = () => {
+        setDisabled(!disabled)
+    }
 
     const handleEditable = () => {
         isActive ? isActive = false : isActive = true
@@ -47,7 +54,7 @@ export default function BucketsTable() {
                         <th>
                             <input
                                 type="text"
-                                placeholder="31/12/22"
+                                placeholder=""
                                 className="input input-md w-24 sm:w-32  input-bordered "
                             />
                         </th>
@@ -56,10 +63,13 @@ export default function BucketsTable() {
                         <th>
                             <div className="form-control">
                                 <div className="input-group relative">
-                                    <select className="select select-bordered bg-none">
+                                    <select className="select w-full select-bordered bg-none">
                                         <option disabled selected></option>
-                                        <option>T-shirts</option>
-                                        <option>Mugs</option>
+                                        {data.accounts.map((account) => {
+                                            return (
+                                                <option>{account.type}</option>
+                                            )
+                                        })}
                                     </select>
                                     <span className="absolute pointer-events-none bg-transparent text-info inset-y-0 right-0 ml-3 flex items-center pr-2">
                                         <svg
@@ -112,10 +122,13 @@ export default function BucketsTable() {
                         {/* Category */}
                         <th>
                             <div className="input-group relative">
-                                <select className="select select-bordered bg-none">
+                                <select className="select w-full select-bordered bg-none">
                                     <option disabled selected></option>
-                                    <option>T-shirts</option>
-                                    <option>Mugs</option>
+                                    {transactions.map((transaction) => {
+                                        return (
+                                            <option>{transaction.category}</option>
+                                        )
+                                    })}
                                 </select>
                                 <span className="pointer-events-none bg-transparent absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                                     <svg
@@ -178,10 +191,13 @@ export default function BucketsTable() {
                             <th>
                                 <div className="form-control">
                                     <div className="input-group relative">
-                                        <select className="select select-bordered bg-none">
+                                        <select className="select w-full select-bordered bg-none">
                                             <option disabled selected></option>
-                                            <option>T-shirts</option>
-                                            <option>Mugs</option>
+                                            {data.accounts.map((account) => {
+                                                return (
+                                                    <option>{account.type}</option>
+                                                )
+                                            })}
                                         </select>
 
                                         <span className="pointer-events-none bg-transparent absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
@@ -236,10 +252,13 @@ export default function BucketsTable() {
                             {/* Category */}
                             <th>
                                 <div className="input-group relative">
-                                    <select className="select select-bordered bg-none">
+                                    <select className="select w-full select-bordered bg-none">
                                         <option disabled selected></option>
-                                        <option>T-shirts</option>
-                                        <option>Mugs</option>
+                                        {transactions.map((transaction) => {
+                                            return (
+                                                <option>{transaction.category}</option>
+                                            )
+                                        })}
                                     </select>
 
                                     {/* <button className="btn">Go</button> */}
@@ -271,26 +290,32 @@ export default function BucketsTable() {
                                         </svg>
                                     </button>
 
-                                    {isActive ? (
-                                        // done check mark.
+                                    {/* // done check mark. */}
+                                    {disabled ? (
                                         <button
-                                            onClick={handleEditable}
-                                            className='btn btn-square btn-ghost'>
+                                            onClick={handleClickEditTransaction}
+                                            className='btn btn-square btn-ghost'
+                                            key={1}
+
+                                        // className={`${disabled ? 'block' : 'hidden'} btn btn-square btn-ghost`}>
+                                        // className='btn btn-square btn-ghost'
+                                        >
+                                            {/* className={`${disabled ? 'block' : 'hidden'} btn btn-square btn-ghost`}> */}
                                             <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                                             </svg>
                                         </button>
-                                    ) : (
-                                        // default: pencil-square.
+                                    ) :
                                         <button
-
-                                            onClick={handleEditable}
-                                            className='btn btn-square btn-ghost'>
+                                            onClick={handleClickEditTransaction}
+                                            className='btn btn-square btn-ghost'
+                                            disabled={disabled}
+                                        >
                                             <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                             </svg>
                                         </button>
-                                    )}
+                                    }
                                 </div>
                             </th>
 
@@ -418,8 +443,6 @@ export function NewTransaction() {
                         <option>T-shirts</option>
                         <option>Mugs</option>
                     </select>
-                    {/* <button className="btn">Go</button> */}
-
                     <span className="pointer-events-none bg-transparent absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
@@ -438,8 +461,6 @@ export function NewTransaction() {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                         </svg>
-                        {/* {settings()} */}
-                        {/* {statistics()} */}
                     </div>
                 </div>
             </th>

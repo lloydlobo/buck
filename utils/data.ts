@@ -37,6 +37,16 @@ const data = {
                 accountNumber: 0o532_013_000, // 0_532_013_000
             }
         },
+        {
+            name: 'Bank of Dodge',
+            type: 'checking',
+            bank: {
+                country: 'DE',
+                ibanChecksum: 89,
+                blz: 37040044,
+                accountNumber: 0o532_013_000, // 0_532_013_000
+            }
+        },
     ],
     buckets: [
         {
@@ -61,4 +71,4 @@ const data = {
 
 }
 
-export default data
+export { data }
