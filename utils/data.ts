@@ -16,8 +16,6 @@ const data = {
             password: bcrypt.hashSync('123456'),
             isAdmin: true,
         },
-        { id: 2, uuid: uuidv4(), name: 'Teddy', email: 'teddy@example.com', password: bcrypt.hashSync('123456'), isAdmin: false, },
-        { id: 3, uuid: uuidv4(), name: 'Lisa', email: 'lisa@example.com', password: bcrypt.hashSync('123456'), isAdmin: false, },
     ],
     accounts: [
         {
@@ -30,7 +28,9 @@ const data = {
                 ibanChecksum: 89,
                 blz: 37040044,
                 accountNumber: 0o532_013_000, // 0_532_013_000
-            }
+            },
+            balance: 1000,
+            notes: 'This is westeros bank.',
         },
         {
             id: 2,
@@ -38,10 +38,22 @@ const data = {
             name: 'Bank of Dodge',
             type: 'checking',
             bank: {
-                country: 'DE',
-                ibanChecksum: 89,
-                blz: 37040044,
-                accountNumber: 0o532_013_000, // 0_532_013_000
+                country: 'US',
+                ibanChecksum: 88,
+                blz: 37040043,
+                accountNumber: 0o531_013_000, // 0_532_013_000
+            }
+        },
+        {
+            id: 3,
+            uuid: uuidv4(),
+            name: 'Bank of Digital',
+            type: 'creditCard',
+            bank: {
+                country: 'IN',
+                ibanChecksum: 90,
+                blz: 37040043,
+                accountNumber: 0o533_013_000, // 0_532_013_000
             }
         },
     ],

@@ -1,38 +1,57 @@
 import React from 'react'
 import Link from 'next/link'
 import { data } from '../utils/data'
-import { RadialProgress } from './bucket/stats/RadialProgress'
 
 export default function AccountsTable() {
     return (
         < div className="overflow-x-auto px-6 w-full" >
-
             <table className="table table-compact w-full">
                 {/* -- head --  */}
                 <thead>
                     <tr>
                         <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
+                            <div className="dropdown dropdown-bottom tooltip tooltip-bottom" data-tip='Notes' >
+                                <label tabIndex={0} className="btn btn-disabled m-0 p-0 btn-ghost">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                    </svg>
+                                </label>
+                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                    <textarea className="textarea" placeholder="Bio"></textarea>
+                                </ul>
+                            </div>
                         </th>
-                        <th>Bucket</th>
+                        <th>Account</th>
                         <th>Balance</th>
-                        <th>Repeat</th>
-                        <th>Transact</th>
-                        <th></th>
-                        <th>Actions</th>
+                        <th>Type</th>
                     </tr>
                 </thead>
 
                 {/* -- rows --  */}
                 <tbody>
-                    {data.buckets.map((bucket) => (
+                    {data.accounts.map((account) => (
                         <tr>
                             <td>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
+                                <div className="dropdown dropdown-bottom" >
+                                    <label tabIndex={0} className="btn m-0 p-0 btn-ghost text-gray-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            strokeWidth={1.5}
+                                            stroke="currentColor"
+                                            className="w-6 h-6"
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                        </svg>
+                                    </label>
+                                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                        <textarea className="textarea" placeholder="Notes">{account.notes}</textarea>
+                                    </ul>
+                                </div>
+
+                                <div className='hidden disabled'>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </div>
                             </td>
 
                             <th>
@@ -40,41 +59,27 @@ export default function AccountsTable() {
                                     <div>
                                         <div className="font-bold">
                                             <Link
-                                                href={`buckets/${bucket.slug}`}
+                                                href={`buckets/${account.type}`}
                                                 className='link link-hover'
                                             >
-                                                {bucket.name}
+                                                {account.name}
                                             </Link>
                                         </div>
-                                        <div className="text-sm opacity-50">{bucket.description}</div>
+                                        <div className="text-sm opacity-50"></div>
                                     </div>
                                 </div>
                             </th>
 
                             <td>
                                 <div className="form-control">
-                                    <label className="input-group input-group-sm">
-                                        <input type="text" placeholder="0.01" className="input input-bordered input-sm" />
-                                        <span>{bucket.budgeted}</span>
-                                    </label>
+                                    <span>{account.balance}</span>
                                 </div>
                             </td>
+                            <td>
+                                <div className="form-control">
 
-                            <td>
-                                {monthlySelect()}
-                                {/* {monthlyToggle()} */}
-                            </td>
-                            <td className=''>
-                                <div className='brightness-75 filter saturate-50'>
-                                    <RadialProgress value={bucket.available / bucket.budgeted * 100} />
-                                </div>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                                <div className='flex gap-2'>
-                                    {settings()}
-                                    {statistics()}
+                                    {/* TODO: add mapped select option here. */}
+                                    <span>{account.type}</span>
                                 </div>
                             </td>
                         </tr>
@@ -83,16 +88,11 @@ export default function AccountsTable() {
                 {/* <!-- foot --> */}
                 <tfoot>
                     <tr>
-                        <th></th>
-                        <th>Bucket</th>
-                        <th>Balance</th>
                         <th>
-                            Repeat
-                            {/* <XCircleIcon className="h-5 w-5"></XCircleIcon> */}
                         </th>
-                        <th>Transact</th>
-                        <th></th>
-                        <th>Actions</th>
+                        <th>Account</th>
+                        <th>Balance</th>
+                        <th>Type</th>
                     </tr>
                 </tfoot>
             </table>
@@ -100,33 +100,3 @@ export default function AccountsTable() {
     )
 }
 
-const monthlySelect = () => (
-    <select className="select select-ghost w-full max-w-xs">
-        {/* <option disabled>Pick the best JS framework</option> */}
-        <option selected>Monthly</option>
-        <option>One Time</option>
-        <option>15 days</option>
-    </select>
-)
-
-const monthlyToggle = () => (
-    <div className="form-control w-52">
-        <label className="cursor-pointer label">
-            <span className="label-text">Remember me</span>
-            <input type="checkbox" className="toggle toggle-secondary" checked />
-        </label>
-    </div>
-)
-
-const settings = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-        <path fillRule="evenodd" d="M7.84 1.804A1 1 0 018.82 1h2.36a1 1 0 01.98.804l.331 1.652a6.993 6.993 0 011.929 1.115l1.598-.54a1 1 0 011.186.447l1.18 2.044a1 1 0 01-.205 1.251l-1.267 1.113a7.047 7.047 0 010 2.228l1.267 1.113a1 1 0 01.206 1.25l-1.18 2.045a1 1 0 01-1.187.447l-1.598-.54a6.993 6.993 0 01-1.929 1.115l-.33 1.652a1 1 0 01-.98.804H8.82a1 1 0 01-.98-.804l-.331-1.652a6.993 6.993 0 01-1.929-1.115l-1.598.54a1 1 0 01-1.186-.447l-1.18-2.044a1 1 0 01.205-1.251l1.267-1.114a7.05 7.05 0 010-2.227L1.821 7.773a1 1 0 01-.206-1.25l1.18-2.045a1 1 0 011.187-.447l1.598.54A6.993 6.993 0 017.51 3.456l.33-1.652zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
-    </svg>
-)
-
-const statistics = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-        <path d="M12 9a1 1 0 01-1-1V3c0-.553.45-1.008.997-.93a7.004 7.004 0 015.933 5.933c.078.547-.378.997-.93.997h-5z" />
-        <path d="M8.003 4.07C8.55 3.992 9 4.447 9 5v5a1 1 0 001 1h5c.552 0 1.008.45.93.997A7.001 7.001 0 012 11a7.002 7.002 0 016.003-6.93z" />
-    </svg>
-)
