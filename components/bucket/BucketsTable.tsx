@@ -67,16 +67,24 @@ export default function BucketsTable() {
                                 {/* {monthlyToggle()} */}
                             </td>
                             <td className=''>
-                                <div className='brightness-75 filter saturate-50'>
-                                    <RadialProgress value={bucket.available / bucket.budgeted * 100} />
-                                </div>
+                                {/* <RadialProgress value={bucket.available / bucket.budgeted * 100} /> */}
+                            </td>
+                            <td className=''>
+                                {/* <RadialProgress value={bucket.available / bucket.budgeted * 100} /> */}
                             </td>
                             <td>
-                            </td>
-                            <td>
-                                <div className='flex gap-2'>
-                                    {settings()}
-                                    {statistics()}
+                                <div className=''>
+                                    <div className='flex gap-2'>
+                                        {settings()}
+                                        {statistics()}
+                                    </div>
+                                    <div className='relative'>
+                                        <progress className="progress progress-success bg-base-300" value={bucket.available / bucket.budgeted * 100} max="100"></progress>
+                                        <div className="tooltip tooltip-left absolute left-0 w-full " data-tip={bucket.available / bucket.budgeted * 100}>
+                                            &nbsp;
+                                        </div>
+                                        {/* <RadialProgress value={bucket.available / bucket.budgeted * 100} /> */}
+                                    </div>
                                 </div>
                             </td>
                         </tr>
