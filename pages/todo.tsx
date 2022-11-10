@@ -33,26 +33,34 @@ export default function TodoScreen() {
         setError('')
     }
 
-    const handleDeleteTaskName = (e: any, uuid: string) => {
+    // The preventDefault() method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.
+    const handleDeleteTask = (e: any, uuid: string) => {
         e.preventDefault()
         // Delete selected task from tasks array.
         const tasksFiltered = tasks.filter((task) => task.uuid !== uuid)
         setTasks([...tasksFiltered,])
     }
 
-    const handleCompleteTask = (e: any, uuid: string) => {
-        e.preventDefault()
+    const handleTaskStatus = (e: any, uuid: string) => {
+        // e.preventDefault()
+        console.log(e)
         // setIsTaskDone(!isTaskDone)
         tasks.filter((task) => task.uuid === uuid).map(task => task.isDone = !task.isDone)
-
     }
+
+    const handleUpdateTask = (e: any, uuid: string) => {
+        e.preventDefault()
+        // Delete selected task from tasks array.
+        const tasksFiltered = tasks.filter((task) => task.uuid !== uuid)
+        setTasks([...tasksFiltered,])
+    }
+
     // if (task.uuid === uuid) {
     //     // setTasks([
     //     //     ...tasks,
     //     //     { id: task.id, uuid: task.uuid, name: task.name, body: task.body, isDone: !task.isDone },
     //     // ])
     // }
-
     // Pre - rendering as static.
     // useEffect(() => {
     //     setTasks([...data])
@@ -92,7 +100,6 @@ export default function TodoScreen() {
                                     value={taskBody}
                                     onChange={e => setTaskBody(e.target.value)}
                                 />
-
                                 <button
                                     className='btn opacity-50 focus:opacity-70 btn-outline border-neutral-content'
                                 >
@@ -106,48 +113,114 @@ export default function TodoScreen() {
                         <table className="w-max table table-compact place-self-center">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Action</th>
-                                    <th>Todo</th>
+                                    {/* <th>Id</th> */}
+                                    <th>Status</th>
+                                    <th>Task</th>
                                     <th>Description</th>
-                                    <th>Created On</th>
+                                    <th>Action</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {tasks.map((task) => (
                                     <tr key={task.uuid} className={`${isTaskComplete && task ? 'line-through' : ''}`}>
-                                        <th>{task.id}</th>
+                                        {/* <td>{task.id}</td> */}
+                                        <td>
+                                            <label className="swap">
+                                                <input type={'checkbox'} onChange={(e) => handleTaskStatus(e, task.uuid)} defaultChecked={task.isDone} />
+                                                <div className="swap-on badge-success text-center btn btn-xs">DONE</div>
+                                                <div className="swap-off badge-ghost text-center btn btn-xs">TODO</div>
+                                            </label>
+                                        </td>
+                                        <th>
+                                            {task.name}
+                                        </th>
+                                        <td>
+                                            {task.body}
+                                        </td>
                                         <td>
                                             <div className='flex gap-2'>
-                                                {/* done action */}
-                                                <input
-                                                    type={'checkbox'}
-                                                    onChange={(e) => handleCompleteTask(e, task.uuid as string)}
-                                                    defaultChecked={task.isDone}
-                                                />
-                                                {/* delete task action */}
                                                 <button
                                                     id={task.name}
-                                                    onClick={(e) => handleDeleteTaskName(e, task.uuid as string)}
+                                                    onClick={(e) => handleDeleteTask(e, task.uuid)}
                                                     className='btn btn-xs btn-square btn-ghost'
                                                 >
-                                                    <XCircleIcon className="h-5 w-5"></XCircleIcon>
+                                                    <XCircleIcon className="h-6 w-6"></XCircleIcon>
+                                                </button>
+                                                {/* // pencil edit. */}
+                                                {/* <input type={'checkbox'} onChange={(e) => handleCompleteTask(e, task.uuid)} defaultChecked={task.isDone} /> */}
+                                                {/* done check mark. */} {/* delete task action */}
+
+                                                {/* The button to open modal */}
+                                                <label htmlFor="my-modal-4" className="btn tooltip btn-sm btn-ghost btn-square" data-tip='Edit'>
+                                                    <div className=''>
+                                                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                                        </svg>
+                                                    </div>
+                                                </label>
+                                                {/* Put this part before </body> tag */}
+                                                <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+                                                <label htmlFor="my-modal-4" className="modal cursor-pointer">
+                                                    <label className="modal-box relative grid items-center place-content-center" htmlFor="">
+                                                        <form onSubmit={handleCreateNewTaskName} className='form-control px-6 mb-6' >
+                                                            <label className='label grid gap-4'>
+                                                                <div>
+                                                                    <input
+                                                                        className='input placeholder:opacity-70' name='item-name' type='text' autoFocus
+                                                                        placeholder='Enter a task' value={taskName} onChange={e => setTaskName(e.target.value)}
+                                                                    />
+                                                                    {isError.length > 0 ? (<div className='text-error text-sm'>{isError}</div>) : ''}
+                                                                </div>
+                                                                <textarea
+                                                                    className='textarea textarea-ghost placeholder:opacity-70'
+                                                                    name='item-body' placeholder='Update the task'
+                                                                    value={taskBody} onChange={e => setTaskBody(e.target.value)}
+                                                                />
+                                                                <button className='btn opacity-50 focus:opacity-70 btn-outline border-neutral-content'>Add</button>
+                                                            </label>
+                                                        </form>
+                                                    </label>
+                                                </label>
+
+                                                {/* edit icon button */}
+                                                <button
+                                                    onClick={(e) => handleUpdateTask(e, task.uuid)}
+                                                    className='btn btn-xs btn-square btn-ghost'
+                                                >
+                                                    <div className=''>
+                                                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                                        </svg>
+                                                    </div>
                                                 </button>
                                             </div>
                                         </td>
-                                        <td>{task.name}</td>
-                                        <td>{task.body}</td>
-                                        <td>{now}</td>
+                                        <td>
+                                            <div
+                                                className='tooltip cursor-help tooltip-left btn-xs btn-square btn-ghost items-center grid'
+                                                data-tip={now}
+                                            >
+                                                <div className='opacity-40'>
+                                                    {/* info icon */}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                        className="w-6 h-6 stroke-current">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
                             <tfoot className='opacity-0 hover:opacity-100 transition-all duration-500 ease-in'>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Action</th>
-                                    <th>Todo</th>
+                                    {/* <th>Id</th> */}
+                                    <th>Status</th>
+                                    <th>Task</th>
                                     <th>Description</th>
-                                    <th>Created on</th>
+                                    <th>Action</th>
+                                    <th></th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -191,5 +264,6 @@ const data: Tasks = [
         isDone: false,
     },
 ]
+
 
 
