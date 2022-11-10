@@ -41,7 +41,7 @@ export default function Layout({ title, children }: {
                         </nav>
                     </header>
 
-                    <main className='min-h-screen'>
+                    <main className=''>
                         {children}
                     </main>
 
