@@ -113,7 +113,6 @@ export default function TodoScreen() {
                         <table className="w-max table table-compact place-self-center">
                             <thead>
                                 <tr>
-                                    {/* <th>Id</th> */}
                                     <th>Status</th>
                                     <th>Task</th>
                                     <th>Description</th>
@@ -124,7 +123,6 @@ export default function TodoScreen() {
                             <tbody>
                                 {tasks.map((task) => (
                                     <tr key={task.uuid} className={`${isTaskComplete && task ? 'line-through' : ''}`}>
-                                        {/* <td>{task.id}</td> */}
                                         <td>
                                             <label className="swap">
                                                 <input type={'checkbox'} onChange={(e) => handleTaskStatus(e, task.uuid)} defaultChecked={task.isDone} />
@@ -140,30 +138,21 @@ export default function TodoScreen() {
                                         </td>
                                         <td>
                                             <div className='flex gap-2'>
-                                                <button
-                                                    id={task.name}
-                                                    onClick={(e) => handleDeleteTask(e, task.uuid)}
-                                                    className='btn btn-xs btn-square btn-ghost'
-                                                >
+                                                <button id={task.name} onClick={(e) => handleDeleteTask(e, task.uuid)} className='btn btn-xs btn-square btn-ghost' >
                                                     <XCircleIcon className="h-6 w-6"></XCircleIcon>
                                                 </button>
-                                                {/* // pencil edit. */}
-                                                {/* <input type={'checkbox'} onChange={(e) => handleCompleteTask(e, task.uuid)} defaultChecked={task.isDone} /> */}
-                                                {/* done check mark. */} {/* delete task action */}
-
-                                                {/* The button to open modal */}
+                                                {/* pencil update/edit icon. */}
                                                 <label htmlFor="my-modal-4" className="btn tooltip btn-sm btn-ghost btn-square" data-tip='Edit'>
+                                                    {/* The button to open modal */}
                                                     <div className=''>
-                                                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                        </svg>
+                                                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
                                                     </div>
                                                 </label>
                                                 {/* Put this part before </body> tag */}
                                                 <input type="checkbox" id="my-modal-4" className="modal-toggle" />
                                                 <label htmlFor="my-modal-4" className="modal cursor-pointer">
                                                     <label className="modal-box relative grid items-center place-content-center" htmlFor="">
-                                                        <form onSubmit={handleCreateNewTaskName} className='form-control px-6 mb-6' >
+                                                        <form onSubmit={(e) => handleUpdateTask(e, task.uuid)} className='form-control px-6 mb-6' >
                                                             <label className='label grid gap-4'>
                                                                 <div>
                                                                     <input
@@ -182,29 +171,13 @@ export default function TodoScreen() {
                                                         </form>
                                                     </label>
                                                 </label>
-
-                                                {/* edit icon button */}
-                                                <button
-                                                    onClick={(e) => handleUpdateTask(e, task.uuid)}
-                                                    className='btn btn-xs btn-square btn-ghost'
-                                                >
-                                                    <div className=''>
-                                                        <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                        </svg>
-                                                    </div>
-                                                </button>
                                             </div>
                                         </td>
                                         <td>
-                                            <div
-                                                className='tooltip cursor-help tooltip-left btn-xs btn-square btn-ghost items-center grid'
-                                                data-tip={now}
-                                            >
+                                            <div data-tip={now} className='tooltip cursor-help tooltip-left btn-xs btn-square btn-ghost items-center grid' >
+                                                {/* info icon for timestamp */}
                                                 <div className='opacity-40'>
-                                                    {/* info icon */}
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                        className="w-6 h-6 stroke-current">
+                                                    <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                                     </svg>
                                                 </div>
@@ -215,7 +188,6 @@ export default function TodoScreen() {
                             </tbody>
                             <tfoot className='opacity-0 hover:opacity-100 transition-all duration-500 ease-in'>
                                 <tr>
-                                    {/* <th>Id</th> */}
                                     <th>Status</th>
                                     <th>Task</th>
                                     <th>Description</th>
