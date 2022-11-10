@@ -29,6 +29,8 @@ const data = {
                 blz: 37040044,
                 accountNumber: 0o532_013_000, // 0_532_013_000
             },
+            in: 500,
+            out: 1000,
             balance: 1000,
             notes: 'This is westeros bank.',
         },
@@ -42,7 +44,11 @@ const data = {
                 ibanChecksum: 88,
                 blz: 37040043,
                 accountNumber: 0o531_013_000, // 0_532_013_000
-            }
+            },
+            in: 500,
+            out: 1000,
+            balance: 1000,
+            notes: 'This is westeros bank.',
         },
         {
             id: 3,
@@ -54,7 +60,11 @@ const data = {
                 ibanChecksum: 90,
                 blz: 37040043,
                 accountNumber: 0o533_013_000, // 0_532_013_000
-            }
+            },
+            in: 500,
+            out: 1000,
+            balance: 1000,
+            notes: 'This is westeros bank.',
         },
     ],
     buckets: [

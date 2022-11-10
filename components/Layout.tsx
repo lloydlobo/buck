@@ -29,8 +29,8 @@ export default function Layout({ title, children }: {
             <Drawer>
                 <ToastContainer position="bottom-center" limit={1} />
                 <div
+                    // style={{ backgroundColor: theme.backgroundColor, color: theme.color, }}
                     className='wrapper h-screen'
-                // style={{ backgroundColor: theme.backgroundColor, color: theme.color, }}
                 >
                     {/* <header className='sticky top-0 z-30 w-full bg-base-100 shadow-md h-16 justify-center bg-opacity-70 border-b border-base-300 transition-all duration-100 backdrop-blur text-base-content'> */}
                     <header className=' z-30 w-full bg-base-100 shadow-md h-16 justify-center 
@@ -41,7 +41,7 @@ export default function Layout({ title, children }: {
                         </nav>
                     </header>
 
-                    <main className=''>
+                    <main key={title} className=''>
                         {children}
                     </main>
 

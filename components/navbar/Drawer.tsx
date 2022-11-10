@@ -4,6 +4,8 @@ import React, { ReactNode } from 'react'
 import { MenuItems } from '../../utils/menuItems'
 import SearchInput from '../SearchInput'
 
+// TODO: Get sidebar inspiration from this site.
+// https://cruip.com/demos/mosaic/?ref=highscore
 export default function Drawer({ children }: { children: ReactNode | ReactNode[] }) {
     const router = useRouter()
     return (
@@ -32,9 +34,9 @@ export default function Drawer({ children }: { children: ReactNode | ReactNode[]
 
                     <li className='' ><SearchInput /></li>
                     {MenuItems.map((item, index) => {
-                        console.log(item.url)
+                        // console.log(item.url)
                         return (
-                            <li className={` ${router.asPath === item.url
+                            <li key={index} className={` ${router.asPath === item.url
                                 ? "text-success bg-base-100"
                                 : "text-neutral-content"
                                 }`}>

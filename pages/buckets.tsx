@@ -20,8 +20,6 @@ export default function Buckets() {
             <div className="grid grid-flow-row">
                 <div className='flex mb-2 mt-0'><Stats /></div>
                 <ButtonGroupBuckets />
-
-
                 <div className='mb-2'><BucketsTable /></div>
             </div>
         </Layout >

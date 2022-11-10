@@ -46,6 +46,12 @@ const MenuItems = [
         // icon: <ResumeIcon />,
         active: false,
     },
+    {
+        label: 'Todo',
+        url: "/todo",
+        // icon: <ResumeIcon />,
+        active: false,
+    },
 ];
 
 export { MenuItems };

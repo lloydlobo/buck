@@ -30,7 +30,7 @@ export default function BucketsTable() {
                 {/* -- rows --  */}
                 <tbody>
                     {data.buckets.map((bucket) => (
-                        <tr>
+                        <tr key={bucket.id}>
                             <td>
                                 <label>
                                     <input type="checkbox" className="checkbox" />

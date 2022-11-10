@@ -15,7 +15,7 @@ export default function AccountsTable() {
                     if (account.name === 'Bank of Westeros') {
                         return (
                             <>
-                                <div className="mb-4 gap-4">
+                                <div key={account.uuid} className="mb-4 gap-4">
                                     <div className='text-xl uppercase'>{account.type}</div>
                                     <div className="stats w-full mb-4 shadow-inner">
                                         <div className="stat">

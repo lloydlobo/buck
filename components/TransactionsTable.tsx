@@ -5,12 +5,40 @@ import { XCircleIcon } from '@heroicons/react/solid';
 
 // TODO: See https://stackoverflow.com/questions/53574614/multiple-calls-to-state-updater-from-usestate-in-component-causes-multiple-re-re
 // TODO: USE id to keep readonly elements all individual...
-//
+
+function AccountType({ accounts }: { accounts: any }) {
+    let [type, setType] = useState('')
+    return (
+        <select className="select w-full select-bordered bg-none">
+            <option disabled selected></option>
+            {accounts.map((account: any) => {
+                type = account.type
+                return (
+                    <>
+                        <option key={`account-${account.uuid}`} value={type} onChange={e => {
+                            console.log(e)
+                            setType(e.type)
+                        }}>
+                            {/* {account.type} */}
+                            {type}
+                        </option>
+                    </>
+                )
+            })}
+        </select>
+    )
+}
+
 export default function BucketsTable() {
     const [disabled, setDisabled] = useState(false)
     const handleClickEditTransaction = () => { setDisabled(!disabled) }
 
     const handleClickClearTransaction = () => { }
+
+    const [postedDate, setPostedDate] = useState(null)
+    const handlePostedDate = () => {
+        setPostedDate(postedDate)
+    }
 
     return (
         < div className="overflow-x-auto px-6 w-full" >
@@ -51,10 +79,11 @@ export default function BucketsTable() {
                         <th>
                             <div className="form-control">
                                 <div className="input-group relative">
-                                    <select className="select w-full select-bordered bg-none">
-                                        <option disabled selected></option>
-                                        {data.accounts.map((account) => <option>{account.type}</option>)}
-                                    </select>
+                                    {<AccountType accounts={data.accounts} />}
+                                    {/* <select className="select w-full select-bordered bg-none"> */}
+                                    {/*     <option disabled selected></option> */}
+                                    {/*     {data.accounts.map((account) => <option key={`account-${account.uuid}`}> {account.type}</option>)} */}
+                                    {/* </select> */}
                                     <span className="absolute pointer-events-none bg-transparent text-info inset-y-0 right-0 ml-3 flex items-center pr-2">
                                         <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" >
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
@@ -127,7 +156,7 @@ export default function BucketsTable() {
                     {/* -- ROWS --  */}
                     {
                         transactions.map((transaction) => (
-                            <tr>
+                            <tr key={transaction.uuid}>
                                 {/* Checkbox */}
                                 <th>
                                     <label>
@@ -141,6 +170,7 @@ export default function BucketsTable() {
                                         placeholder=""
                                         className="input input-md w-24 sm:w-32  input-bordered "
                                         value={transaction.date}
+                                        onChange={handlePostedDate}
                                     />
                                 </th>
                                 {/* Account */}
@@ -216,14 +246,13 @@ export default function BucketsTable() {
                                         {/* no-symbol */}
                                         <button
                                             onClick={handleClickClearTransaction}
-                                            key={transaction.id}
                                             disabled={disabled}
                                             className={`${!disabled
                                                 ? 'opacity-100' : 'opacity-80'
                                                 } btn btn-square btn-ghost`
                                             }
                                         >
-                                            <svg className={`w-6 h-6`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
+                                            <svg className={`w - 6 h - 6`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
                                             </svg>
                                         </button>
@@ -231,8 +260,7 @@ export default function BucketsTable() {
                                         <button
                                             onClick={handleClickEditTransaction}
                                             // and id is not the one clicked?
-                                            className={`btn btn-square btn-ghost ${!disabled ? 'block' : 'hidden'}`}
-                                            key={transaction.id}
+                                            className={`btn btn - square btn - ghost ${!disabled ? 'block' : 'hidden'}`}
                                             disabled={disabled}
                                         >
                                             <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -243,7 +271,6 @@ export default function BucketsTable() {
                                         <button
                                             onClick={handleClickEditTransaction}
                                             className={`btn btn-square btn-ghost ${disabled ? 'block' : 'hidden'}`}
-                                            key={transaction.id}
                                             disabled={!disabled}
                                         >
                                             <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">

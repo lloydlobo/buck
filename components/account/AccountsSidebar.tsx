@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { data } from '../../utils/data'
 
-export default function AccountsHeader() {
+export default function AccountsSidebar() {
     return (
         <>
             <div className='h-full flex flex-col'>
