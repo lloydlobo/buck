@@ -12,12 +12,9 @@ export default function accounts() {
         <Layout title='Accounts' >
             <div className='flex mb-2 mt-0'><Stats /></div>
 
-            {/* <div className='sm:inline-grid hidden w-full'><Stats /></div> */}
-            {/* <div className='flex sm:hidden'><StatsCarousel /></div> */}
-
             {/* <PageHeading /> */}
 
-            <ButtonGroupBuckets />
+            {/*  <ButtonGroupBuckets /> */}
 
             {/* TODO: Make table head sticky */}
             <AccountsTable />
