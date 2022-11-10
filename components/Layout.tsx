@@ -45,7 +45,7 @@ export default function Layout({ title, children }: {
                         {children}
                     </main>
 
-                    {/* <Footer /> */}
+                    <Footer />
                 </div>
             </Drawer>
         </>
