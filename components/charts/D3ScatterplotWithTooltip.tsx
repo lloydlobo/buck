@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import styles from "../../styles/scatterplot.module.css";
 import * as d3 from 'd3'
 import { AxisLeft } from './AxisLeft'
 import { AxisBottom } from './AxisBottom'
-import styles from "../../styles/scatterplot.module.css";
 import { InteractionData } from '../../types';
 import { Tooltip } from './Tooltip';
 

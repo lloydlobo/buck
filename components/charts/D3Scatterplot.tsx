@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import styles from "../../styles/scatterplot.module.css";
 import * as d3 from 'd3'
 import { AxisLeft } from './AxisLeft'
 import { AxisBottom } from './AxisBottom'
-import styles from "../../styles/scatterplot.module.css";
 
 const MARGIN = { top: 60, right: 60, bottom: 60, left: 60 }
 
