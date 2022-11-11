@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { data } from '../utils/data'
-import { transactions } from '../utils/transactions'
+import { data } from '../utils/data/data'
 
 export default function AccountsTable() {
     // const [disabled, setDisabled] = useState(false)

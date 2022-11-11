@@ -1,5 +1,4 @@
 import React from 'react'
-import BucketsTable from '../components/bucket/BucketsTable'
 import Stats from '../components/bucket/stats/Stats'
 import Layout from '../components/Layout'
 import TransactionsTable from '../components/TransactionsTable'

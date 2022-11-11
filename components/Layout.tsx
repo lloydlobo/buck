@@ -1,14 +1,10 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import React, { ReactNode, useContext } from 'react'
 import { ToastContainer } from 'react-toastify'
-import { ThemeToggle } from './ui/ThemeToggler'
 import { ThemeContext } from '../utils/theme-context'
 import { Navbar } from './navbar/Navbar'
 import Drawer from './navbar/Drawer'
 import { Footer } from './ui/Footer'
-import SidebarRight from './navbar/SidebarRight'
-import NavbarTailwind from './navbar/NavbarTailwind'
 
 
 export default function Layout({ title, children }: {

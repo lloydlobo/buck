@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { transactions } from '../utils/transactions'
-import { data } from '../utils/data';
-import { XCircleIcon } from '@heroicons/react/solid';
+import { data } from '../utils/data/data';
 
 // TODO: See https://stackoverflow.com/questions/53574614/multiple-calls-to-state-updater-from-usestate-in-component-causes-multiple-re-re
 // TODO: USE id to keep readonly elements all individual...

@@ -16,7 +16,6 @@
 import { LockClosedIcon } from '@heroicons/react/solid'
 import EditBucketForm from '../components/bucket/EditBucketForm'
 import Layout from '../components/Layout'
-import NavbarTailwind from '../components/navbar/NavbarTailwind'
 
 export default function LoginScreen() {
     return (

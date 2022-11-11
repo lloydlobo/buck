@@ -1,4 +1,4 @@
-export const data = [
+export const dataD3ScatterPlot = [
     {
         "subGroup": "Afghanistan",
         "group": "Asia",

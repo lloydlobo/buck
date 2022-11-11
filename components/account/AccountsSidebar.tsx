@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { data } from '../../utils/data'
+import { data } from '../../utils/data/data'
 
 export default function AccountsSidebar() {
     return (

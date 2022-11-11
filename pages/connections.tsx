@@ -1,7 +1,9 @@
 import Layout from "../components/Layout";
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 
-const contacts = [
+type Contact = { name: string, email: string }
+
+const contacts: Contact[] = [
     { name: 'Taylor', email: 'taylor@mail.com' },
     { name: 'Alice', email: 'alice@mail.com' },
     { name: 'Bob', email: 'bob@mail.com' }
@@ -21,7 +23,7 @@ export default function ConnectionsScreen({
                         <ContactList
                             contacts={contacts}
                             selectedContact={to}
-                            onSelect={contact => setTo(contact)}
+                            onSelect={(contact: SetStateAction<Contact>) => setTo(contact)}
                         />
                         <Chat contact={to} />
                     </div>
@@ -31,12 +33,17 @@ export default function ConnectionsScreen({
     )
 }
 
+type ContactList = {
+    selectedContact?: Contact,
+    contacts: Contact[],
+    onSelect: (contact: SetStateAction<Contact>) => void,
+}
+
 function ContactList({
     selectedContact,
     contacts,
     onSelect
-}) {
-
+}: ContactList): JSX.Element {
     return (
         <section className="contact-list">
             <ul className="flex gap-4 mb-4 input-group ">
@@ -57,7 +64,7 @@ function ContactList({
     );
 }
 
-function Chat({ contact }) {
+function Chat({ contact }: { contact: Contact }): JSX.Element {
     const [text, setText] = useState('');
 
     return (

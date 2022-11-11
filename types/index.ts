@@ -1,3 +1,13 @@
+/* todo CRUD */
+
+export type Tasks = {
+    id: number,
+    uuid: string,
+    name: string,
+    body: string,
+    isDone: boolean,
+}[]
+
 /* d3 js */
 
 export type DataItem = {

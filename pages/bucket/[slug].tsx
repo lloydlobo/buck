@@ -1,11 +1,10 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { Context, useContext } from 'react'
 
 import Layout from '../../components/Layout'
 import RadioGroupExample from '../../components/ui/RadioGroup'
-import data from '../../utils/data'
+import { data } from '../../utils/data/data'
 import { Store } from '../../utils/Store'
 
 export default function BucketScreen() {
@@ -14,7 +13,7 @@ export default function BucketScreen() {
     const { query } = useRouter()
     const { slug } = query
 
-    const bucket = data.buckets.find((p) => {
+    const bucket = data.buckets.find((p: { slug: string | string[] | undefined }) => {
         return p.slug === slug
     })
 
@@ -59,7 +58,7 @@ export default function BucketScreen() {
                             <h1>{bucket.name}</h1>
                         </li>
                         <li>
-                            <h1>Category: {bucket.category}</h1>
+                            <h1>Category: {bucket.name}</h1>
                         </li>
                         <li>
                             <div>Description: {bucket.description}</div>
