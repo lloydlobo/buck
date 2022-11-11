@@ -5,6 +5,7 @@ import TaskActions from './TaskActions';
 import TaskInfo from './TaskInfo';
 import { PropsTaskStatus, TaskStatus } from './TaskStatus';
 import { TodoModalForm, PropsModalForm } from './TodoModalForm';
+import TodoTableHead from './TodoTableHead';
 
 export function TodoTable({
     tasks,
@@ -33,47 +34,23 @@ export function TodoTable({
 
     return (
         <table className="w-max table table-compact place-self-center">
-            <thead>
-                <tr>
-                    <th>Status</th>
-                    <th>Task</th>
-                    <th>Description</th>
-                    <th>Action</th>
-                    <th></th>
-                </tr>
-            </thead>
-
+            <thead><TodoTableHead /></thead>
             <tbody>
                 {tasks.map((task: any) => {
-                    // propsTaskStatus = {
-                    // ...propsTaskStatus, task: task
-                    // }
                     return (
                         <tr key={task.uuid} className={`${isTaskComplete && task ? 'line-through' : ''}`}>
-                            <td>
-                                < TaskStatus {...{ ...propsTaskStatus, task: task }} />
-                            </td>
+                            <td>< TaskStatus {...{ ...propsTaskStatus, task: task }} /></td>
                             <th>{task.name}</th>
                             <td>{task.body}</td>
-                            <td>
-                                <TaskActions {...{ task, propsModalForm, handleDeleteTask }} />
-                            </td>
-                            <td>
-                                <TaskInfo{...{ now }} />
-                            </td>
+                            {/* TODO: Pass Modal component here. too much nesting. */}
+                            <td><TaskActions {...{ task, propsModalForm, handleDeleteTask }} /></td>
+                            <td><TaskInfo{...{ now }} /></td>
                         </tr>
                     )
                 })}
             </tbody>
-
             <tfoot className='opacity-0 hover:opacity-100 transition-all duration-500 ease-in'>
-                <tr>
-                    <th>Status</th>
-                    <th>Task</th>
-                    <th>Description</th>
-                    <th>Action</th>
-                    <th></th>
-                </tr>
+                <TodoTableHead />
             </tfoot>
 
         </table>
