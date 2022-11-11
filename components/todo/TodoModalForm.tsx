@@ -1,7 +1,8 @@
 import React from 'react'
+import { Task } from '../../types';
 
 export type PropsModalForm = {
-    task?: any;
+    task?: Task;
     taskName: string;
     setTaskName: React.Dispatch<React.SetStateAction<string>>;
     taskBody: string;
@@ -10,7 +11,7 @@ export type PropsModalForm = {
     handleUpdateTask: (e: any, uuid: string) => Error;
 }
 
-export default function TodoModalForm({
+export function TodoModalForm({
     task, taskName, taskBody, setTaskName, setTaskBody, isError, handleUpdateTask,
 }: PropsModalForm) {
     return (
@@ -30,8 +31,7 @@ export default function TodoModalForm({
 
             <label htmlFor="my-modal-4" className="modal cursor-pointer">
                 <label className="modal-box relative grid items-center place-content-center" htmlFor="">
-
-                    <form onSubmit={(e) => handleUpdateTask(e, task.uuid)} className='form-control px-6 mb-6' >
+                    <form onSubmit={(e) => handleUpdateTask(e, task!.uuid)} className='form-control px-6 mb-6' >
                         <label className='label grid gap-4'>
                             <div>
                                 <input

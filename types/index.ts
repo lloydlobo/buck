@@ -1,12 +1,14 @@
 /* todo CRUD */
 
-export type Tasks = {
+export type Task = {
     id: number,
     uuid: string,
     name: string,
     body: string,
     isDone: boolean,
-}[]
+}
+
+export type Tasks = Task[]
 
 /* d3 js */
 
