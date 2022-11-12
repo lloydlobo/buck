@@ -9,6 +9,7 @@ import { Tasks } from '../components/todo/Tasks';
 import Layout from '../components/Layout';
 import { TodoHeader } from '../components/todo/Header';
 import { StorageKeyVal, TaskType } from '../types';
+import { SkeletonList } from '../components/ui/Skeleton/SkeletonList';
 
 // https://stackoverflow.com/questions/73613502/localstorage-is-not-defined-in-nextjs-redux-and-typescript
 // https://itnext.io/having-fun-deconstructing-the-localstorage-in-typescript-e5e99d95aa13
@@ -135,7 +136,7 @@ function App() {
                         </div>
                     </div>
                 ) : (
-                    <div className="container mt-6 grid place-content-center">
+                    <div className="container mt-6 grid place-content-center text-center">
                         {/* App Header that has open and App Name */}
                         <TodoHeader
                             showForm={() => setShowAddTask(!showAddTask)}
@@ -146,17 +147,24 @@ function App() {
                         {showAddTask && <AddTask onSave={addTask} />}
 
                         {/* Task Counter */}
-                        <h3>Number of Tasks: {tasks.length}</h3>
+                        <h3 className="mb-6">
+                            Number of Tasks: {tasks.length}
+                        </h3>
 
                         {/* Displaying of Tasks */}
-                        {tasks.length > 0 ? (
+                        {tasks.length > 1 ? (
                             <Tasks
                                 tasks={tasks}
                                 onDelete={deleteTask}
                                 onEdit={editTask}
                             />
                         ) : (
-                            'No Task Found!'
+                            <div className="opacity-50">
+                                <p className="mb-2 text-warning">
+                                    No Tasks Found!
+                                </p>
+                                <SkeletonList />
+                            </div>
                         )}
                     </div>
                 )}

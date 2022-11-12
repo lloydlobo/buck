@@ -19,10 +19,10 @@ export function TodoHeader({
             >
                 <button
                     /* color={changeTextAndColor ? 'red' : 'green'} */
-                    className={` btn-circle btn ${
+                    className={`btn-circle btn motion-safe:hover:animate-pulse  ${
                         changeTextAndColor
                             ? 'bg-pink-400 text-base-100 hover:bg-pink-400   '
-                            : 'bg-success text-base-100 hover:bg-success  '
+                            : 'bg-success text-base-100 hover:bg-success'
                     }`}
                     onClick={showForm}
                 >

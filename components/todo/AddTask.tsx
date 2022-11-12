@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import Swal from 'sweetalert2'
+import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
 // https://github.com/Lexitar32/Task-Tracker-App-with-React.js/blob/master/src/components/AddTask.js
 export function AddTask({ onSave }: any): JSX.Element {
-    const [text, setText] = useState('')
-    const [day, setDay] = useState('')
+    const [text, setText] = useState('');
+    const [day, setDay] = useState('');
 
     const onSubmit = (e: any) => {
-        e.preventDefault()
+        e.preventDefault();
 
         // Handle unfilled fields with errors.
         if (!text && !day) {
@@ -15,27 +15,27 @@ export function AddTask({ onSave }: any): JSX.Element {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Fill fields task and date or close the form!',
-            })
+            });
         } else if (!text && day) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Fill task field!',
-            })
+            });
         } else if (text && !day) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Fill task date!',
-            })
+            });
         } else {
             // Save input.
-            onSave({ text, day })
+            onSave({ text, day });
         }
         // Clear state variables values.
-        setText('')
-        setDay('')
-    }
+        setText('');
+        setDay('');
+    };
 
     return (
         <form
@@ -72,9 +72,9 @@ export function AddTask({ onSave }: any): JSX.Element {
             <input
                 type="submit"
                 value="Save Task"
-                className="btn-ghost  glass btn mt-4 
+                className="btn-ghost glass btn mt-4 
                 backdrop-blur-3xl backdrop-brightness-0 backdrop-filter "
             />
         </form>
-    )
+    );
 }
