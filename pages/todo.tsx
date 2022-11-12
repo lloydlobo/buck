@@ -152,7 +152,7 @@ function App() {
                         </h3>
 
                         {/* Displaying of Tasks */}
-                        {tasks.length > 1 ? (
+                        {tasks.length > 0 ? (
                             <Tasks
                                 tasks={tasks}
                                 onDelete={deleteTask}
