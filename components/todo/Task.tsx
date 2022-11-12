@@ -1,4 +1,5 @@
 import { FaPencilAlt, FaTimes } from 'react-icons/fa';
+
 export function Task({ task, onDelete, onEdit }: any) {
     return (
         <>

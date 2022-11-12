@@ -46,13 +46,17 @@ function App() {
     const addTask = (task: any): void => {
         const id = uuidv4();
         const newTask = { id, ...task };
-
         setTasks([...tasks, newTask]);
-
         Swal.fire({
             icon: 'success',
             title: 'Yay...',
-            text: 'You have successfully added a new task!',
+            text: 'Successfully added a new task!',
+            timer: 1000,
+            showConfirmButton: false,
+            timerProgressBar: true,
+            // position: 'bottom',
+            background: 'none',
+            backdrop: 'rgba(0,0,0,0.4)',
         });
 
         localStorage.setItem('taskAdded', JSON.stringify([...tasks, newTask]));
@@ -80,20 +84,12 @@ function App() {
 
         const localData = getFromLocalStorage('taskAdded', tasks);
         const getTasks = JSON.parse(localData) as null | TaskType[];
-        // let data = JSON.parse(localStorage.getItem('taskAdded'));
-        // const data: TaskType[] = getStorageItem({ key: 'taskAdded', defaultValue: tasks, });
 
-        const myData = getTasks?.map((x) => {
-            if (x.id === id) {
-                return {
-                    ...x,
-                    text: text,
-                    day: day,
-                    id: uuidv4(),
-                };
-            }
-            return x;
-        });
+        getTasks == null ? console.error('') : console.log('defined');
+
+        const myData = getTasks?.map((x) =>
+            x.id === id ? { ...x, text: text, day: day, id: uuidv4() } : x
+        );
 
         Swal.fire({
             icon: 'success',
@@ -172,6 +168,9 @@ function App() {
 export default App;
 
 function isValid({ value }: { value: string | null }): boolean {
+    return [null, undefined, ''].includes(value);
+}
+function isValidJSON({ value }: { value: string | null | any }): boolean {
     return [null, undefined, ''].includes(value);
 }
 

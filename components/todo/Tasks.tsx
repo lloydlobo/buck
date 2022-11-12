@@ -1,10 +1,6 @@
 import React from 'react';
 import { TaskType as TaskType, TasksType } from '../../types';
 import { Task } from './Task';
-import TaskActions from './TaskActions';
-import TaskInfo from './TaskInfo';
-import { PropsTaskStatus, TaskStatus } from './TaskStatus';
-import { TodoModalForm, PropsModalForm } from './TodoModalForm';
 import TodoTableHead from './TodoTableHead';
 
 export type TasksProps = {
