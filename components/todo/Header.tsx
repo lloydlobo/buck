@@ -2,13 +2,14 @@ import React from 'react';
 import { FaPlus, FaTimes } from 'react-icons/fa';
 
 import { HiPlus } from 'react-icons/hi2';
+import { ButtonOpenClose } from '../ui/ButtonOpenClose';
 
 export function TodoHeader({
     showForm,
     changeTextAndColor,
 }: {
     showForm: any;
-    changeTextAndColor: any;
+    changeTextAndColor: boolean;
 }): JSX.Element {
     return (
         <div className="mb-6 grid w-full place-content-center gap-4">
@@ -17,21 +18,10 @@ export function TodoHeader({
                 className="tooltip tooltip-right place-self-center"
                 data-tip={`${changeTextAndColor ? 'Close' : 'Create'}`}
             >
-                <button
-                    /* color={changeTextAndColor ? 'red' : 'green'} */
-                    className={`btn-circle btn motion-safe:hover:animate-pulse  ${
-                        changeTextAndColor
-                            ? 'bg-pink-400 text-base-100 hover:bg-pink-400   '
-                            : 'bg-success text-base-100 hover:bg-success'
-                    }`}
+                <ButtonOpenClose
                     onClick={showForm}
-                >
-                    {changeTextAndColor ? (
-                        <FaTimes name="Close" />
-                    ) : (
-                        <FaPlus name="Create" />
-                    )}
-                </button>
+                    isEnabled={changeTextAndColor}
+                />
             </div>
         </div>
     );

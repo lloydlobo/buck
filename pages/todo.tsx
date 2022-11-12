@@ -10,6 +10,7 @@ import Layout from '../components/Layout';
 import { TodoHeader } from '../components/todo/Header';
 import { StorageKeyVal, TaskType } from '../types';
 import { SkeletonList } from '../components/ui/Skeleton/SkeletonList';
+import { SpinnerLoading } from '../components/ui/SpinnerLoading';
 
 // https://stackoverflow.com/questions/73613502/localstorage-is-not-defined-in-nextjs-redux-and-typescript
 // https://itnext.io/having-fun-deconstructing-the-localstorage-in-typescript-e5e99d95aa13
@@ -106,35 +107,7 @@ function App() {
         <>
             <Layout title="Todo">
                 {loading ? (
-                    <div className="spinnerContainer">
-                        <div
-                            className="spinner-grow text-primary"
-                            role="status"
-                        >
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
-                        <div
-                            className="spinner-grow text-secondary"
-                            role="status"
-                        >
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
-                        <div
-                            className="spinner-grow text-success"
-                            role="status"
-                        >
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
-                        <div className="spinner-grow text-danger" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
-                        <div
-                            className="spinner-grow text-warning"
-                            role="status"
-                        >
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
-                    </div>
+                    <SpinnerLoading />
                 ) : (
                     <div className="container mt-6 grid place-content-center text-center">
                         {/* App Header that has open and App Name */}
