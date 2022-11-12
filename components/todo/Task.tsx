@@ -4,7 +4,7 @@ export function Task({ task, onDelete, onEdit }: any) {
     return (
         <>
             <th>{task.isDone ? 'Done' : 'Todo'}</th>
-            <th>{task.name}</th>
+            <th>{task.text}</th>
             <td>{task.day}</td>
             <td>
                 <div className="flex">

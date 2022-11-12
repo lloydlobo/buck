@@ -18,7 +18,11 @@ export function ButtonOpenClose({
             }`}
             onClick={onClick}
         >
-            {isEnabled ? <FaTimes name="Close" /> : <FaPlus name="Create" />}
+            {isEnabled ? (
+                <FaTimes name="Close" />
+            ) : (
+                <FaPlus name="Create" className="h-5 w-5 hover:animate-spin" />
+            )}
         </button>
     );
 }

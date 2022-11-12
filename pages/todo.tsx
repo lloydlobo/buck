@@ -109,36 +109,46 @@ function App() {
                 {loading ? (
                     <SpinnerLoading />
                 ) : (
-                    <div className="container mt-6 grid place-content-center text-center">
-                        {/* App Header that has open and App Name */}
-                        <TodoHeader
-                            showForm={() => setShowAddTask(!showAddTask)}
-                            changeTextAndColor={showAddTask}
-                        />
+                    <div className="mx-auto grid w-full">
+                        <div className="mt-6 grid place-content-center text-center">
+                            <div
+                                className={`card my-8 grid bg-base-200 px-12 pt-8 pb-2 ${
+                                    showAddTask ? '' : ''
+                                }`}
+                            >
+                                {/* App Header that has open and App Name */}
+                                <TodoHeader
+                                    showForm={() =>
+                                        setShowAddTask(!showAddTask)
+                                    }
+                                    changeTextAndColor={showAddTask}
+                                />
 
-                        {/* Revealing of Add Task Form */}
-                        {showAddTask && <AddTask onSave={addTask} />}
-
-                        {/* Task Counter */}
-                        <h3 className="mb-6">
-                            Number of Tasks: {tasks.length}
-                        </h3>
-
-                        {/* Displaying of Tasks */}
-                        {tasks.length > 0 ? (
-                            <Tasks
-                                tasks={tasks}
-                                onDelete={deleteTask}
-                                onEdit={editTask}
-                            />
-                        ) : (
-                            <div className="opacity-50">
-                                <p className="mb-2 text-warning">
-                                    No Tasks Found!
-                                </p>
-                                <SkeletonList />
+                                {/* Revealing of Add Task Form */}
+                                {showAddTask && <AddTask onSave={addTask} />}
                             </div>
-                        )}
+
+                            {/* Task Counter */}
+                            <h3 className="mb-6">
+                                Number of Tasks: {tasks.length}
+                            </h3>
+
+                            {/* Displaying of Tasks */}
+                            {tasks.length > 0 ? (
+                                <Tasks
+                                    tasks={tasks}
+                                    onDelete={deleteTask}
+                                    onEdit={editTask}
+                                />
+                            ) : (
+                                <div className="opacity-50">
+                                    <p className="mb-2 text-warning">
+                                        No Tasks Found!
+                                    </p>
+                                    <SkeletonList />
+                                </div>
+                            )}
+                        </div>
                     </div>
                 )}
             </Layout>

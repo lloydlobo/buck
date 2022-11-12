@@ -31,6 +31,7 @@ export function AddTask({ onSave }: any): JSX.Element {
         } else {
             // Save input.
             onSave({ text, day });
+            console.log({ text });
         }
         // Clear state variables values.
         setText('');
@@ -46,7 +47,7 @@ export function AddTask({ onSave }: any): JSX.Element {
                 <label className="label">Task</label>
                 <input
                     type="text"
-                    className="input border-2 placeholder:opacity-60 focus:border-pink-400"
+                    className="input-bordered input rounded-md border-2 placeholder:opacity-60 focus:border-pink-400"
                     name="item-name"
                     autoFocus
                     placeholder="Add a task"
@@ -64,7 +65,7 @@ export function AddTask({ onSave }: any): JSX.Element {
                     placeholder="Add due date"
                     value={day}
                     onChange={(e) => setDay(e.target.value)}
-                    className="input border-2 placeholder:opacity-60 focus:border-pink-400"
+                    className="input-bordered input rounded-md border-2 placeholder:opacity-60 focus:border-pink-400"
                 />{' '}
                 {/* <textarea name='item-body' placeholder='Describe the task' value={taskBody} onChange={e => setTaskBody(e.target.value)} className='textarea textarea-ghost placeholder:opacity-70' /> */}
             </div>
