@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import FormEmail from './FormEmail';
 
 export function LoginForm(): JSX.Element {
     const {
@@ -10,6 +11,8 @@ export function LoginForm(): JSX.Element {
     } = useForm();
 
     const onSubmit = ({ email, password }: any) => {
+        console.log({ email, password });
+
         return {
             email: email,
             password: password,
@@ -55,7 +58,6 @@ export function LoginForm(): JSX.Element {
                         </div>
                     )}
                 </div>
-
                 <div className="form-control w-full">
                     <label
                         htmlFor="password"
