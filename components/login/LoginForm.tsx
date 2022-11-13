@@ -16,8 +16,6 @@ export function LoginForm(): JSX.Element {
         };
     };
 
-    console.log(watch('example'));
-
     return (
         <>
             <form
@@ -34,15 +32,20 @@ export function LoginForm(): JSX.Element {
                     >
                         Email or mobile phone number
                     </label>
+
                     <input
                         type="text"
                         id="email"
                         placeholder="admin@gmail.com"
                         className="input-bordered input placeholder:opacity-60"
-                        autoFocus
-                        // defaultValue="John@gmail.com"
+                        autoFocus // defaultValue="John@gmail.com"
                         {...register('email', {
-                            required: 'Please enter a valid email',
+                            required: 'Please enter email',
+                            pattern: {
+                                // name @ domain extension
+                                value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i,
+                                message: 'Please enter valid email',
+                            },
                         })}
                     />
 
@@ -60,22 +63,27 @@ export function LoginForm(): JSX.Element {
                     >
                         Enter your password
                     </label>
+
                     <input
                         id="password"
                         type="password"
                         placeholder="* * * * * * * *"
                         className="input-bordered input placeholder:opacity-50"
-                        {...register('exampleRequired', {
-                            required: true,
+                        {...register('password', {
+                            required: 'Please enter password',
+                            minLength: {
+                                value: 6,
+                                message: 'Password should be more than 5 chars',
+                            },
                         })}
                     />
-                </div>
 
-                {errors.password && (
-                    <div className="text-pink-500 opacity-60">
-                        <>{errors.password.message}</>
-                    </div>
-                )}
+                    {errors.password && (
+                        <div className="text-pink-500 opacity-60">
+                            <>{errors.password.message}</>
+                        </div>
+                    )}
+                </div>
 
                 {/* Submit input btn */}
                 <input
