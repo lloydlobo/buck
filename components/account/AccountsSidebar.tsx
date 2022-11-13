@@ -1,25 +1,33 @@
-import React from 'react'
-import Link from 'next/link'
-import { data } from '../../utils/data/data'
+import React from 'react';
+import Link from 'next/link';
 
-export default function AccountsSidebar() {
+export default function AccountsSidebar({ data }) {
     return (
         <>
-            <div className='h-full flex flex-col'>
-
-                < div className=" flex-1" style={{}} >
-                    < div className="overflow-auto " style={{}} >
-                        <table className="table h-full w-full table-compact text-sm tracking-tight">
-                            <thead className=''>
+            <div className="flex h-full flex-col">
+                <div className=" flex-1" style={{}}>
+                    <div className="overflow-auto " style={{}}>
+                        <table className="table-compact table h-full w-full text-sm tracking-tight">
+                            <thead className="">
                                 <tr>
                                     <th>
-                                        <div className='tooltip tooltip-right cursor-pointer align-middle ' data-tip='Notes'>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        <div
+                                            className="tooltip tooltip-right cursor-pointer align-middle "
+                                            data-tip="Notes"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
                                                 strokeWidth={1.5}
                                                 stroke="currentColor"
-                                                className="w-4 h-4 opacity-70"
+                                                className="h-4 w-4 opacity-70"
                                             >
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+                                                />
                                             </svg>
                                         </div>
                                     </th>
@@ -27,28 +35,49 @@ export default function AccountsSidebar() {
                                     <th>Balance</th>
                                 </tr>
                             </thead>
-                            <tbody className=''>
+                            <tbody className="">
                                 {data.accounts.map((account) => (
-                                    <tr>
+                                    <tr key={account.uuid}>
                                         <td>
-                                            <div className="dropdown dropdown-bottom" >
-                                                <label tabIndex={0} className="btn btn-xs m-0 p-0 btn-ghost text-gray-500">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            <div className="dropdown-bottom dropdown">
+                                                <label
+                                                    tabIndex={0}
+                                                    className="btn btn-ghost btn-xs m-0 p-0 text-gray-500"
+                                                >
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
                                                         strokeWidth={1.5}
                                                         stroke="currentColor"
-                                                        className="w-4 h-4"
+                                                        className="h-4 w-4"
                                                     >
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+                                                        />
                                                     </svg>
                                                 </label>
-                                                <ul tabIndex={0} className="dropdown-content menu shadow bg-base-100 rounded-box w-52">
-                                                    <textarea className="textarea" placeholder="Notes">{account.notes}</textarea>
+                                                <ul
+                                                    tabIndex={0}
+                                                    className="dropdown-content menu rounded-box w-52 bg-base-100 shadow"
+                                                >
+                                                    <textarea
+                                                        className="textarea"
+                                                        placeholder="Notes"
+                                                    >
+                                                        {account.notes}
+                                                    </textarea>
                                                 </ul>
                                             </div>
 
-                                            <div className='hidden disabled'>
+                                            <div className="disabled hidden">
                                                 <label>
-                                                    <input type="checkbox" className="checkbox" />
+                                                    <input
+                                                        type="checkbox"
+                                                        className="checkbox"
+                                                    />
                                                 </label>
                                             </div>
                                         </td>
@@ -59,13 +88,12 @@ export default function AccountsSidebar() {
                                                     <div className="font-bold">
                                                         <Link
                                                             href={`buckets/${account.type}`}
-                                                            className='link link-hover'
+                                                            className="link-hover link"
                                                         >
                                                             {account.name}
                                                         </Link>
                                                     </div>
                                                     <div className="text-sm opacity-50"></div>
-
                                                 </div>
 
                                                 {/* TODO: add mapped select option here. */}
@@ -85,21 +113,36 @@ export default function AccountsSidebar() {
                             </tbody>
                         </table>
                     </div>
-                </div >
-                <div className="h-8 flex flex-row items-center bg-base-300 px-4">
-                    <span className="text-xs items-center flex flex-1 ">21-30 of 100 </span>
+                </div>
+                <div className="flex h-8 flex-row items-center bg-base-300 px-4">
+                    <span className="flex flex-1 items-center text-xs ">
+                        21-30 of 100{' '}
+                    </span>
                     <div className="flex items-center">
-                        <button className="btn btn-xs btn-ghost m-1 p-0">«</button>
-                        <button className="btn btn-xs btn-ghost m-1 p-0">1</button>
-                        <button className="btn btn-xs btn-ghost m-1 p-0">2</button>
-                        <button className="btn btn-xs btn-ghost m-1 p-0 btn-disabled">...</button>
-                        <button className="btn btn-xs btn-ghost m-1 p-0">99</button>
-                        <button className="btn btn-xs btn-ghost m-1 p-0">100</button>
-                        <button className="btn btn-xs btn-ghost m-1 p-0">»</button>
+                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                            «
+                        </button>
+                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                            1
+                        </button>
+                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                            2
+                        </button>
+                        <button className="btn-disabled btn btn-ghost btn-xs m-1 p-0">
+                            ...
+                        </button>
+                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                            99
+                        </button>
+                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                            100
+                        </button>
+                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                            »
+                        </button>
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
-
