@@ -8,158 +8,32 @@ import { useForm } from 'react-hook-form';
 import { FaCaretDown, FaCaretRight } from 'react-icons/fa';
 import EditBucketForm from '../components/bucket/EditBucketForm';
 import Layout from '../components/Layout';
+import { LoginForm } from '../components/login/LoginForm';
+import { LoginHelp } from '../components/login/LoginHelp';
+import LoginSignUp from '../components/login/LoginSignUp';
 
 export default function LoginScreen() {
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-    } = useForm();
-
-    const onSubmit = (data: any) => {
-        console.log(data);
-    };
-
     const [toggleHelp, setToggleHelp] = useState(false);
-
-    console.log(watch('example'));
 
     return (
         <>
             <Layout title={'Login'}>
-                <div className="grid pt-8">
-                    <div className="grid place-content-center place-self-center">
-                        <form
-                            onSubmit={handleSubmit(onSubmit)}
-                            style={{ width: 'max(35vw, 300px)' }}
-                            className="mb-6 grid gap-2 rounded-md bg-base-200 px-8 pt-6 pb-8 shadow"
-                        >
-                            <label className="label text-3xl">Sign In</label>
-                            <div className="form-control w-full">
-                                <label
-                                    htmlFor="inputEmail"
-                                    className="label-text label font-bold"
-                                >
-                                    Email or mobile phone number
-                                </label>
-                                <input
-                                    type="text"
-                                    id="inputEmail"
-                                    placeholder="admin@gmail.com"
-                                    className="input-bordered input placeholder:opacity-60"
-                                    autoFocus
-                                    // defaultValue="John@gmail.com"
-                                    {...register('example')}
-                                />
-                            </div>
-                            <div className="form-control w-full">
-                                <label
-                                    htmlFor="inputEmail"
-                                    className="label-text label font-bold"
-                                >
-                                    Enter your password
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="* * * * * * * *"
-                                    className="input-bordered input placeholder:opacity-50"
-                                    {...register('exampleRequired', {
-                                        required: true,
-                                    })}
-                                />
-                            </div>
-
-                            {errors.exampleRequired && (
-                                <span>This field is required!</span>
-                            )}
-                            {/* Submit input btn */}
-                            <input
-                                type="submit"
-                                className="btn-primary input btn mt-2 w-full place-self-center"
-                            />
-
-                            {/* Help with Sign-In. */}
-                            <div className="mt-4 grid gap-6">
-                                <div
-                                    className="fyi w-full opacity-60"
-                                    style={{ maxWidth: '30ch' }}
-                                >
-                                    By continuing, you agree to Bucket&apos;s
-                                    Conditions of Use and Privacy Notice.
-                                </div>
-
-                                <div tabIndex={0} className="collapse">
-                                    <input
-                                        type="checkbox"
-                                        onClick={() =>
-                                            setToggleHelp(!toggleHelp)
-                                        }
-                                        style={{
-                                            padding: 0,
-                                            minHeight: '2ch',
-                                            margin: 0,
-                                        }}
-                                        className=""
-                                    />
-                                    <div
-                                        style={{
-                                            paddingBlock: 3,
-                                            minHeight: '2px',
-                                            margin: 0,
-                                        }}
-                                        className="collapse-title m-0 flex items-center p-0 leading-none opacity-60"
-                                    >
-                                        <span className="text-neutral-content opacity-60">
-                                            {toggleHelp ? (
-                                                <FaCaretDown className="" />
-                                            ) : (
-                                                <FaCaretRight className="" />
-                                            )}
-                                        </span>
-                                        <span className="link-info ">
-                                            Need help?
-                                        </span>
-                                    </div>
-                                    <div className="collapse-content">
-                                        <div className="flex flex-col opacity-60">
-                                            <Link
-                                                href={'forgot-password'}
-                                                className="link-info"
-                                            >
-                                                Forgot Password
-                                            </Link>
-                                            <Link
-                                                href={'help-sign-in'}
-                                                className="link-info"
-                                            >
-                                                Other issues with Sign-In
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <div className="signup">
-                            <div className="flex flex-col border-opacity-50">
-                                {/* <div className="card rounded-box grid h-20 place-items-center bg-base-300"> content </div> */}
-                                <div className="divider">
-                                    <span className=" text-sm opacity-50">
-                                        New to Buckets?
-                                    </span>
-                                </div>
-                                {/* <div className="card rounded-box grid h-20 place-items-center bg-base-300"> content </div> */}
-                            </div>
-                        </div>
-                        <button className="btn-ghost input btn bg-base-300 shadow-md">
-                            Create your Buckets account
-                        </button>
+                <div className="grid place-content-center pt-8">
+                    <div className="card grid place-self-center rounded-md bg-base-300 p-8">
+                        <LoginForm />
+                        <LoginHelp
+                            toggleHelp={toggleHelp}
+                            setToggleHelp={setToggleHelp}
+                        />
                     </div>
+                    <LoginSignUp />
                 </div>
             </Layout>
         </>
     );
 }
+
+// https://react-hook-form.com/get-started
 
 // <EditBucketForm />
 // {/* <NavbarTailwind /> */}
