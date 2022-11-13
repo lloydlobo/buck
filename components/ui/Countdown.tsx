@@ -58,6 +58,7 @@ export function Countdown({
         } else {
             // TODO: Add logout function prop callback here.
             setTimeout(() => {}, 1000);
+            // TODO: add clear timer here.
             window.location.reload();
         }
     };
