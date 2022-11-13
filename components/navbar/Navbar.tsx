@@ -19,9 +19,9 @@ export const Navbar = () => {
                 </Link>
             </div>
             <div className="flex gap-4">
-                <Countdown />
+                <Countdown sessionTime={3 * 60} />
                 <button className="" onClick={useDarkMode}>
-                    <label className="swap swap-rotate">
+                    <label className="swap-rotate swap">
                         {/* <!-- this hidden checkbox controls the state --> */}
                         <input type="checkbox" />
                         {/* <!-- sun icon --> */}
