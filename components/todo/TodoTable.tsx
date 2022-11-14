@@ -1,10 +1,10 @@
-import React from 'react'
-import { TasksType } from '../../types'
-import TaskActions from './TaskActions'
-import TaskInfo from './TaskInfo'
-import { PropsTaskStatus, TaskStatus } from './TaskStatus'
-import { TodoModalForm, PropsModalForm } from './TodoModalForm'
-import TodoTableHead from './TodoTableHead'
+import React from 'react';
+import { TasksType } from '../../types';
+import TaskActions from './TaskActions';
+import TaskInfo from './TaskInfo';
+import { PropsTaskStatus, TaskStatus } from './TaskStatus';
+import { TodoModalForm, PropsModalForm } from './TodoModalForm';
+import TodoTableHead from './TodoTableHead';
 
 export function TodoTable({
     tasks,
@@ -27,10 +27,10 @@ export function TodoTable({
         isError: isError,
         handleUpdateTask: handleUpdateTask,
         task: undefined,
-    }
+    };
     const propsTaskStatus: PropsTaskStatus = {
         handleTaskStatus: handleTaskStatus,
-    }
+    };
 
     return (
         <table className="table-compact table w-max border-separate border-spacing-1 place-self-center">
@@ -67,29 +67,29 @@ export function TodoTable({
                                 <TaskInfo {...{ now }} />
                             </td>
                         </tr>
-                    )
+                    );
                 })}
             </tbody>
             <tfoot className="opacity-0 transition-all duration-500 ease-in hover:opacity-100">
                 <TodoTableHead />
             </tfoot>
         </table>
-    )
+    );
 }
 
 export type PropsTable = {
-    tasks: TasksType
-    taskName: string
-    setTaskName: React.Dispatch<React.SetStateAction<string>>
-    taskBody: string
-    setTaskBody: React.Dispatch<React.SetStateAction<string>>
-    handleTaskStatus: (e: any, uuid: string) => void
+    tasks: TasksType;
+    taskName: string;
+    setTaskName: React.Dispatch<React.SetStateAction<string>>;
+    taskBody: string;
+    setTaskBody: React.Dispatch<React.SetStateAction<string>>;
+    handleTaskStatus: (e: any, uuid: string) => void;
     handleCreateNewTaskName: (e: {
-        preventDefault: () => void
-    }) => Error | undefined
-    handleUpdateTask: (e: any, uuid: string) => Error
-    handleDeleteTask: (e: any, uuid: string) => void
-    isTaskComplete: boolean
-    isError: string
-    now: string
-}
+        preventDefault: () => void;
+    }) => Error | undefined;
+    handleUpdateTask: (e: any, uuid: string) => Error;
+    handleDeleteTask: (e: any, uuid: string) => void;
+    isTaskComplete: boolean;
+    isError: string;
+    now: string;
+};

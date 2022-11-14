@@ -1,4 +1,4 @@
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid'; // uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
 
 // https://bank.codes/iban/structure/germany/
@@ -11,10 +11,18 @@ const data = {
         {
             id: 1,
             uuid: uuidv4(),
-            name: 'Admin',
+            name: 'John',
             email: 'admin@example.com',
             password: bcrypt.hashSync('123456'),
             isAdmin: true,
+        },
+        {
+            id: 2,
+            uuid: uuidv4(),
+            name: 'Jane',
+            email: 'user@example.com',
+            password: bcrypt.hashSync('123456'),
+            isAdmin: false,
         },
     ],
     accounts: [
@@ -134,8 +142,7 @@ const data = {
             budgeted: 4000,
             description: 'Miscellaneous expense copilot for programming',
         },
-    ]
+    ],
+};
 
-}
-
-export { data }
+export { data };

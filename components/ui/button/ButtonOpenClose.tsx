@@ -11,7 +11,7 @@ export function ButtonOpenClose({
     return (
         <button
             /* color={changeTextAndColor ? 'red' : 'green'} */
-            className={`btn-circle btn motion-safe:hover:animate-pulse  ${
+            className={`btn btn-circle motion-safe:hover:animate-pulse  ${
                 isEnabled
                     ? 'bg-pink-400 text-base-100 hover:bg-pink-400   '
                     : 'bg-success text-base-100 hover:bg-success'

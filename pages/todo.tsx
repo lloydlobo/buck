@@ -9,7 +9,7 @@ import { Tasks } from '../components/todo/Tasks';
 import Layout from '../components/Layout';
 import { TodoHeader } from '../components/todo/Header';
 import { StorageKeyVal, TaskType } from '../types';
-import { SkeletonList } from '../components/ui/Skeleton/SkeletonList';
+import { SkeletonList } from '../components/ui/skeleton/SkeletonList';
 import { SpinnerLoading } from '../components/ui/SpinnerLoading';
 
 // https://stackoverflow.com/questions/73613502/localstorage-is-not-defined-in-nextjs-redux-and-typescript

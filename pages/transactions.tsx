@@ -1,8 +1,8 @@
 import React from 'react';
 import Stats from '../components/bucket/stats/Stats';
 import Layout from '../components/Layout';
-import TransactionsTable from '../components/TransactionsTable';
-import ButtonGroupBuckets from '../components/ui/ButtonGroupBuckets';
+import TransactionsTable from '../components/transaction/TransactionsTable';
+import ButtonGroupBuckets from '../components/ui/button/ButtonGroupBuckets';
 
 export default function Buckets() {
     const category = {

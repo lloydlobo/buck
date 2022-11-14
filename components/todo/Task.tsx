@@ -8,13 +8,13 @@ export function Task({ task, onDelete, onEdit }: any) {
             <td>{task.day}</td>
             <td>
                 <div className="flex">
-                    <button className="btn-ghost btn-xs btn-circle btn">
+                    <button className="btn-ghost btn btn-xs btn-circle">
                         <FaTimes
                             onClick={() => onDelete(task.id)}
                             className="delIcon"
                         />
                     </button>
-                    <button className="ring-sh btn-ghost btn-xs btn-circle btn z-50 border-none ring-neutral-content ring-offset-8 ring-offset-base-100 hover:bg-transparent hover:ring-1">
+                    <button className="ring-sh btn-ghost btn btn-xs btn-circle z-50 border-none ring-neutral-content ring-offset-8 ring-offset-base-100 hover:bg-transparent hover:ring-1">
                         <FaPencilAlt
                             onClick={() => onEdit(task.id)}
                             className="editIcon"

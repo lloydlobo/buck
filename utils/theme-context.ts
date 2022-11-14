@@ -1,4 +1,4 @@
-import { createContext } from "react"
+import { createContext } from 'react';
 
 // https://vimalselvam.com/post/toggle-theme-using-react-hooks/
 const themes = {
@@ -12,19 +12,18 @@ const themes = {
         backgroundColor: '',
         color: '',
         colorScheme: 'light',
-    }
-}
+    },
+};
 
 const initialState = {
     dark: false,
     theme: themes.light,
-    toggle: () => { }
-}
+    toggle: () => {},
+};
 
 // export const ThemeContext = React.createContext(initialState)
-const ThemeContext = createContext(initialState)
+const ThemeContext = createContext(initialState);
 
-export { ThemeContext, themes }
+export { ThemeContext, themes };
 
 // Alternative: // https://codesandbox.io/s/c24yq?file=/src/App.js:472-539
-

@@ -90,7 +90,7 @@ export function LoginForm(): JSX.Element {
                 {/* Submit input btn */}
                 <input
                     type="submit"
-                    className="btn-primary input btn mt-2 w-full place-self-center"
+                    className="btn-primary btn input mt-2 w-full place-self-center"
                 />
             </form>
         </>

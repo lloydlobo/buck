@@ -8,7 +8,7 @@ export default function LoginSignUp() {
                     <span className=" text-sm opacity-50">New to Buckets?</span>
                 </div>
 
-                <button className="btn-ghost input btn bg-base-300 shadow-md">
+                <button className="btn-ghost btn input bg-base-300 shadow-md">
                     Create your Buckets account
                 </button>
             </div>

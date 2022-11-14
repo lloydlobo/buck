@@ -1,27 +1,31 @@
-import React from 'react'
-import BucketsTable from '../components/bucket/BucketsTable'
-import Stats from '../components/bucket/stats/Stats'
-import Layout from '../components/Layout'
-import ButtonGroupBuckets from '../components/ui/ButtonGroupBuckets'
+import React from 'react';
+import BucketsTable from '../components/bucket/BucketsTable';
+import Stats from '../components/bucket/stats/Stats';
+import Layout from '../components/Layout';
+import ButtonGroupBuckets from '../components/ui/button/ButtonGroupBuckets';
 
 export default function Buckets() {
     const category = {
-        Recent: [{ name: "" },],
-        Todo: [{ name: "" },],
-        Consolidated: [{ name: "" },],
-    }
+        Recent: [{ name: '' }],
+        Todo: [{ name: '' }],
+        Consolidated: [{ name: '' }],
+    };
 
     const classNames = (...classes: string[]) => {
-        return classes.filter(Boolean).join(' ')
-    }
+        return classes.filter(Boolean).join(' ');
+    };
 
     return (
-        <Layout title='Buckets' >
+        <Layout title="Buckets">
             <div className="grid grid-flow-row">
-                <div className='flex mb-2 mt-0'><Stats /></div>
+                <div className="mb-2 mt-0 flex">
+                    <Stats />
+                </div>
                 <ButtonGroupBuckets />
-                <div className='mb-2'><BucketsTable /></div>
+                <div className="mb-2">
+                    <BucketsTable />
+                </div>
             </div>
-        </Layout >
-    )
+        </Layout>
+    );
 }

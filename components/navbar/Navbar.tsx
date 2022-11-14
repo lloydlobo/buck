@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { useDarkMode } from '../../hooks/useDarkMode';
+import brandName from '../../utils/brandName';
 import { Countdown, Time } from '../ui/Countdown';
 import DrawerMenu from './DrawerMenu';
 
@@ -14,7 +15,7 @@ export const Navbar = () => {
                 </div>
                 <Link href={'/'}>
                     <div className="btn-ghost btn text-xl normal-case">
-                        buckets
+                        {brandName}
                     </div>
                 </Link>
             </div>
@@ -42,8 +43,8 @@ export const Navbar = () => {
                         </svg>
                     </label>
                 </button>
-                <div className="dropdown-end dropdown">
-                    <label tabIndex={0} className="btn-ghost btn-circle btn">
+                <div className="dropdown dropdown-end">
+                    <label tabIndex={0} className="btn-ghost btn btn-circle">
                         <div className="indicator">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -72,17 +73,17 @@ export const Navbar = () => {
                             <span className="text-lg font-bold">8 Items</span>
                             <span className="text-info">Subtotal: $999</span>
                             <div className="card-actions">
-                                <button className="btn-primary btn-block btn">
+                                <button className="btn-primary btn btn-block">
                                     View cart
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="dropdown-end dropdown">
+                <div className="dropdown dropdown-end">
                     <label
                         tabIndex={0}
-                        className="btn-ghost btn-circle avatar btn"
+                        className="btn-ghost btn btn-circle avatar"
                     >
                         <div className="w-10 rounded-full">
                             <img src="https://placeimg.com/80/80/people" />

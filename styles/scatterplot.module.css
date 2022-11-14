@@ -1,14 +1,14 @@
 .scatterplotCircle {
-    fill-opacity: .3;
+    fill-opacity: 0.3;
     stroke-width: 2px;
 }
 
 .scatterplotCircle.dimmed {
     filter: saturate(0);
-    opacity: .2;
+    opacity: 0.2;
     transition: opacity, filter;
-    transition-delay: .5s;
-    transition-duration: .5s
+    transition-delay: 0.5s;
+    transition-duration: 0.5s;
 }
 
 .scatterplotCircle:hover {

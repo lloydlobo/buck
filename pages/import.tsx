@@ -1,11 +1,11 @@
-import React from 'react'
-import Layout from '../components/Layout'
+import React from 'react';
+import Layout from '../components/Layout';
 
 // https://tailwindcomponents.com/component/tailwind-css-file-upload-form
 
 export default function ImportScreen() {
     return (
-        <Layout title='Import CSV file'>
+        <Layout title="Import CSV file">
             <div className="flex items-center justify-center p-12">
                 <div className="mx-auto w-full max-w-[550px] bg-white">
                     <form
@@ -35,7 +35,12 @@ export default function ImportScreen() {
                             </label>
 
                             <div className="mb-8">
-                                <input type="file" name="file" id="file" className="sr-only" />
+                                <input
+                                    type="file"
+                                    name="file"
+                                    id="file"
+                                    className="sr-only"
+                                />
                                 <label
                                     htmlFor="file"
                                     className="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
@@ -47,9 +52,7 @@ export default function ImportScreen() {
                                         <span className="mb-2 block text-base font-medium text-[#6B7280]">
                                             Or
                                         </span>
-                                        <span
-                                            className="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
-                                        >
+                                        <span className="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]">
                                             Browse
                                         </span>
                                     </div>
@@ -115,17 +118,13 @@ export default function ImportScreen() {
                                     </button>
                                 </div>
                                 <div className="relative mt-5 h-[6px] w-full rounded-lg bg-[#E2E5EF]">
-                                    <div
-                                        className="absolute left-0 right-0 h-full w-[75%] rounded-lg bg-[#6A64F1]"
-                                    ></div>
+                                    <div className="absolute left-0 right-0 h-full w-[75%] rounded-lg bg-[#6A64F1]"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div>
-                            <button
-                                className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                            >
+                            <button className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
                                 Send File
                             </button>
                         </div>
@@ -133,5 +132,5 @@ export default function ImportScreen() {
                 </div>
             </div>
         </Layout>
-    )
+    );
 }

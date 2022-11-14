@@ -17,7 +17,14 @@ async function connect() {
             console.log('use previous connection');
             return;
         }
+        // Else disconnect.
         await mongoose.disconnect();
+    }
+
+    if (!process.env.MONGODB_URI) {
+        throw console.error(
+            'Database environment variable MONGODB_URI is undefined!'
+        );
     }
 
     const uri = process.env.MONGODB_URI;

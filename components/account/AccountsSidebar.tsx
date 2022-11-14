@@ -42,7 +42,7 @@ export default function AccountsSidebar({ data }) {
                                             <div className="dropdown-bottom dropdown">
                                                 <label
                                                     tabIndex={0}
-                                                    className="btn btn-ghost btn-xs m-0 p-0 text-gray-500"
+                                                    className="btn-ghost btn btn-xs m-0 p-0 text-gray-500"
                                                 >
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -119,25 +119,25 @@ export default function AccountsSidebar({ data }) {
                         21-30 of 100{' '}
                     </span>
                     <div className="flex items-center">
-                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                        <button className="btn-ghost btn btn-xs m-1 p-0">
                             «
                         </button>
-                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                        <button className="btn-ghost btn btn-xs m-1 p-0">
                             1
                         </button>
-                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                        <button className="btn-ghost btn btn-xs m-1 p-0">
                             2
                         </button>
-                        <button className="btn-disabled btn btn-ghost btn-xs m-1 p-0">
+                        <button className="btn-ghost btn-disabled btn btn-xs m-1 p-0">
                             ...
                         </button>
-                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                        <button className="btn-ghost btn btn-xs m-1 p-0">
                             99
                         </button>
-                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                        <button className="btn-ghost btn btn-xs m-1 p-0">
                             100
                         </button>
-                        <button className="btn btn-ghost btn-xs m-1 p-0">
+                        <button className="btn-ghost btn btn-xs m-1 p-0">
                             »
                         </button>
                     </div>

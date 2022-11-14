@@ -1,5 +1,5 @@
-import { SVGProps, useState } from 'react'
-import { RadioGroup } from '@headlessui/react'
+import { SVGProps, useState } from 'react';
+import { RadioGroup } from '@headlessui/react';
 
 const plans = [
     {
@@ -20,28 +20,34 @@ const plans = [
         cpus: '12 CPUs',
         disk: '1024 GB SSD disk',
     },
-]
+];
 
 export default function RadioGroupExample() {
-    const [selected, setSelected] = useState(plans[0])
+    const [selected, setSelected] = useState(plans[0]);
 
     return (
         <div className="w-full px-4 py-16">
             <div className="mx-auto w-full max-w-md">
                 <RadioGroup value={selected} onChange={setSelected}>
-                    <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
+                    <RadioGroup.Label className="sr-only">
+                        Server size
+                    </RadioGroup.Label>
                     <div className="space-y-2">
                         {plans.map((plan) => (
                             <RadioGroup.Option
                                 key={plan.name}
                                 value={plan}
                                 className={({ active, checked }) =>
-                                    `${active
-                                        ? 'ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300'
-                                        : ''
+                                    `${
+                                        active
+                                            ? 'ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300'
+                                            : ''
                                     }
-                  ${checked ? 'bg-sky-900 bg-opacity-75 text-white' : 'bg-white'
-                                    }
+                  ${
+                      checked
+                          ? 'bg-sky-900 bg-opacity-75 text-white'
+                          : 'bg-white'
+                  }
                     relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                                 }
                             >
@@ -52,20 +58,29 @@ export default function RadioGroupExample() {
                                                 <div className="text-sm">
                                                     <RadioGroup.Label
                                                         as="p"
-                                                        className={`font-medium  ${checked ? 'text-white' : 'text-gray-900'
-                                                            }`}
+                                                        className={`font-medium  ${
+                                                            checked
+                                                                ? 'text-white'
+                                                                : 'text-gray-900'
+                                                        }`}
                                                     >
                                                         {plan.name}
                                                     </RadioGroup.Label>
                                                     <RadioGroup.Description
                                                         as="span"
-                                                        className={`inline ${checked ? 'text-sky-100' : 'text-gray-500'
-                                                            }`}
+                                                        className={`inline ${
+                                                            checked
+                                                                ? 'text-sky-100'
+                                                                : 'text-gray-500'
+                                                        }`}
                                                     >
                                                         <span>
-                                                            {plan.ram}/{plan.cpus}
+                                                            {plan.ram}/
+                                                            {plan.cpus}
                                                         </span>{' '}
-                                                        <span aria-hidden="true">&middot;</span>{' '}
+                                                        <span aria-hidden="true">
+                                                            &middot;
+                                                        </span>{' '}
                                                         <span>{plan.disk}</span>
                                                     </RadioGroup.Description>
                                                 </div>
@@ -84,10 +99,10 @@ export default function RadioGroupExample() {
                 </RadioGroup>
             </div>
         </div>
-    )
+    );
 }
 
-type propsIcon = JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+type propsIcon = JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>;
 
 function CheckIcon(props: propsIcon): JSX.Element {
     return (
@@ -101,5 +116,5 @@ function CheckIcon(props: propsIcon): JSX.Element {
                 strokeLinejoin="round"
             />
         </svg>
-    )
+    );
 }

@@ -1,7 +1,22 @@
 {
-  "cSpell.enableFiletypes": ["!typescriptreact"],
-  "editor.tokenColorCustomizations": {
-    "comments": "",
-    "textMateRules": []
-  }
+    "cSpell.enableFiletypes": ["!typescriptreact"],
+    "editor.tokenColorCustomizations": {
+        "comments": "",
+        "textMateRules": []
+    },
+    "cSpell.words": ["uuidv"],
+    "workbench.colorCustomizations": {
+        "[Default Dark+]": {
+            "statusBar.background": "#1A1A1A",
+            "statusBar.debuggingBackground": "#263238",
+            "statusBar.noFolderBackground": "#212121"
+        },
+        "[Dracula For Rust Theme]": {
+            "statusBar.background": "#1a1a1a50"
+        },
+        "errorLens.errorForeground": "#8ec07c",
+        "minimap.background": "#00000000",
+        "scrollbar.shadow": "#00000000"
+    },
+    "dotenv.enableAutocloaking": true
 }

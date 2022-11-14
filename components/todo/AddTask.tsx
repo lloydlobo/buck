@@ -73,7 +73,7 @@ export function AddTask({ onSave }: any): JSX.Element {
             <input
                 type="submit"
                 value="Save Task"
-                className="btn-ghost glass btn mt-4 
+                className="btn-ghost btn glass mt-4 
                 backdrop-blur-3xl backdrop-brightness-0 backdrop-filter "
             />
         </form>

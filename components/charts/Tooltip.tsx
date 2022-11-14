@@ -1,5 +1,5 @@
-import styles from "../../styles/tooltip.module.css";
-import { InteractionData } from "../../types";
+import styles from '../../styles/tooltip.module.css';
+import { InteractionData } from '../../types';
 
 type TooltipProps = {
     interactionData: InteractionData | undefined;
@@ -23,7 +23,10 @@ export const Tooltip = ({ interactionData }: TooltipProps) => {
         >
             <b className={styles.title}>{group}</b>
 
-            <div className={styles.topHalfContainer} style={{ borderColor: 'currentcolor' }}>
+            <div
+                className={styles.topHalfContainer}
+                style={{ borderColor: 'currentcolor' }}
+            >
                 <div className={styles.row}>
                     <b className={styles.row}></b>
                     {/* <span>Vulnerability index</span> */}
@@ -40,8 +43,7 @@ export const Tooltip = ({ interactionData }: TooltipProps) => {
 
             <div className={styles.row}>
                 <span>
-                    Size
-                    (sq.m)
+                    Size (sq.m)
                     <br />
                 </span>
                 <b>{Math.round(size * 100) / 100}</b>

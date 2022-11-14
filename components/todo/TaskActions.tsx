@@ -1,18 +1,22 @@
-import { XCircleIcon } from '@heroicons/react/solid'
-import React from 'react'
-import { TodoModalForm } from './TodoModalForm'
+import { XCircleIcon } from '@heroicons/react/solid';
+import React from 'react';
+import { TodoModalForm } from './TodoModalForm';
 
-export default function TaskActions({ task, propsModalForm, handleDeleteTask }: any) {
+export default function TaskActions({
+    task,
+    propsModalForm,
+    handleDeleteTask,
+}: any) {
     return (
-        <div className='flex gap-2'>
+        <div className="flex gap-2">
             <button
                 id={task.name}
-                className='btn btn-xs btn-square btn-ghost'
+                className="btn-ghost btn btn-square btn-xs"
                 onClick={(e) => handleDeleteTask(e, task.uuid)}
             >
                 <XCircleIcon className="h-6 w-6" />
             </button>
             <TodoModalForm {...propsModalForm} />
         </div>
-    )
+    );
 }

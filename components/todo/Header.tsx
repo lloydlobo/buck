@@ -2,7 +2,7 @@ import React from 'react';
 import { FaPlus, FaTimes } from 'react-icons/fa';
 
 import { HiPlus } from 'react-icons/hi2';
-import { ButtonOpenClose } from '../ui/ButtonOpenClose';
+import { ButtonOpenClose } from '../ui/button/ButtonOpenClose';
 
 export function TodoHeader({
     showForm,

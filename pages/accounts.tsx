@@ -4,11 +4,11 @@ import AccountsSidebar from '../components/account/AccountsSidebar';
 import { Button } from '../components/account/Button';
 import { ButtonGroup } from '../components/account/ButtonGroup';
 import { HeaderButtonGroup } from '../components/account/HeaderButtonGroup';
-import AccountsTable from '../components/AccountsTable';
+import AccountsTable from '../components/account/AccountsTable';
 import Stats from '../components/bucket/stats/Stats';
 import Layout from '../components/Layout';
-import TransactionsTable from '../components/TransactionsTable';
-import ButtonGroupAccounts from '../components/ui/ButtonGroupAccounts';
+import TransactionsTable from '../components/transaction/TransactionsTable';
+import ButtonGroupAccounts from '../components/ui/button/ButtonGroupAccounts';
 
 // TODO: Keep Stats sticky.
 export default function AccountsScreen() {

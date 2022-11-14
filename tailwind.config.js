@@ -1,12 +1,12 @@
 // https://github.com/fireship-io/tailwind-dashboard/blob/main/tailwind.config.js
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config } */
 module.exports = {
     content: [
-        "./app/**/*.{js,ts,jsx,tsx}",
-        "./pages/**/*.{js,ts,jsx,tsx}",
-        "./components/**/*.{js,ts,jsx,tsx}",
+        './app/**/*.{js,ts,jsx,tsx}',
+        './pages/**/*.{js,ts,jsx,tsx}',
+        './components/**/*.{js,ts,jsx,tsx}',
     ],
     // https://tailwindcss.com/docs/dark-mode
     darkMode: 'class', //https://github.com/saadeghi/theme-change
@@ -38,15 +38,14 @@ module.exports = {
                 // 'desktop': '1280px',
                 // => @media (min-width: 1280px) { ... }
             },
-        }
+        },
     },
     plugins: [
         require('daisyui'),
         require('@tailwindcss/aspect-ratio'),
-        require("@tailwindcss/typography"),
+        require('@tailwindcss/typography'),
     ],
     daisyui: {
-        themes: ["business", "corporate"], // https://daisyui.com/docs/themes/
+        themes: ['business', 'corporate'], // https://daisyui.com/docs/themes/
     },
-
-}
+};

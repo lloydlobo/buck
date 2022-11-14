@@ -23,5 +23,5 @@ const transactions = [
         user: 'admin',
         uuid: '',
     },
-]
-export { transactions }
+];
+export { transactions };

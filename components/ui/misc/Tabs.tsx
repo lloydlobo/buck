@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import { Tab } from '@headlessui/react'
+import { useState } from 'react';
+import { Tab } from '@headlessui/react';
 
 function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(' ');
 }
 
 export default function Tabs() {
@@ -55,7 +55,7 @@ export default function Tabs() {
                 shareCount: 2,
             },
         ],
-    })
+    });
 
     return (
         <div className="w-full max-w-md px-2 py-16 sm:px-0">
@@ -100,7 +100,9 @@ export default function Tabs() {
                                         <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
                                             <li>{post.date}</li>
                                             <li>&middot;</li>
-                                            <li>{post.commentCount} comments</li>
+                                            <li>
+                                                {post.commentCount} comments
+                                            </li>
                                             <li>&middot;</li>
                                             <li>{post.shareCount} shares</li>
                                         </ul>
@@ -120,5 +122,5 @@ export default function Tabs() {
                 </Tab.Panels>
             </Tab.Group>
         </div>
-    )
+    );
 }

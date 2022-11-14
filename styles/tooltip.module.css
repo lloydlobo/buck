@@ -3,12 +3,12 @@
 /* TODO: Add x, y position in interactiveData moseover parameters for tooltip[ to move with cursor] */
 .tooltip {
     width: 356px;
-    @apply shadow-inner opacity-60 bg-base-100 border border-neutral transition-all duration-1000;
+    @apply border border-neutral bg-base-100 opacity-60 shadow-inner transition-all duration-1000;
     /* box-shadow: 3px 3px 3px rgb(0 0 0 / 10%); */
     font-size: 11px;
     max-width: 200px;
     padding: 10px;
-    /* position: absolute; */ 
+    /* position: absolute; */
     margin-left: 35px;
     transform: translateY(-50%);
     transform: translateX(-30%);

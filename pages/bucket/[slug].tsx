@@ -1,44 +1,45 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import React, { Context, useContext } from 'react'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { Context, useContext } from 'react';
 
-import Layout from '../../components/Layout'
-import RadioGroupExample from '../../components/ui/RadioGroup'
-import { data } from '../../utils/data/data'
-import { Store } from '../../utils/Store'
+import Layout from '../../components/Layout';
+import RadioGroupExample from '../../components/ui/RadioGroup';
+import { data } from '../../utils/data/data';
+import { Store } from '../../utils/Store';
 
 export default function BucketScreen() {
-    const { state, dispatch } = useContext(Store as Context<any>)
+    const { state, dispatch } = useContext(Store as Context<any>);
 
-    const { query } = useRouter()
-    const { slug } = query
+    const { query } = useRouter();
+    const { slug } = query;
 
-    const bucket = data.buckets.find((p: { slug: string | string[] | undefined }) => {
-        return p.slug === slug
-    })
+    const bucket = data.buckets.find(
+        (p: { slug: string | string[] | undefined }) => {
+            return p.slug === slug;
+        }
+    );
 
     if (!bucket) {
         return (
-            <Layout title='Product Not Found'>
-                <div>Product Not Found</div>
+            <Layout title="Category not found">
+                <div>Category not found</div>
             </Layout>
-        )
+        );
     }
 
     const addToCartHandler = () => {
         const existItem = state.cart.cartItems.find((x: { slug: string }) => {
-            return x.slug === bucket.slug
-        })
-    }
+            return x.slug === bucket.slug;
+        });
+    };
 
     return (
         <Layout title={bucket.name}>
-            <div className='py-2'>
+            <div className="py-2">
                 <Link href={'/'}>back to buckets</Link>
             </div>
 
-
-            <div className='grid md:grid-cols-4 md:gap-3'>
+            <div className="grid md:grid-cols-4 md:gap-3">
                 {/* <div className='md:col-span-2'> */}
                 {/*     <Image */}
                 {/*         src={bucket.image} */}
@@ -66,10 +67,8 @@ export default function BucketScreen() {
                     </ul>
                 </div>
 
-
-                <div className='card p-5'>
-                    <div className='mb-2 flex sm:flex-col gap-2 justify-between'>
-
+                <div className="card p-5">
+                    <div className="mb-2 flex justify-between gap-2 sm:flex-col">
                         <div>
                             <div>Budgeted</div>
                             <div>{bucket.budgeted}</div>
@@ -83,22 +82,17 @@ export default function BucketScreen() {
                         <div>
                             <div>Status</div>
                             <div>
-                                {
-                                    bucket.budgeted > bucket.available ? (
-                                        `${bucket.budgeted - bucket.available} left`
-                                    ) : (
-                                        'Target reached'
-                                    )
-                                }
+                                {bucket.budgeted > bucket.available
+                                    ? `${
+                                          bucket.budgeted - bucket.available
+                                      } left`
+                                    : 'Target reached'}
                             </div>
                         </div>
-
                     </div>
-                    <button className='btn-primary w-full'>
-                        Update
-                    </button>
+                    <button className="btn-primary w-full">Update</button>
                 </div>
             </div>
         </Layout>
-    )
+    );
 }
