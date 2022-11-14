@@ -44,12 +44,12 @@ const Home = () => {
                     <Header />
 
                     <main className="mb-6">
-                        <div className="grid h-full gap-6 ">
+                        <div className="grid h-full gap-6 overflow-hidden">
                             <HeroHeader />
                             {/* TODO: Add proximate hover effect!  */}
-                            <figure className="relative z-10 px-6">
+                            <figure className="relative z-10  px-6">
                                 <Window />
-                                <div className="absolute -top-20 left-10 -z-10 ">
+                                <div className="absolute -top-24 left-10  ">
                                     <Mascot />
                                 </div>
                             </figure>

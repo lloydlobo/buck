@@ -8,27 +8,27 @@ import styles from '../../styles/mascot.module.css';
 export function Mascot() {
     const scaleImg = 5;
     const scaleEyePos = {
-        x: (-32 * scaleImg) / 100,
+        x: (-35 * scaleImg) / 100,
         y: (-466 * scaleImg) / 100,
     };
 
     const anchorRef = useRef(null);
+    const imageRef = useRef(null);
     const eyesRef = useRef(null);
+    const proximityRef = useRef(null);
 
     useEffect(() => {
-        // PERF: Use ref instead of DOM manipulation.
+        const proxi = proximityRef.current as HTMLElement | null;
+        const image = imageRef.current as HTMLElement | null;
+        if (!proxi) throw new Error('proxi ref is null');
+        if (!image) throw new Error('image ref is null');
+
         const eyesNodes = eyesRef.current as NodeListOf<Element> | null;
         if (!eyesNodes) throw new Error('anchor id on image is null!');
-        console.log(eyesNodes);
-        // const frameZones = Array.from(eyesNodes);
-        // frameZones.map((eye) => { console.log(eye); });
-
-        const eyes = document.querySelectorAll('#eye');
 
         // const anchor = document.getElementById('anchor');
         const anchor = anchorRef.current as HTMLElement | null;
         if (!anchor) throw new Error('anchor id on image is null!');
-
         // Draw imaginary box around the mascot.png image.
         const rect = anchor.getBoundingClientRect();
 
@@ -36,6 +36,17 @@ export function Mascot() {
         // Get middle of box rect.
         const anchorX = rect.left + rect.width / 2;
         const anchorY = rect.top + rect.height / 2;
+
+        const eyes = document.querySelectorAll('#eye');
+
+        proxi.addEventListener('mouseover', (e) => {
+            proxi.style.scale = '1.4';
+            image.style.transform = 'translateY(30px)';
+        });
+        proxi.addEventListener('mouseout', (e) => {
+            proxi.style.scale = '1';
+            image.style.transform = 'translateY(0px)';
+        });
 
         document.addEventListener('mousemove', (e) => {
             // Coordinates of position of mouse.
@@ -63,8 +74,14 @@ export function Mascot() {
 
     return (
         <>
-            <div className="proximity-hover absolute h-20 w-20 bg-success opacity-20 hover:z-10 hover:scale-150 "></div>
-            <div className="relative grid min-h-fit place-items-center transition-transform delay-300 ease-in-out hover:translate-y-8">
+            <div
+                ref={proximityRef}
+                className="proximity-hover absolute -left-3 z-50 h-52 w-52 select-none overflow-hidden rounded-[50%] bg-transparent opacity-20 transition-transform duration-500 hover:scale-150 "
+            ></div>
+            <div
+                ref={imageRef}
+                className="relative -z-10 grid min-h-fit place-items-center transition-transform delay-300 duration-700 ease-in-out"
+            >
                 <div ref={anchorRef}>
                     <Image
                         id="anchor"
@@ -97,8 +114,8 @@ export function Mascot() {
                         width={38 / scaleImg}
                         height={37 / scaleImg}
                         style={{
-                            top: `${-7 + scaleImg * scaleEyePos.y}px`,
-                            left: `${16 + scaleImg * scaleEyePos.x}px`,
+                            top: `${-8 + scaleImg * scaleEyePos.y}px`,
+                            left: `${18 + scaleImg * scaleEyePos.x}px`,
                         }}
                     />
                 </div>
