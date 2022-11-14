@@ -24,7 +24,7 @@ function getFromLocalStorage(key: string, defaultValue: any) {
         : localStorage.getItem(key);
 }
 
-function App() {
+function TodoScreen() {
     // All States
     const [loading, setloading] = useState(true); // Pre-loader before page renders
     const [tasks, setTasks] = useState([] as TaskType[]); // Task State
@@ -156,7 +156,7 @@ function App() {
     );
 }
 
-export default App;
+export default TodoScreen;
 
 function isValid({ value }: { value: string | null }): boolean {
     return [null, undefined, ''].includes(value);

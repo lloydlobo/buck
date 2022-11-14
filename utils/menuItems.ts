@@ -23,8 +23,8 @@ const MenuItems = [
         active: false,
     },
     {
-        label: 'Buckets',
-        url: '/buckets',
+        label: 'Category',
+        url: '/category',
         // icon: <ContactIcon />,
         active: false,
     },

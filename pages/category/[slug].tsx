@@ -13,13 +13,13 @@ export default function BucketScreen() {
     const { query } = useRouter();
     const { slug } = query;
 
-    const bucket = data.buckets.find(
+    const category = data.category.find(
         (p: { slug: string | string[] | undefined }) => {
             return p.slug === slug;
         }
     );
 
-    if (!bucket) {
+    if (!category) {
         return (
             <Layout title="Category not found">
                 <div>Category not found</div>
@@ -29,12 +29,12 @@ export default function BucketScreen() {
 
     const addToCartHandler = () => {
         const existItem = state.cart.cartItems.find((x: { slug: string }) => {
-            return x.slug === bucket.slug;
+            return x.slug === category.slug;
         });
     };
 
     return (
-        <Layout title={bucket.name}>
+        <Layout title={category.name}>
             <div className="py-2">
                 <Link href={'/'}>back to buckets</Link>
             </div>
@@ -56,13 +56,13 @@ export default function BucketScreen() {
                 <div>
                     <ul>
                         <li>
-                            <h1>{bucket.name}</h1>
+                            <h1>{category.name}</h1>
                         </li>
                         <li>
-                            <h1>Category: {bucket.name}</h1>
+                            <h1>Category: {category.name}</h1>
                         </li>
                         <li>
-                            <div>Description: {bucket.description}</div>
+                            <div>Description: {category.description}</div>
                         </li>
                     </ul>
                 </div>
@@ -71,20 +71,20 @@ export default function BucketScreen() {
                     <div className="mb-2 flex justify-between gap-2 sm:flex-col">
                         <div>
                             <div>Budgeted</div>
-                            <div>{bucket.budgeted}</div>
+                            <div>{category.budgeted}</div>
                         </div>
 
                         <div>
                             <div>Available</div>
-                            <div>{bucket.available}</div>
+                            <div>{category.available}</div>
                         </div>
 
                         <div>
                             <div>Status</div>
                             <div>
-                                {bucket.budgeted > bucket.available
+                                {category.budgeted > category.available
                                     ? `${
-                                          bucket.budgeted - bucket.available
+                                          category.budgeted - category.available
                                       } left`
                                     : 'Target reached'}
                             </div>

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaCaretDown, FaCaretRight } from 'react-icons/fa';
-import EditBucketForm from '../components/bucket/EditBucketForm';
+import EditBucketForm from '../components/category/EditBucketForm';
 import Layout from '../components/Layout';
 import { LoginForm } from '../components/login/LoginForm';
 import { LoginHelp } from '../components/login/LoginHelp';

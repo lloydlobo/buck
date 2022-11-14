@@ -75,7 +75,7 @@ const data = {
             notes: 'This is westeros bank.',
         },
     ],
-    buckets: [
+    category: [
         {
             id: 1,
             uuid: uuidv4(),

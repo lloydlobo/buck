@@ -1,5 +1,5 @@
 // import type { NextPage } from 'next'
-import Stats from '../components/bucket/stats/Stats';
+import Stats from '../components/category/stats/Stats';
 import { ChartMultitype } from '../components/charts/ChartMultitype';
 import D3ScatterplotWithTooltip from '../components/charts/D3ScatterplotWithTooltip';
 import Layout from '../components/Layout';

@@ -1,10 +1,11 @@
 import React from 'react';
-import BucketsTable from '../components/bucket/BucketsTable';
-import Stats from '../components/bucket/stats/Stats';
+import CategoryTable from '../components/category/BucketsTable';
+import Stats from '../components/category/stats/Stats';
 import Layout from '../components/Layout';
 import ButtonGroupBuckets from '../components/ui/button/ButtonGroupBuckets';
+import { MenuItems } from '../utils/menuItems';
 
-export default function Buckets() {
+export default function CategoryScreen() {
     const category = {
         Recent: [{ name: '' }],
         Todo: [{ name: '' }],
@@ -16,15 +17,13 @@ export default function Buckets() {
     };
 
     return (
-        <Layout title="Buckets">
-            <div className="grid grid-flow-row">
-                <div className="mb-2 mt-0 flex">
-                    <Stats />
-                </div>
+        <Layout title="Category">
+            <div className="my-2 grid grid-flow-row gap-2">
+                <Stats />
+
                 <ButtonGroupBuckets />
-                <div className="mb-2">
-                    <BucketsTable />
-                </div>
+
+                <CategoryTable />
             </div>
         </Layout>
     );

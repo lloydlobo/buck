@@ -1,10 +1,10 @@
 import React from 'react';
-import Stats from '../components/bucket/stats/Stats';
+import Stats from '../components/category/stats/Stats';
 import Layout from '../components/Layout';
 import TransactionsTable from '../components/transaction/TransactionsTable';
 import ButtonGroupBuckets from '../components/ui/button/ButtonGroupBuckets';
 
-export default function Buckets() {
+export default function TransactionsScreen() {
     const category = {
         Recent: [{ name: '' }],
         Todo: [{ name: '' }],
@@ -16,7 +16,7 @@ export default function Buckets() {
     };
 
     return (
-        <Layout title="Buckets">
+        <Layout title="Transactions">
             <div className="grid grid-flow-row">
                 <div className="mb-2 mt-0 flex">
                     <Stats />
