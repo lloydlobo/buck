@@ -1,0 +1,17 @@
+.eyes,
+.eyes Image,
+.eyes img {
+    @apply absolute;
+}
+
+.eye {
+    position: relative !important;
+}
+
+/*
+
+#eyes,
+#eyes img,
+#eyes Image,
+
+ */

@@ -8,7 +8,9 @@ import Layout from '../components/Layout';
 import { Footer } from '../components/ui/Footer';
 import { Header } from '../components/ui/Header';
 import HeroHeader from '../components/ui/Hero';
+import { Mascot } from '../components/ui/Mascot';
 import { SpinnerLoading } from '../components/ui/SpinnerLoading';
+import { Window } from '../components/ui/Window';
 import brandName from '../utils/brandName';
 
 const Home = () => {
@@ -45,7 +47,12 @@ const Home = () => {
                         <div className="grid h-full gap-6 ">
                             <HeroHeader />
                             {/* TODO: Add proximate hover effect!  */}
-                            <figure />
+                            <figure className="relative z-10 px-6">
+                                <Window />
+                                <div className="absolute -top-20 left-10 -z-10 ">
+                                    <Mascot />
+                                </div>
+                            </figure>
                         </div>
                     </main>
 
