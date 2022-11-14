@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import brandName from '../../utils/brandName';
 import styles from '../../styles/mascot.module.css';
 
@@ -9,19 +9,29 @@ export function Mascot() {
     const scaleImg = 5;
     const scaleEyePos = {
         x: (-32 * scaleImg) / 100,
-        y: (-392 * scaleImg) / 100,
+        y: (-466 * scaleImg) / 100,
     };
 
+    const anchorRef = useRef(null);
+    const eyesRef = useRef(null);
+
     useEffect(() => {
+        // PERF: Use ref instead of DOM manipulation.
+        const eyesNodes = eyesRef.current as NodeListOf<Element> | null;
+        if (!eyesNodes) throw new Error('anchor id on image is null!');
+        console.log(eyesNodes);
+        // const frameZones = Array.from(eyesNodes);
+        // frameZones.map((eye) => { console.log(eye); });
+
         const eyes = document.querySelectorAll('#eye');
 
-        const anchor = document.getElementById('anchor');
-        if (!anchor) {
-            throw new Error('');
-        }
+        // const anchor = document.getElementById('anchor');
+        const anchor = anchorRef.current as HTMLElement | null;
+        if (!anchor) throw new Error('anchor id on image is null!');
 
         // Draw imaginary box around the mascot.png image.
         const rect = anchor.getBoundingClientRect();
+
         // Coordinates of image.
         // Get middle of box rect.
         const anchorX = rect.left + rect.width / 2;
@@ -55,16 +65,18 @@ export function Mascot() {
         <>
             <div className="proximity-hover absolute h-20 w-20 bg-success opacity-20 hover:z-10 hover:scale-150 "></div>
             <div className="relative grid min-h-fit place-items-center transition-transform delay-300 ease-in-out hover:translate-y-8">
-                <Image
-                    id="anchor"
-                    className=""
-                    src="/mascot.png"
-                    alt={`${brandName}'s mascot image`}
-                    width={533 / scaleImg}
-                    height={640 / scaleImg}
-                />
+                <div ref={anchorRef}>
+                    <Image
+                        id="anchor"
+                        className="h-auto w-auto"
+                        src="/mascot.png"
+                        alt={`${brandName}'s mascot image`}
+                        width={533 / scaleImg}
+                        height={640 / scaleImg}
+                    />
+                </div>
 
-                <div className="eyes" id={styles['eyes']}>
+                <div className="eyes" ref={eyesRef} id={styles['eyes']}>
                     <Image
                         id="eye"
                         className={styles.eye}
