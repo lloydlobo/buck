@@ -100,7 +100,7 @@ export default function BucketScreen() {
                         </div>
                     </div>
 
-                    <div className="overflow-y-auto rounded-md bg-base-300 px-8 pt-12 shadow-md ">
+                    <div className="overflow-y-auto rounded-md bg-base-300 px-8 pt-6 shadow-md ">
                         <Timeline />
                     </div>
                 </div>
