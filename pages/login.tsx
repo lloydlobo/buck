@@ -3,7 +3,7 @@
 // https://tailwindui.com/components/application-ui/forms/sign-in-forms
 import { LockClosedIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaCaretDown, FaCaretRight } from 'react-icons/fa';
 import EditBucketForm from '../components/category/EditBucketForm';
@@ -11,23 +11,36 @@ import Layout from '../components/Layout';
 import { LoginForm } from '../components/login/LoginForm';
 import { LoginHelp } from '../components/login/LoginHelp';
 import LoginSignUp from '../components/login/LoginSignUp';
+import { SpinnerLoading } from '../components/ui/SpinnerLoading';
 
 export default function LoginScreen() {
     const [toggleHelp, setToggleHelp] = useState(false);
 
+    const [loading, setloading] = useState(true); // Pre-loader before page renders
+    // Pre-loader
+    useEffect(() => {
+        setTimeout(() => {
+            setloading(false);
+        }, 1000);
+    }, []);
+
     return (
         <>
             <Layout title={'Login'}>
-                <div className="grid place-content-center pt-8">
-                    <div className="card grid place-self-center rounded-md bg-base-300 p-8">
-                        <LoginForm />
-                        <LoginHelp
-                            toggleHelp={toggleHelp}
-                            setToggleHelp={setToggleHelp}
-                        />
+                {loading ? (
+                    <SpinnerLoading />
+                ) : (
+                    <div className="grid place-content-center pt-8">
+                        <div className="card grid place-self-center rounded-md bg-base-300 p-8">
+                            <LoginForm />
+                            <LoginHelp
+                                toggleHelp={toggleHelp}
+                                setToggleHelp={setToggleHelp}
+                            />
+                        </div>
+                        <LoginSignUp />
                     </div>
-                    <LoginSignUp />
-                </div>
+                )}
             </Layout>
         </>
     );
