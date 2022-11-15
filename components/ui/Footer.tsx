@@ -25,6 +25,10 @@ export const Footer = () => {
                     </Link>
                 </p>
             </div>
+            <div className="links link flex">
+                <Link href={'/docs'}>Docs</Link>
+                <Link href={'/api/seed'}>Api Seed</Link>
+            </div>
             <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
                 <a>
                     <svg

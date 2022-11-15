@@ -52,6 +52,12 @@ const MenuItems = [
         // icon: <ResumeIcon />,
         active: false,
     },
+    {
+        label: 'Docs',
+        url: '/docs',
+        // icon: <ResumeIcon />,
+        active: false,
+    },
 ];
 
 export { MenuItems };

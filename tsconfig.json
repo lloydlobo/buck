@@ -20,9 +20,9 @@
         "next-env.d.ts",
         "**/*.ts",
         "**/*.tsx",
-        "pages/_app.js",
-        "utils/db.ts.bak",
-        "pages/api/seed.ts.bak"
+        "pages/_app.js"
+        // "utils/db.ts.bak",
+        // "pages/api/seed.ts.bak"
     ],
     "exclude": ["node_modules"]
 }
