@@ -1,18 +1,21 @@
-import { Fragment } from 'react'
-import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { Fragment } from 'react';
+import { Menu, Transition } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/solid';
 
 function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(' ');
 }
 
 export default function OptionDivider() {
     return (
         <Menu as="div" className="relative inline-block text-left">
-            <div className=''>
+            <div className="">
                 <Menu.Button className="btn focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                     Options
-                    <ChevronDownIcon className="-mr-1 ml-2 h-4 w-4" aria-hidden="true" />
+                    <ChevronDownIcon
+                        className="-mr-1 ml-2 h-4 w-4"
+                        aria-hidden="true"
+                    />
                 </Menu.Button>
             </div>
 
@@ -32,7 +35,9 @@ export default function OptionDivider() {
                                 <a
                                     href="#"
                                     className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                        active
+                                            ? 'bg-gray-100 text-gray-900'
+                                            : 'text-gray-700',
                                         'block px-4 py-2 text-sm'
                                     )}
                                 >
@@ -45,7 +50,9 @@ export default function OptionDivider() {
                                 <a
                                     href="#"
                                     className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                        active
+                                            ? 'bg-gray-100 text-gray-900'
+                                            : 'text-gray-700',
                                         'block px-4 py-2 text-sm'
                                     )}
                                 >
@@ -60,7 +67,9 @@ export default function OptionDivider() {
                                 <a
                                     href="#"
                                     className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                        active
+                                            ? 'bg-gray-100 text-gray-900'
+                                            : 'text-gray-700',
                                         'block px-4 py-2 text-sm'
                                     )}
                                 >
@@ -73,7 +82,9 @@ export default function OptionDivider() {
                                 <a
                                     href="#"
                                     className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                        active
+                                            ? 'bg-gray-100 text-gray-900'
+                                            : 'text-gray-700',
                                         'block px-4 py-2 text-sm'
                                     )}
                                 >
@@ -88,7 +99,9 @@ export default function OptionDivider() {
                                 <a
                                     href="#"
                                     className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                        active
+                                            ? 'bg-gray-100 text-gray-900'
+                                            : 'text-gray-700',
                                         'block px-4 py-2 text-sm'
                                     )}
                                 >
@@ -101,7 +114,9 @@ export default function OptionDivider() {
                                 <a
                                     href="#"
                                     className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                        active
+                                            ? 'bg-gray-100 text-gray-900'
+                                            : 'text-gray-700',
                                         'block px-4 py-2 text-sm'
                                     )}
                                 >
@@ -116,7 +131,9 @@ export default function OptionDivider() {
                                 <a
                                     href="#"
                                     className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                        active
+                                            ? 'bg-gray-100 text-gray-900'
+                                            : 'text-gray-700',
                                         'block px-4 py-2 text-sm'
                                     )}
                                 >
@@ -128,5 +145,5 @@ export default function OptionDivider() {
                 </Menu.Items>
             </Transition>
         </Menu>
-    )
+    );
 }

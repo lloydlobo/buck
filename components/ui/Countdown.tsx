@@ -92,50 +92,19 @@ export function Countdown({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const { hours, minutes, seconds } = timerObject;
     // useEffect(() => { clearTimer(getDeadTime()); });
     // Return JSX.
     return (
         <>
-            <h2>{timer}</h2>
-            <h3>
-                {timerObject.hours}h {timerObject.minutes}m{' '}
-                {timerObject.seconds}s
-            </h3>
-            <button onClick={onClickReset}>Reset</button>
-            <div className="grid auto-cols-max grid-flow-col gap-5 text-center text-xs">
-                <div className="hidden flex-col">
-                    <span className="countdown font-mono">
-                        <span
-                            style={{ '--value': timerObject.hours } as any}
-                        ></span>
-                    </span>
-                    days
-                </div>
-                <div className="flex flex-col">
-                    <span className="countdown font-mono">
-                        <span
-                            style={{ '--value': timerObject.hours } as any}
-                        ></span>
-                    </span>
-                    hours
-                </div>
-                <div className="flex flex-col">
-                    <span className="countdown font-mono">
-                        <span
-                            style={{ '--value': timerObject.minutes } as any}
-                        ></span>
-                    </span>
-                    min
-                </div>
-                <div className="flex flex-col">
-                    <span className="countdown font-mono">
-                        <span
-                            style={{ '--value': timerObject.seconds } as any}
-                        ></span>
-                    </span>
-                    sec
-                </div>
-            </div>
+            {/* TODO: When time is coming to an end show Reset text */}
+            <button
+                className="link-hover btn-ghost btn link tooltip tooltip-bottom tooltip-warning w-28 decoration-warning decoration-2"
+                data-tip="Reset"
+                onClick={onClickReset}
+            >
+                {hours}h {minutes}m {seconds}s
+            </button>
         </>
     );
 }

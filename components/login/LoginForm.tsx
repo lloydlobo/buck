@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import FormEmail from './FormEmail';
 
 export function LoginForm(): JSX.Element {
     const {
@@ -90,7 +89,7 @@ export function LoginForm(): JSX.Element {
                 {/* Submit input btn */}
                 <input
                     type="submit"
-                    className="btn-primary btn input mt-2 w-full place-self-center"
+                    className="btn btn-primary input mt-2 w-full place-self-center"
                 />
             </form>
         </>

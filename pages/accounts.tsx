@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { data } from '../utils/data/data';
+import data from '../utils/data/data';
 import AccountsSidebar from '../components/account/AccountsSidebar';
 import { Button } from '../components/account/Button';
 import { ButtonGroup } from '../components/account/ButtonGroup';

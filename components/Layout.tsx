@@ -2,10 +2,12 @@ import Head from 'next/head';
 import React, { ReactNode, useContext } from 'react';
 import { ToastContainer } from 'react-toastify';
 
+import { signIn, signOut, useSession } from 'next-auth/react';
 import Drawer from './Drawer';
 import brandName from '../utils/brandName';
 import { Header } from './ui/Header';
 import { Footer } from './ui/Footer';
+import { Navbar } from './navbar/Navbar';
 
 export default function Layout({
     title,
@@ -16,6 +18,8 @@ export default function Layout({
 }): JSX.Element {
     // const date = new Date().getFullYear();
     // const { theme, toggle, dark } = useContext(ThemeContext);
+
+    const { data: session } = useSession();
 
     return (
         <>
@@ -29,7 +33,33 @@ export default function Layout({
                 <ToastContainer position="bottom-center" limit={1} />
 
                 <div className="wrapper h-screen">
-                    <Header />
+                    {/* <Header /> */}
+
+                    <header
+                        className=" z-30 h-16 w-full justify-center border-b border-base-300 
+                        bg-base-100 bg-opacity-70 text-base-content shadow-md 
+                        backdrop-blur transition-all duration-100"
+                    >
+                        <nav className="w-full bg-opacity-90">
+                            <Navbar>
+                                {session ? (
+                                    <>
+                                        Signed in as {session.user.email} <br />
+                                        <button onClick={() => signOut()}>
+                                            Sign out
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        Not signed in <br />
+                                        <button onClick={() => signIn()}>
+                                            Sign in
+                                        </button>
+                                    </>
+                                )}
+                            </Navbar>
+                        </nav>
+                    </header>
 
                     <main>{children}</main>
 

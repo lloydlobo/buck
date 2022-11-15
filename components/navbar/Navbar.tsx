@@ -5,7 +5,7 @@ import brandName from '../../utils/brandName';
 import { Countdown, Time } from '../ui/Countdown';
 import DrawerMenu from './DrawerMenu';
 
-export const Navbar = () => {
+export const Navbar = ({ children }): JSX.Element => {
     const time: Time = { hour: 0, minute: 10, second: 60 };
     return (
         <div className="navbar h-16 ">
@@ -20,6 +20,7 @@ export const Navbar = () => {
                 </Link>
             </div>
             <div className="flex gap-4">
+                {children}
                 <Countdown sessionTime={3 * 60} />
                 <button className="" onClick={useDarkMode}>
                     <label className="swap-rotate swap">
@@ -43,7 +44,7 @@ export const Navbar = () => {
                         </svg>
                     </label>
                 </button>
-                <div className="dropdown dropdown-end">
+                <div className="dropdown-end dropdown">
                     <label tabIndex={0} className="btn-ghost btn btn-circle">
                         <div className="indicator">
                             <svg
@@ -67,7 +68,7 @@ export const Navbar = () => {
                     </label>
                     <div
                         tabIndex={0}
-                        className="card dropdown-content card-compact mt-3 w-52 bg-base-100 shadow"
+                        className="card-compact card dropdown-content mt-3 w-52 bg-base-100 shadow"
                     >
                         <div className="card-body">
                             <span className="text-lg font-bold">8 Items</span>
@@ -80,7 +81,7 @@ export const Navbar = () => {
                         </div>
                     </div>
                 </div>
-                <div className="dropdown dropdown-end">
+                <div className="dropdown-end dropdown">
                     <label
                         tabIndex={0}
                         className="btn-ghost btn btn-circle avatar"

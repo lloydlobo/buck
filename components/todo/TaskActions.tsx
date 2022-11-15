@@ -11,7 +11,7 @@ export default function TaskActions({
         <div className="flex gap-2">
             <button
                 id={task.name}
-                className="btn-ghost btn btn-square btn-xs"
+                className="btn-square btn-ghost btn btn-xs"
                 onClick={(e) => handleDeleteTask(e, task.uuid)}
             >
                 <XCircleIcon className="h-6 w-6" />

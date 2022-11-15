@@ -1,5 +1,5 @@
 import React from 'react';
-import { data } from '../../utils/data/data';
+import data from '../../utils/data/data';
 import Link from 'next/link';
 
 export default function CategoryTable() {

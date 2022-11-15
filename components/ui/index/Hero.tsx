@@ -98,7 +98,7 @@ export default function HeroHeader() {
                             </form>
                         </div>
 
-                        <button className="btn btn-primary hidden">
+                        <button className="btn-primary btn hidden">
                             Get Started
                         </button>
 

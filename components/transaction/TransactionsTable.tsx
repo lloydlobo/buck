@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { transactions } from '../../utils/transactions';
-import { data } from '../../utils/data/data';
+import data from '../../utils/data/data';
 
 // TODO: See https://stackoverflow.com/questions/53574614/multiple-calls-to-state-updater-from-usestate-in-component-causes-multiple-re-re
 // TODO: USE id to keep readonly elements all individual...
@@ -185,7 +185,7 @@ export default function BucketsTable() {
                             <div className="">
                                 <div className="gap flex">
                                     {/* no-symbol */}
-                                    <button className="btn-ghost btn btn-square">
+                                    <button className="btn-square btn-ghost btn">
                                         <svg
                                             className="h-6 w-6"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -202,7 +202,7 @@ export default function BucketsTable() {
                                         </svg>
                                     </button>
                                     {/* check */}
-                                    <button className="btn-ghost btn btn-square">
+                                    <button className="btn-square btn-ghost btn">
                                         <svg
                                             className="h-6 w-6"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -383,7 +383,7 @@ export default function BucketsTable() {
                                             !disabled
                                                 ? 'opacity-100'
                                                 : 'opacity-80'
-                                        } btn-ghost btn btn-square`}
+                                        } btn-square btn-ghost btn`}
                                     >
                                         <svg
                                             className={`w - 6 h - 6`}
@@ -427,7 +427,7 @@ export default function BucketsTable() {
                                     {/* // pencil edit. */}
                                     <button
                                         onClick={handleClickEditTransaction}
-                                        className={`btn-ghost btn btn-square ${
+                                        className={`btn-square btn-ghost btn ${
                                             disabled ? 'block' : 'hidden'
                                         }`}
                                         disabled={!disabled}

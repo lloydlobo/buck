@@ -7,10 +7,10 @@ export default function LiveDemoWindow() {
     return (
         <div className=" relative grid animate-demo">
             <div className="relative z-50 grid translate-y-96 gap-y-4 place-self-center sm:grid-cols-2 sm:gap-x-4">
-                <Link className="btn-xl btn-primary btn" href={'/demo'}>
+                <Link className="btn-primary btn btn-xl" href={'/demo'}>
                     Live Demo
                 </Link>
-                <Link className="btn-xl btn" href={'/docs'}>
+                <Link className="btn btn-xl" href={'/docs'}>
                     Read the documentation
                 </Link>
             </div>

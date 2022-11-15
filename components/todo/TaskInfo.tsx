@@ -4,7 +4,7 @@ export default function TaskInfo({ now }: any) {
     return (
         <div
             data-tip={now}
-            className="btn-ghost tooltip tooltip-left btn-square btn-xs grid cursor-help items-center"
+            className="btn-square btn-ghost tooltip tooltip-left btn-xs grid cursor-help items-center"
         >
             {/* info icon for timestamp */}
             <div className="opacity-40">

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import User from '../../models/User';
-import { data } from '../../utils/data/data';
+import data from '../../utils/data/data';
 import db from '../../utils/db';
 
 // https://tecadmin.net/install-mongodb-on-fedora/

@@ -25,7 +25,7 @@ export function TodoModalForm({
             {/* pencil update/edit icon. */}
             <label
                 htmlFor="my-modal-4"
-                className="btn-ghost btn tooltip btn-square btn-sm"
+                className="btn-square btn-ghost btn tooltip btn-sm"
                 data-tip="Edit"
             >
                 {/* The button to open modal */}

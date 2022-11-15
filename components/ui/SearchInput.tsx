@@ -10,7 +10,7 @@ export default function SearchInput() {
                         placeholder="Search..."
                         className="input input-sm w-44 rounded-none  pl-8"
                     />
-                    <button className="btn-ghost btn btn-square btn-sm absolute border-transparent hover:bg-info">
+                    <button className="btn-square btn-ghost btn btn-sm absolute border-transparent hover:bg-info">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-4 w-4"
