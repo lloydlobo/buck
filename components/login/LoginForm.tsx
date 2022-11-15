@@ -39,7 +39,7 @@ export function LoginForm(): JSX.Element {
                         type="text"
                         id="email"
                         placeholder="admin@gmail.com"
-                        className="input-bordered input placeholder:opacity-60"
+                        className="input-bordered input placeholder:opacity-60 focus:ring"
                         autoFocus // defaultValue="John@gmail.com"
                         {...register('email', {
                             required: 'Please enter email',
@@ -69,7 +69,7 @@ export function LoginForm(): JSX.Element {
                         id="password"
                         type="password"
                         placeholder="* * * * * * * *"
-                        className="input-bordered input placeholder:opacity-50"
+                        className="input-bordered input placeholder:opacity-60 focus:ring"
                         {...register('password', {
                             required: 'Please enter password',
                             minLength: {
@@ -89,7 +89,7 @@ export function LoginForm(): JSX.Element {
                 {/* Submit input btn */}
                 <input
                     type="submit"
-                    className="btn btn-primary input mt-2 w-full place-self-center"
+                    className="btn-primary input btn mt-2 w-full place-self-center"
                 />
             </form>
         </>
