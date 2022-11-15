@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { useDarkMode } from '../../hooks/useDarkMode';
 import brandName from '../../utils/brandName';
@@ -7,6 +8,8 @@ import DrawerMenu from './DrawerMenu';
 
 export const Navbar = ({ children }): JSX.Element => {
     const time: Time = { hour: 0, minute: 10, second: 60 };
+
+    const router = useRouter();
     return (
         <div className="navbar h-16 ">
             <div className="flex-1">
@@ -45,7 +48,7 @@ export const Navbar = ({ children }): JSX.Element => {
                     </label>
                 </button>
                 <div className="dropdown-end dropdown">
-                    <label tabIndex={0} className="btn-ghost btn btn-circle">
+                    <label tabIndex={0} className="btn-ghost btn-circle btn">
                         <div className="indicator">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -68,13 +71,13 @@ export const Navbar = ({ children }): JSX.Element => {
                     </label>
                     <div
                         tabIndex={0}
-                        className="card-compact card dropdown-content mt-3 w-52 bg-base-100 shadow"
+                        className="card dropdown-content card-compact mt-3 w-52 bg-base-100 shadow"
                     >
                         <div className="card-body">
                             <span className="text-lg font-bold">8 Items</span>
                             <span className="text-info">Subtotal: $999</span>
                             <div className="card-actions">
-                                <button className="btn-primary btn btn-block">
+                                <button className="btn-primary btn-block btn">
                                     View cart
                                 </button>
                             </div>
@@ -84,7 +87,7 @@ export const Navbar = ({ children }): JSX.Element => {
                 <div className="dropdown-end dropdown">
                     <label
                         tabIndex={0}
-                        className="btn-ghost btn btn-circle avatar"
+                        className="btn-ghost btn-circle avatar btn"
                     >
                         <div className="w-10 rounded-full">
                             <img src="https://placeimg.com/80/80/people" />
@@ -95,7 +98,14 @@ export const Navbar = ({ children }): JSX.Element => {
                         className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
                     >
                         <li>
-                            <a className="justify-between">
+                            {/* If user is logged in redirect to signup. */}
+                            {/* Else let the user be at the login page.*/}
+                            <a
+                                className="justify-between"
+                                onClick={() =>
+                                    router.push('login?redirect=/profile')
+                                }
+                            >
                                 Profile
                                 <span className="badge">New</span>
                             </a>
@@ -104,10 +114,23 @@ export const Navbar = ({ children }): JSX.Element => {
                             <Link href={'/login'}>Login</Link>
                         </li>
                         <li>
-                            <a>Settings</a>
+                            <a
+                                onClick={() =>
+                                    router.push('login?redirect=/signup')
+                                }
+                            >
+                                Settings
+                            </a>
                         </li>
                         <li>
-                            <a>Logout</a>
+                            <a
+                                className="link-hover"
+                                onClick={() =>
+                                    router.push('login?redirect=/logout')
+                                }
+                            >
+                                Logout
+                            </a>
                         </li>
                     </ul>
                 </div>

@@ -8,6 +8,7 @@ import brandName from '../utils/brandName';
 import { Header } from './ui/Header';
 import { Footer } from './ui/Footer';
 import { Navbar } from './navbar/Navbar';
+import { LoginBtn } from './login/LoginBtn';
 
 export default function Layout({
     title,
@@ -42,6 +43,7 @@ export default function Layout({
                     >
                         <nav className="w-full bg-opacity-90">
                             <Navbar>
+                                <LoginBtn />
                                 {session ? (
                                     <>
                                         Signed in as {session.user.email} <br />

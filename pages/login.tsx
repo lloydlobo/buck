@@ -21,7 +21,7 @@ export default function LoginScreen() {
     useEffect(() => {
         setTimeout(() => {
             setloading(false);
-        }, 1000);
+        }, 0);
     }, []);
 
     return (
