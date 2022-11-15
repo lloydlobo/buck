@@ -3,7 +3,11 @@ import { ThemeContext, themes } from './theme-context';
 import { themeChange } from 'theme-change';
 
 // https://vimalselvam.com/post/toggle-theme-using-react-hooks/
-function ThemeProvider({ children }: { children: ReactNode | ReactNode[] }) {
+function ThemeProvider({
+    children,
+}: {
+    children: ReactNode | ReactNode[];
+}): JSX.Element {
     // Set react hook state.
     const [dark, setDark] = useState(false);
 
