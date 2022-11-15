@@ -1,54 +1,41 @@
-import mongoose, { ConnectionStates } from 'mongoose';
+import mongoose from 'mongoose';
 
-const connection = { isConnected: ConnectionStates.connected };
+const connection = {};
 
 async function connect() {
     if (connection.isConnected) {
         console.log('already connected');
         return;
     }
-
-    // Connection queue has few connections.
     if (mongoose.connections.length > 0) {
         connection.isConnected = mongoose.connections[0].readyState;
-
-        // Return if already connected.
         if (connection.isConnected === 1) {
             console.log('use previous connection');
             return;
         }
-        // Else disconnect.
         await mongoose.disconnect();
     }
-
-    if (!process.env.MONGODB_URI) {
-        throw console.error(
-            'Database environment variable MONGODB_URI is undefined!'
-        );
-    }
-
-    const uri = process.env.MONGODB_URI;
-    if (uri === undefined) return;
-
-    const db = await mongoose.connect(uri);
+    const db = await mongoose.connect(process.env.MONGODB_URI);
     console.log('new connection');
-
     connection.isConnected = db.connections[0].readyState;
 }
 
 async function disconnect() {
     if (connection.isConnected) {
-        // Save process resources in development mode,
-        // with steady connection.
         if (process.env.NODE_ENV === 'production') {
             await mongoose.disconnect();
-            connection.isConnected = ConnectionStates.disconnected;
+            connection.isConnected = false;
         } else {
             console.log('not disconnected');
         }
     }
 }
+function convertDocToObj(doc) {
+    doc._id = doc._id.toString();
+    doc.createdAt = doc.createdAt.toString();
+    doc.updatedAt = doc.updatedAt.toString();
+    return doc;
+}
 
-const db = { connect, disconnect };
-
+const db = { connect, disconnect, convertDocToObj };
 export default db;

@@ -4,16 +4,36 @@ import data from '../../utils/data/data';
 import db from '../../utils/db';
 
 // https://tecadmin.net/install-mongodb-on-fedora/
-type Data = {
-    message: string;
-};
+type Data = { message: string };
 
+// MongooseError: Operation `orders.deleteMany()` buffering timed out after 10000ms
+// https://stackoverflow.com/a/67136618
 const handler = async (_req: NextApiRequest, res: NextApiResponse<Data>) => {
-    await db.connect();
+    try {
+        await db.connect();
+    } catch (error) {
+        console.log(error);
+    }
+
     // Delete all previous users in user collection models.
-    await User.deleteMany();
+    try {
+        await User.deleteMany();
+    } catch (error) {
+        console.log(error);
+    }
+
     // Add sample users.
-    await User.insertMany(data.users);
+    try {
+        await User.insertMany(data.users);
+    } catch (error) {
+        console.log(error);
+    }
+
+    try {
+        await db.disconnect();
+    } catch (error) {
+        console.log(error);
+    }
 
     res.send({ message: 'seeded successfully' });
 };
