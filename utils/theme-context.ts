@@ -1,7 +1,18 @@
-import { createContext } from 'react';
+import { Context, createContext } from 'react';
+
+type InitialState = {
+    dark: boolean;
+    theme: { backgroundColor: string; color: string; colorScheme: string };
+    toggle: () => void;
+};
+
+type Themes = {
+    dark: { backgroundColor: string; color: string; colorScheme: string };
+    light: { backgroundColor: string; color: string; colorScheme: string };
+};
 
 // https://vimalselvam.com/post/toggle-theme-using-react-hooks/
-const themes = {
+const themes: Themes = {
     dark: {
         backgroundColor: '',
         color: '',
@@ -15,14 +26,14 @@ const themes = {
     },
 };
 
-const initialState = {
+const initialState: InitialState = {
     dark: false,
     theme: themes.light,
     toggle: () => {},
 };
 
 // export const ThemeContext = React.createContext(initialState)
-const ThemeContext = createContext(initialState);
+const ThemeContext: Context<InitialState> = createContext(initialState);
 
 export { ThemeContext, themes };
 

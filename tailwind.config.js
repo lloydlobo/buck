@@ -1,6 +1,10 @@
 // https://github.com/fireship-io/tailwind-dashboard/blob/main/tailwind.config.js
 const colors = require('tailwindcss/colors');
 
+// @next/font can be used with Tailwind CSS through a CSS variable.
+// In the example below, we use the font Inter from @next/font/google (You can use any font from Google or Local Fonts). Load your font with the variable option to define your CSS variable name and assign it to inter. Then, use inter.variable to add the CSS variable to your HTML document.
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config } */
 module.exports = {
     content: [
@@ -12,6 +16,9 @@ module.exports = {
     darkMode: 'class', //https://github.com/saadeghi/theme-change
     theme: {
         extend: {
+            fontFamily: {
+                sans: ['var(--font-inter)', ...fontFamily.sans],
+            },
             colors: {
                 gray: {
                     900: '#202225',
