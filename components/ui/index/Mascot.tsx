@@ -104,6 +104,7 @@ export function Mascot() {
                         style={{
                             top: `${0 + scaleImg * scaleEyePos.y}px`,
                             left: `${0 + scaleImg * scaleEyePos.x}px`,
+                            transform: 'rotate(45deg)',
                         }}
                     />
                     <Image
@@ -114,7 +115,7 @@ export function Mascot() {
                         width={38 / scaleImg}
                         height={37 / scaleImg}
                         style={{
-                            top: `${-8 + scaleImg * scaleEyePos.y}px`,
+                            top: `${-7 + scaleImg * scaleEyePos.y}px`,
                             left: `${20 + scaleImg * scaleEyePos.x}px`,
                         }}
                     />
