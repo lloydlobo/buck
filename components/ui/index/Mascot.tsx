@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
-import brandName from '../../utils/brandName';
-import styles from '../../styles/mascot.module.css';
+import brandName from '../../../utils/brandName';
+import styles from '../../../styles/mascot.module.css';
 
 // https://youtu.be/TGe3pS5LqEw
 // https://pixabay.com/illustrations/elephant-animal-cartoon-elephants-3289662/
 export function Mascot() {
     const scaleImg = 5;
     const scaleEyePos = {
-        x: (-35 * scaleImg) / 100,
+        x: (-40 * scaleImg) / 100,
         y: (-466 * scaleImg) / 100,
     };
 
@@ -80,7 +80,7 @@ export function Mascot() {
             ></div>
             <div
                 ref={imageRef}
-                className="relative -z-10 grid min-h-fit place-items-center transition-transform delay-300 duration-700 ease-in-out"
+                className="relative -z-10 grid min-h-fit place-items-center transition-transform duration-700 ease-in-out"
             >
                 <div ref={anchorRef}>
                     <Image
@@ -115,7 +115,7 @@ export function Mascot() {
                         height={37 / scaleImg}
                         style={{
                             top: `${-8 + scaleImg * scaleEyePos.y}px`,
-                            left: `${18 + scaleImg * scaleEyePos.x}px`,
+                            left: `${20 + scaleImg * scaleEyePos.x}px`,
                         }}
                     />
                 </div>
@@ -143,33 +143,3 @@ function getAngle({ mouseX, mouseY, anchorX, anchorY }: Coordinates): number {
 
     return degree;
 }
-
-/*
-
-
-                    <Image
-                        id="eye"
-                        className={styles.eye}
-                        src="/eye.png"
-                        alt={`${brandName}'s mascot's eye`}
-                        width={17}
-                        height={17}
-                        style={{
-                            top: `${49 + scale.y}px`,
-                            left: `${119 + scale.x}px`,
-                        }}
-                    />
-                    <Image
-                        id="eye"
-                        className={styles.eye}
-                        src="/eye.png"
-                        alt={`${brandName}'s mascot's eye`}
-                        width={17}
-                        height={17}
-                        style={{
-                            top: `${45 + scale.y}px`,
-                            left: `${156 + scale.x}px`,
-                        }}
-                    />
-
-*/

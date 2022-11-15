@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import brandName from '../../utils/brandName';
+import brandName from '../../../utils/brandName';
 import { FaCheck } from 'react-icons/fa';
 
 export default function HeroHeader() {

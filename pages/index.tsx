@@ -7,11 +7,12 @@ import { FaCheck } from 'react-icons/fa';
 import Layout from '../components/Layout';
 import { Footer } from '../components/ui/Footer';
 import { Header } from '../components/ui/Header';
-import HeroHeader from '../components/ui/Hero';
-import { Mascot } from '../components/ui/Mascot';
+import HeroHeader from '../components/ui/index/Hero';
+import { Mascot } from '../components/ui/index/Mascot';
 import { SpinnerLoading } from '../components/ui/SpinnerLoading';
-import { Window } from '../components/ui/Window';
+import { Window } from '../components/ui/index/Window';
 import brandName from '../utils/brandName';
+import LiveDemoWindow from '../components/ui/index/LiveDemoWindow';
 
 const Home = () => {
     const [loading, setloading] = useState(true); // Pre-loader before page renders
@@ -46,13 +47,7 @@ const Home = () => {
                     <main className="mb-6">
                         <div className="grid h-full gap-6 overflow-hidden">
                             <HeroHeader />
-                            {/* TODO: Add proximate hover effect!  */}
-                            <figure className="relative z-10  px-6">
-                                <Window />
-                                <div className="absolute -top-24 left-10  ">
-                                    <Mascot />
-                                </div>
-                            </figure>
+                            <LiveDemoWindow />
                         </div>
                     </main>
 

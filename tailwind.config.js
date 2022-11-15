@@ -27,6 +27,22 @@ module.exports = {
             spacing: {
                 88: '22rem',
             },
+            animation: {
+                demo: 'demo 5s ease-in-out',
+            },
+            keyframes: {
+                demo: {
+                    '0%, 100%': {
+                        transform: 'translateY(0px)',
+                    },
+                    '25%': {
+                        transform: 'translateY(-10px)',
+                    },
+                    '75%': {
+                        transform: 'translateY(-20px)',
+                    },
+                },
+            },
         },
         theme: {
             screens: {
