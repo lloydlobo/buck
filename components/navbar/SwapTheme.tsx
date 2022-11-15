@@ -25,7 +25,7 @@ export function SwapTheme() {
             data-tip={theme}
             onClick={onClick}
         >
-            <label className="swap-rotate swap btn-link btn  m-0 p-0 text-neutral-content">
+            <label className="swap-rotate swap btn-ghost btn-circle btn text-neutral-content">
                 {/* <!-- this hidden checkbox controls the state --> */}
                 <input type="checkbox" />
 

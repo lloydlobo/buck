@@ -99,7 +99,7 @@ export function Countdown({
         <>
             {/* TODO: When time is coming to an end show Reset text */}
             <button
-                className="link-hover btn-ghost btn link tooltip tooltip-bottom tooltip-warning w-28 decoration-warning decoration-2"
+                className="link-hover btn-ghost link tooltip tooltip-bottom tooltip-warning btn-circle btn w-24 decoration-warning decoration-2"
                 data-tip="Reset"
                 onClick={onClickReset}
             >
