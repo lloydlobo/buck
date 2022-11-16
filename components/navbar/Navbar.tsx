@@ -7,7 +7,7 @@ import { Countdown, Time } from '../ui/Countdown';
 import DrawerMenu from './DrawerMenu';
 import { SwapTheme } from './SwapTheme';
 
-export const Navbar = ({ children }): JSX.Element => {
+export const Navbar = ({ children }: any): JSX.Element => {
     const time: Time = { hour: 0, minute: 10, second: 60 };
 
     const router = useRouter();

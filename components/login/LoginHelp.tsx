@@ -1,6 +1,10 @@
-import Link from 'next/link';
 import React from 'react';
-import { FaCaretDown, FaCaretRight } from 'react-icons/fa';
+
+import Link from 'next/link';
+import {
+    FaCaretDown,
+    FaCaretRight,
+} from 'react-icons/fa';
 
 export function LoginHelp({ toggleHelp, setToggleHelp }: any): JSX.Element {
     return (

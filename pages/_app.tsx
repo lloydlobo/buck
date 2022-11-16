@@ -17,6 +17,7 @@ function MyApp({
     pageProps: { session, ...pageProps },
 }: any): JSX.Element {
     return (
+        // Use session in loginform.tsx.
         <SessionProvider session={session}>
             <ThemeProvider>
                 <StoreProvider>

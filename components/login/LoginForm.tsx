@@ -1,7 +1,34 @@
-import React from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import Url, { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import { getError } from '../../utils/getError';
 
+/**
+ * LoginForm component handles user sign in.
+ *
+ * @returns {JSX.Element}
+ */
 export function LoginForm(): JSX.Element {
+    /**
+     * React Hook that gives you access
+     * to the logged in user's session data.
+     * [Documentation](https://next-auth.js.org/getting-started/client#usesession)
+     */
+    const { data: session } = useSession(); // Access session from _app.tsx.
+
+    const router = useRouter();
+    const { redirect } = router.query;
+
+    useEffect(() => {
+        // Check if user is already logged in.
+        if (session?.user) {
+            // Get redirect from query string.
+            router.push((redirect as unknown as URL) || '/');
+        }
+    }, [redirect, router, session]);
+
     const {
         register,
         handleSubmit,
@@ -9,13 +36,22 @@ export function LoginForm(): JSX.Element {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = ({ email, password }: any) => {
-        console.log({ email, password });
+    const onSubmit = async ({ email, password }: any) => {
+        try {
+            // Pass email, password as callback to signIn func.
+            const result = await signIn('credentials', {
+                redirect: false,
+                email,
+                password,
+            });
+            if (result?.error) {
+                toast.error(result.error);
+            }
+        } catch (error) {
+            toast.error(getError(error as unknown as any));
+        }
 
-        return {
-            email: email,
-            password: password,
-        };
+        return { email: email, password: password };
     };
 
     return (
@@ -57,6 +93,7 @@ export function LoginForm(): JSX.Element {
                         </div>
                     )}
                 </div>
+
                 <div className="form-control w-full">
                     <label
                         htmlFor="password"
@@ -64,7 +101,6 @@ export function LoginForm(): JSX.Element {
                     >
                         Enter your password
                     </label>
-
                     <input
                         id="password"
                         type="password"
@@ -78,7 +114,6 @@ export function LoginForm(): JSX.Element {
                             },
                         })}
                     />
-
                     {errors.password && (
                         <div className="text-pink-500 opacity-60">
                             <>{errors.password.message}</>

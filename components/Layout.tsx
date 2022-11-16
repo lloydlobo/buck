@@ -1,15 +1,19 @@
-import Head from 'next/head';
-import React, { ReactNode, useContext } from 'react';
-import { ToastContainer } from 'react-toastify';
+import React, { ReactNode } from 'react';
 
+import Cookies from 'js-cookie';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import Drawer from './Drawer';
+import Head from 'next/head';
+import Link from 'next/link';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import brandName from '../utils/brandName';
-import { Header } from './ui/Header';
-import { Footer } from './ui/Footer';
+import Drawer from './Drawer';
+import { MenuDropdown } from './navbar/MenuDropdown';
 import { Navbar } from './navbar/Navbar';
-import { LoginBtn } from './login/LoginBtn';
+import { Footer } from './ui/Footer';
 
+/* const date = new Date().getFullYear();
+       {theme, toggle, dark } = useContext(ThemeContext); */
 export default function Layout({
     title,
     children,
@@ -17,11 +21,18 @@ export default function Layout({
     title: string;
     children: ReactNode | ReactNode[];
 }): JSX.Element {
-    // const date = new Date().getFullYear();
-    // const { theme, toggle, dark } = useContext(ThemeContext);
+    // Status shows loading of session, so while loading we avoid showing username.
+    const { status, data: session } = useSession();
 
-    const { data: session } = useSession();
+    const logoutClickHandler = (e: any) => {
+        e.preventDefault();
 
+        // TODO: Add taskAdded key to js-cookie pkg not to localStorage directly.
+        Cookies.remove('taskAdded');
+        // TODO: dispatch({ type: 'TASK_RESET' }) in Store.tsx.
+
+        signOut({ callbackUrl: '/login' });
+    };
     return (
         <>
             <Head>
@@ -43,22 +54,28 @@ export default function Layout({
                     >
                         <nav className="w-full bg-opacity-90">
                             <Navbar>
-                                <LoginBtn />
-                                {session ? (
-                                    <>
-                                        Signed in as {session.user.email} <br />
-                                        <button onClick={() => signOut()}>
-                                            Sign out
-                                        </button>
-                                    </>
-                                ) : (
-                                    <>
-                                        Not signed in <br />
-                                        <button onClick={() => signIn()}>
-                                            Sign in
-                                        </button>
-                                    </>
-                                )}
+                                {(function (): JSX.Element {
+                                    if (status === 'loading') {
+                                        return <div>Loading</div>;
+                                    } else {
+                                        return session?.user ? (
+                                            <MenuDropdown
+                                                logoutClickHandler={
+                                                    logoutClickHandler
+                                                }
+                                            >
+                                                {session.user.name}
+                                            </MenuDropdown>
+                                        ) : (
+                                            <Link
+                                                href={'/login'}
+                                                className="btn-ghost btn"
+                                            >
+                                                Login
+                                            </Link>
+                                        );
+                                    }
+                                })()}
                             </Navbar>
                         </nav>
                     </header>
